@@ -1,0 +1,49 @@
+@import 'partials/rotateSegment';
+@import 'partials/infoWindows';
+
+
+.screenDimensions{
+	position:absolute;
+	top: 85%;
+	left: 50%;
+	margin-left: -140px;
+}
+
+.progressInfo0{
+	position:absolute;
+	top: -12%;
+	left: 50%;
+	margin-left: -76px;
+	height: 150px;
+	width: 500px;
+	//border: 1px black solid;
+	background-image: url("../img/txtSearch.png");
+	background-repeat: no-repeat;
+	opacity: 0;
+	}
+
+.progressInfo1{
+	position:absolute;
+	top: -12%;
+	left: 50%;
+	margin-left: -76px;
+	height: 150px;
+	width: 500px;
+	//border: 1px black solid;
+	background-image: url("../img/txtLoad.png");
+	background-repeat: no-repeat;
+	opacity: 0;
+}
+
+.progressInfo2{
+	position:absolute;
+	top: -12%;
+	left: 50%;
+	margin-left: -76px;
+	height: 150px;
+	width: 500px;
+	//border: 1px black solid;
+	background-image: url("../img/txtComplete.png");
+	background-repeat: no-repeat;
+	opacity: 0;
+}
