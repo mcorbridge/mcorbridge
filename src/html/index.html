@@ -66,10 +66,35 @@
 		<rect class="rect3" x="7.5" y="15.5" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;" width="235" height="135"/>
 	</svg>
 
-	<div class="topic0" ng-click="doClickBox(0)"></div>
-	<div class="topic1" ng-click="doClickBox(1)"></div>
-	<div class="topic2" ng-click="doClickBox(2)"></div>
-	<div class="topic3" ng-click="doClickBox(3)"></div>
+
+	<div id="wrap0" class="cardWrapper0">
+		<div class="card">
+			<div class="cardFace0 front0" ng-mouseover="doFlip(0)"></div>
+			<div class="cardFace0 back0" ng-click="doClickBox(0)"></div>
+		</div>
+	</div>
+
+	<div id="wrap1" class="cardWrapper1">
+		<div class="card">
+			<div class="cardFace1 front1" ng-mouseover="doFlip(1)"></div>
+			<div class="cardFace1 back1" ng-click="doClickBox(1)"></div>
+		</div>
+	</div>
+
+	<div id="wrap2" class="cardWrapper2">
+		<div class="card">
+			<div class="cardFace2 front2" ng-mouseover="doFlip(2)"></div>
+			<div class="cardFace2 back2" ng-click="doClickBox(2)"></div>
+		</div>
+	</div>
+
+	<div id="wrap3" class="cardWrapper3">
+		<div class="card">
+			<div class="cardFace3 front3" ng-mouseover="doFlip(3)"></div>
+			<div class="cardFace3 back3" ng-click="doClickBox(3)"></div>
+		</div>
+	</div>
+
 
 	<i class="fa fa-caret-square-o-right fa-5x startIcon" ng-mouseover="doStart($event)" ng-mouseleave="doStart($event)" ng-click="doStart($event)"></i>
 

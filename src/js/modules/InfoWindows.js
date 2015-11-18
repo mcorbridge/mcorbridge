@@ -24,10 +24,10 @@ angular.module('InfoWindows', [])
 				var duration = 0.5;
 
 				TweenLite.set(".div6",{visibility:'visible'});
-				TweenLite.set(".topic0",{visibility:'visible'});
-				TweenLite.set(".topic1",{visibility:'visible'});
-				TweenLite.set(".topic2",{visibility:'visible'});
-				TweenLite.set(".topic3",{visibility:'visible'});
+				TweenLite.set(".cardWrapper0",{visibility:'visible'});
+				TweenLite.set(".cardWrapper1",{visibility:'visible'});
+				TweenLite.set(".cardWrapper2",{visibility:'visible'});
+				TweenLite.set(".cardWrapper3",{visibility:'visible'});
 
 				switch (box){
 					case 0:

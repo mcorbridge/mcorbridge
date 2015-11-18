@@ -27,8 +27,6 @@ angular.module('IntroRotate', [])
 				return;
 
 			if(!isRun){
-
-
 				TweenMax.to('.progressInfo0',3.5,{css:{opacity:1}});
 
 				isRunning = true;
@@ -59,10 +57,10 @@ angular.module('IntroRotate', [])
 				TweenLite.set(".rect1",{visibility:'hidden'});
 				TweenLite.set(".rect2",{visibility:'hidden'});
 				TweenLite.set(".rect3",{visibility:'hidden'});
-				TweenLite.set(".topic0",{visibility:'hidden'});
-				TweenLite.set(".topic1",{visibility:'hidden'});
-				TweenLite.set(".topic2",{visibility:'hidden'});
-				TweenLite.set(".topic3",{visibility:'hidden'});
+				TweenLite.set(".cardWrapper0",{visibility:'hidden'});
+				TweenLite.set(".cardWrapper1",{visibility:'hidden'});
+				TweenLite.set(".cardWrapper2",{visibility:'hidden'});
+				TweenLite.set(".cardWrapper3",{visibility:'hidden'});
 				TweenMax.to(".startIcon", 0.5, { y:30 , opacity:1 , ease:Power1.easeInOut});
 				$rootScope.$emit('reset');
 				console.log('SVG rotate reset');
@@ -110,14 +108,14 @@ angular.module('IntroRotate', [])
 			TweenMax.to('.progressInfo1',0.5,{css:{opacity:0}});
 			TweenMax.to('.progressInfo2',0.5,{css:{opacity:1}});
 
-			TweenLite.set(".topic0",{visibility:'visible', opacity:0});
-			TweenLite.to(".topic0",0.5,{css:{opacity:1}});
-			TweenLite.set(".topic1",{visibility:'visible', opacity:0});
-			TweenLite.to(".topic1",0.5,{css:{opacity:1}});
-			TweenLite.set(".topic2",{visibility:'visible', opacity:0});
-			TweenLite.to(".topic2",0.5,{css:{opacity:1}});
-			TweenLite.set(".topic3",{visibility:'visible', opacity:0});
-			TweenLite.to(".topic3",0.5,{css:{opacity:1},onComplete:removeProgressInfo});
+			TweenLite.set(".cardWrapper0",{visibility:'visible', opacity:0});
+			TweenLite.to(".cardWrapper0",0.5,{css:{opacity:1}});
+			TweenLite.set(".cardWrapper1",{visibility:'visible', opacity:0});
+			TweenLite.to(".cardWrapper1",0.5,{css:{opacity:1}});
+			TweenLite.set(".cardWrapper2",{visibility:'visible', opacity:0});
+			TweenLite.to(".cardWrapper2",0.5,{css:{opacity:1}});
+			TweenLite.set(".cardWrapper3",{visibility:'visible', opacity:0});
+			TweenLite.to(".cardWrapper3",0.5,{css:{opacity:1},onComplete:removeProgressInfo});
 			isRunning = false;
 		}
 
@@ -150,13 +148,14 @@ angular.module('IntroRotate', [])
 					TweenLite.to(".info3", duration, {css:{ left:leftVal}, onComplete:doSwipeComplete});
 					break;
 			}
-		}
+		};
+
 
 		var doSwipeComplete = function(){
-			TweenLite.set(".topic0",{visibility:'hidden'});
-			TweenLite.set(".topic1",{visibility:'hidden'});
-			TweenLite.set(".topic2",{visibility:'hidden'});
-			TweenLite.set(".topic3",{visibility:'hidden'});
+			TweenLite.set(".cardWrapper0",{visibility:'hidden'});
+			TweenLite.set(".cardWrapper1",{visibility:'hidden'});
+			TweenLite.set(".cardWrapper2",{visibility:'hidden'});
+			TweenLite.set(".cardWrapper3",{visibility:'hidden'});
 			TweenLite.set(".div6",{visibility:'hidden'});
 			TweenLite.to(".div6", 1, {css:{left:'-150%'}});
 		}
@@ -172,6 +171,41 @@ angular.module('IntroRotate', [])
 				$scope.doRotation();
 				TweenMax.to(".startIcon", 1, { y:900 , opacity:0 , ease:Power1.easeInOut});
 				$rootScope.startBounce = false;
+			}
+		}
+
+		//------------------------------------------------------
+		//                      card flip
+
+		TweenLite.set(".cardWrapper0", {perspective:400});
+		TweenLite.set(".cardWrapper1", {perspective:400});
+		TweenLite.set(".cardWrapper2", {perspective:400});
+		TweenLite.set(".cardWrapper3", {perspective:400});
+
+		TweenLite.set(".back0", {rotationX:180});
+		TweenLite.set([".back0", ".front0"], {backfaceVisibility:"hidden"});
+		TweenLite.set(".back1", {rotationX:180});
+		TweenLite.set([".back1", ".front1"], {backfaceVisibility:"hidden"});
+		TweenLite.set(".back2", {rotationX:180});
+		TweenLite.set([".back2", ".front2"], {backfaceVisibility:"hidden"});
+		TweenLite.set(".back3", {rotationX:180});
+		TweenLite.set([".back3", ".front3"], {backfaceVisibility:"hidden"});
+
+
+		$scope.doFlip = function(box){
+			switch (box){
+				case 0:
+					TweenLite.to('#wrap0 .card', 1, {rotationX:-180, transformOrigin:"left 63px", transformStyle:"preserve-3d", ease:Back.easeInOut});
+					break;
+				case 1:
+					TweenLite.to('#wrap1 .card', 1, {rotationX:-180, transformOrigin:"left 63px", transformStyle:"preserve-3d", ease:Back.easeInOut});
+					break;
+				case 2:
+					TweenLite.to('#wrap2 .card', 1, {rotationX:-180, transformOrigin:"left 63px", transformStyle:"preserve-3d", ease:Back.easeInOut});
+					break;
+				case 3:
+					TweenLite.to('#wrap3 .card', 1, {rotationX:-180, transformOrigin:"left 63px", transformStyle:"preserve-3d", ease:Back.easeInOut});
+					break;
 			}
 		}
 

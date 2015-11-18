@@ -205,49 +205,110 @@ svg.pie2 {
 	left:225px;
 }
 
-.topic0{
+ //-------------------- card flip-----------------
+.cardWrapper0 {
 	position: absolute;
-	width: 226px;
-	height: 123px;
-	top: 45px;
-	left:-409px;
-	border: 1px black solid;
+	top:46px;
+	left:-408px;
+	width: 225px;
+	height: 124px;
+	visibility: hidden;
+}
+
+.cardFace0 {
+	width: 225px;
+	height: 124px;
+	position: absolute;
+	overflow: hidden;
+}
+
+.cardFace0.front0 {
 	background: #000000;
+}
+.cardFace0.back0 {
+	background:#ffffff;
+	border: 1px solid black;
+}
+
+//--------------------------------------
+
+.cardWrapper1 {
+	position: absolute;
+	top:46px;
+	left:702px;
+	width: 225px;
+	height: 124px;
 	visibility: hidden;
 }
 
-.topic1{
+.cardFace1 {
+	width: 225px;
+	height: 124px;
 	position: absolute;
-	width: 226px;
-	height: 123px;
-	top: 320px;
-	left:-409px;
-	border: 1px black solid;
+	overflow: hidden;
+}
+
+.cardFace1.front1 {
 	background: #e51f16;
+}
+.cardFace1.back1 {
+	background: #ffffff;
+	border: 1px solid black;
+}
+
+//--------------------------------------
+
+.cardWrapper2 {
+	position: absolute;
+	top:321px;
+	left:-408px;
+	width: 225px;
+	height: 124px;
 	visibility: hidden;
 }
 
-.topic2{
+.cardFace2 {
+	width: 225px;
+	height: 124px;
 	position: absolute;
-	width: 226px;
-	height: 123px;
-	top: 45px;
-	left:701px;
-	border: 1px black solid;
+	overflow: hidden;
+}
+
+.cardFace2.front2 {
 	background: #2d4eda;
+}
+.cardFace2.back2 {
+	background: #ffffff;
+	border: 1px solid black;
+}
+
+//--------------------------------------
+
+.cardWrapper3 {
+	position: absolute;
+	top:321px;
+	left:702px;
+	width: 225px;
+	height: 124px;
 	visibility: hidden;
 }
 
-.topic3{
+.cardFace3 {
+	width: 225px;
+	height: 124px;
 	position: absolute;
-	width: 226px;
-	height: 123px;
-	top: 320px;
-	left:701px;
-	border: 1px black solid;
-	background: #f9a740;
-	visibility: hidden;
+	overflow: hidden;
 }
+
+.cardFace3.front3 {
+	background: #f9a740;
+}
+.cardFace3.back3 {
+	background: #ffffff;
+	border: 1px solid black;
+}
+
+
 
 
 
