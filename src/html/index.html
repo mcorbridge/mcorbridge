@@ -11,6 +11,14 @@
 
 <body>
 
+<div class="header" ng-controller="headerCtrl">
+	<div class="co"></div>
+	<div class="mcorbridgeAppArch">
+		<div ng-include="'partials/_mcorbridgeTitle.html'" onload="ngIncludeLoaded('test')"></div>
+	</div>
+	<div class="madeWithAngular"></div>
+</div>
+
 <div class="screenDimensions" ng-controller="initCtrl" ng-bind="screenDimension"></div>
 
 <div class="div6" ng-controller="rotateSegmentCtrl" ng-style="{'z-index':divStyle}">
@@ -30,40 +38,53 @@
 		<circle class="fillCircle" style="fill:#FFFFFF;" cx="250" cy="240" r="85.25"/>
 	</svg>
 	<svg class="tri">
-		<line style="fill:none;stroke:#000000;stroke-miterlimit:10;" x1="239.778" y1="29.056" x2="239.778" y2="269.333"/>
-		<line style="fill:none;stroke:#000000;stroke-miterlimit:10;" x1="31.692" y1="389.472" x2="239.778" y2="269.333"/>
-		<line style="fill:none;stroke:#000000;stroke-miterlimit:10;" x1="447.863" y1="389.471" x2="239.778" y2="269.332"/>
+		<line style="fill:none;stroke:#000000;stroke-miterlimit:10;" x1="239.778" y1="29.056" x2="239.778"
+			  y2="269.333"/>
+		<line style="fill:none;stroke:#000000;stroke-miterlimit:10;" x1="31.692" y1="389.472" x2="239.778"
+			  y2="269.333"/>
+		<line style="fill:none;stroke:#000000;stroke-miterlimit:10;" x1="447.863" y1="389.471" x2="239.778"
+			  y2="269.332"/>
 	</svg>
 	<svg class="itemLine0">
-		<polyline class="pline0" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:20;" points="25,140 125,140 125,25 225,25"/>
+		<polyline class="pline0" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:20;"
+				  points="25,140 125,140 125,25 225,25"/>
 	</svg>
 	<svg class="itemLine1">
-		<polyline class="pline1" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:20;" points="25,140 125,140 125,255 225,255"/>
+		<polyline class="pline1" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:20;"
+				  points="25,140 125,140 125,255 225,255"/>
 	</svg>
 	<svg class="itemLine2">
-		<polyline class="pline2" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;" points="210,125 110,125 110,10 10,10 "/>
+		<polyline class="pline2" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;"
+				  points="210,125 110,125 110,10 10,10 "/>
 	</svg>
 	<svg class="itemLine3">
-		<polyline class="pline3" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;" points="210,125 110,125 110,240 10,240 "/>
+		<polyline class="pline3" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;"
+				  points="210,125 110,125 110,240 10,240 "/>
 	</svg>
 
 	<svg class="cross" width="500px" height="500px" ng-click="doRotation()">
-		<line class="xlineV" style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;" x1="28.333" y1="251" x2="467.667" y2="251"/>
-		<line class="xlineH" style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;" x1="250" y1="20" x2="250" y2="480"/>
+		<line class="xlineV" style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:10;" x1="28.333" y1="251"
+			  x2="467.667" y2="251"/>
+		<line class="xlineH" style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:10;" x1="250" y1="20"
+			  x2="250" y2="480"/>
 	</svg>
 
 	<svg class="itemBox0" width="250px" height="162px">
-		<rect class="rect0" x="7.5" y="15.5" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;" width="235" height="135"/>
+		<rect class="rect0" x="7.5" y="15.5" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;"
+			  width="235" height="135"/>
 	</svg>
 
 	<svg class="itemBox1" width="250px" height="162px">
-		<rect class="rect1" x="7.5" y="15.5" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;" width="235" height="135"/>
+		<rect class="rect1" x="7.5" y="15.5" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;"
+			  width="235" height="135"/>
 	</svg>
 	<svg class="itemBox2" width="250px" height="162px">
-		<rect class="rect2" x="7.5" y="15.5" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;" width="235" height="135"/>
+		<rect class="rect2" x="7.5" y="15.5" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;"
+			  width="235" height="135"/>
 	</svg>
 	<svg class="itemBox3" width="250px" height="162px">
-		<rect class="rect3" x="7.5" y="15.5" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;" width="235" height="135"/>
+		<rect class="rect3" x="7.5" y="15.5" style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;"
+			  width="235" height="135"/>
 	</svg>
 
 
@@ -96,7 +117,8 @@
 	</div>
 
 
-	<i class="fa fa-caret-square-o-right fa-5x startIcon" ng-mouseover="doStart($event)" ng-mouseleave="doStart($event)" ng-click="doStart($event)"></i>
+	<i class="fa fa-caret-square-o-right fa-5x startIcon" ng-mouseover="doStart($event)" ng-mouseleave="doStart($event)"
+	   ng-click="doStart($event)"></i>
 
 	<div class="progressInfo0"></div>
 	<div class="progressInfo1"></div>
@@ -105,10 +127,20 @@
 </div>
 
 
+<div ng-include="'partials/_infoWindows.html'" onload="ngIncludeLoaded('_infoWindows')"></div>
 
-<div ng-include="'partials/_infoWindows.html'"></div>
+<div class="footer">
+	<div class="footerContent">
+		<div class="copyRight">© mcorbridge.com</div>
+		<div class="socialIcons">
+			<i class="fa fa-twitter-square"></i>
+			<i class="fa fa-facebook-official"></i>
+			<i class="fa fa-google-plus-square"></i>
+			<i class="fa fa-linkedin-square"></i>
+		</div>
 
-
+	</div>
+</div>
 
 </body>
 
@@ -125,7 +157,6 @@
 
 <!--  DEBUG !!!!! -->
 <!--<script src="../../src/js/main.js"></script>-->
-
 
 
 </html>

@@ -61,6 +61,15 @@ angular.module('IntroRotate', [])
 				TweenLite.set(".cardWrapper1",{visibility:'hidden'});
 				TweenLite.set(".cardWrapper2",{visibility:'hidden'});
 				TweenLite.set(".cardWrapper3",{visibility:'hidden'});
+				TweenLite.set('#wrap0 .card', {rotationX:0});
+				TweenLite.set('#wrap1 .card', {rotationX:0});
+				TweenLite.set('#wrap2 .card', {rotationX:0});
+				TweenLite.set('#wrap3 .card', {rotationX:0});
+				TweenLite.to(".header",2,{css:{width:'0%'}});
+				TweenLite.to(".footer",2,{css:{width:'0%'}});
+				TweenLite.set(".footerContent",{css:{visibility:'hidden'}});
+				TweenLite.to(".co",2,{css:{opacity:0}});
+				TweenLite.to(".madeWithAngular",1,{css:{opacity:0}});
 				TweenMax.to(".startIcon", 0.5, { y:30 , opacity:1 , ease:Power1.easeInOut});
 				$rootScope.$emit('reset');
 				console.log('SVG rotate reset');
@@ -120,7 +129,20 @@ angular.module('IntroRotate', [])
 		}
 
 		var removeProgressInfo = function(){
-			TweenLite.to(".progressInfo2",2,{css:{opacity:0},delay:1});
+			TweenLite.to(".progressInfo2",2,{css:{opacity:0}});
+			TweenMax.set('.header', {css:{visibility:'visible'}});
+			TweenMax.set('.footer', {css:{visibility:'visible'}});
+			TweenLite.to(".madeWithAngular",4,{css:{opacity:1}});
+			TweenLite.to(".header",2,{css:{width:'100%'},delay:0.25});
+			TweenLite.to(".footer",2,{css:{width:'100%'},delay:0.25,onComplete:headerFooterComplete});
+		};
+
+		var headerFooterComplete = function(){
+		   console.log('all init animations complete');
+			TweenLite.set(".footerContent",{css:{visibility:'visible'}});
+			TweenLite.set(".co",{css:{visibility:'visible'}});
+			TweenLite.to(".co",2,{css:{opacity:1}});
+			$rootScope.$emit('startTitle');
 		}
 
 		$scope.doClickBox = function(box){

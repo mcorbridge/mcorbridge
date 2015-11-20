@@ -1,12 +1,18 @@
 @import 'partials/rotateSegment';
 @import 'partials/infoWindows';
 
+body{
+	overflow-y: hidden; // hide vertical
+	overflow-x: hidden; // hide horizontal
+}
+
 
 .screenDimensions{
 	position:absolute;
 	top: 85%;
 	left: 50%;
 	margin-left: -140px;
+	visibility: hidden;
 }
 
 .progressInfo0{
@@ -47,3 +53,70 @@
 	background-repeat: no-repeat;
 	opacity: 0;
 }
+
+.header {
+	position:absolute;
+	top:0%;
+	left:0%;
+	width: 400px;
+	height: 75px;
+	background: #333333;
+	color: #b7b7b7;
+	visibility: hidden;
+}
+
+
+.footer {
+	position:absolute;
+	bottom:0%;
+	left:0%;
+	width: 400px;
+	height: 75px;
+	background: #333333;
+	color: #b7b7b7;
+	visibility: hidden;
+}
+
+.footerContent{
+	position:absolute;
+	top:10px;
+	left:100px;
+	width: 400px;
+	height: 75px;
+	font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.co{
+	position: absolute;
+	top:10px;
+	left: 10px;
+	height: 50px;
+	width: 50px;
+	background-image: url('../img/co.svg');
+	background-repeat: no-repeat;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.mcorbridgeAppArch{
+	position: absolute;
+	top:10px;
+	left: 200px;
+	height: 50px;
+	width: 735px;
+	visibility: visible;
+	opacity: 1;
+}
+
+.madeWithAngular{
+	position: absolute;
+	top:10px;
+	left: 95%;
+	height: 50px;
+	width: 50px;
+	background-image: url('../img/madeWithAngular.jpg');
+	background-repeat: no-repeat;
+	visibility: visible;
+	opacity: 0;
+}
+

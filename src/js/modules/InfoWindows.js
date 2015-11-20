@@ -6,6 +6,13 @@ angular.module('InfoWindows', [])
 
 	.controller('infoCtrl', ['$scope', '$rootScope', function ($scope,$rootScope) {
 
+
+		// do not try to do anything to the included file UNTIL we know it is loaded
+		$scope.ngIncludeLoaded = function(file){
+			console.log(file  + ' is loaded');
+		};
+
+
 		TweenLite.set(".info0",{css:{left:'-150%'}});
 		TweenLite.set(".info1",{css:{left:'-150%'}});
 		TweenLite.set(".info2",{css:{left:'-150%'}});
