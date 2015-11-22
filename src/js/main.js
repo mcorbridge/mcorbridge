@@ -3,8 +3,17 @@
  */
 angular.module('main', ['IntroRotate','InfoWindows','Media'])
 
+	.run(['$rootScope', '$timeout', function ($rootScope, $timeout) {
+		console.log('*** starting 20 min timeout ***');
+		var twentyMinTimeout = 1000 * 60 * 20;
+		$timeout(function () {
+			console.log('*** timeout fired ***');
+			$rootScope.$emit('timeout');
+		}, twentyMinTimeout);
+	}])
 
-	.controller('headerCtrl', ['$rootScope', '$scope', function($rootScope, $scope) {
+
+	.controller('headerCtrl', ['$rootScope', '$scope', '$interval', function ($rootScope, $scope, $interval) {
 
 		// do not try to do anything to the included file UNTIL we know it is loaded
 		$scope.ngIncludeLoaded = function(file){
@@ -71,7 +80,7 @@ angular.module('main', ['IntroRotate','InfoWindows','Media'])
 		});
 
 		var wasMadeByClicked = false;
-		$rootScope.doHeaderImgTransform = function(target){
+		$rootScope.doHeaderImgTransform = function () {
 			if(!wasMadeByClicked){
 				TweenLite.to('.madeWithAngular',1,{css:{opacity:0}});
 				TweenLite.to('.madeWithGreenSock',1,{css:{opacity:1}});
@@ -81,6 +90,20 @@ angular.module('main', ['IntroRotate','InfoWindows','Media'])
 			}
 			wasMadeByClicked = !wasMadeByClicked;
 		};
+
+		var swapMadeByImgInterval;
+
+		// automagically swap out the 'made by' images
+		$rootScope.$on('startTitle', function () {
+			swapMadeByImgInterval = $interval(function () {
+				$rootScope.doHeaderImgTransform()
+			}, 10000, 0);
+		});
+
+		$rootScope.$on('reset', function () {
+			$interval.cancel(swapMadeByImgInterval);
+		});
+
 
 	}])
 
@@ -123,5 +146,6 @@ angular.module('main', ['IntroRotate','InfoWindows','Media'])
 
 		// the 'play' icon bounces slightly to alert user that action is required
 		startBounce();
+
 	}]);
 
