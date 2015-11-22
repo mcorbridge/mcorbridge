@@ -127,9 +127,6 @@ body{
 	transform: scale(0.3,0.3);
 }
 
-.madeWithAngularSVG{
-
-}
 
 .madeWithGreenSock{
 	position: absolute;
@@ -142,8 +139,14 @@ body{
 	transform: scale(0.2,0.2);
 }
 
-.greenSockSVG{
-
+.madeWithTitle {
+	position: absolute;
+	top: 73px;
+	left: 25%;
+	height: 20px;
+	width: 100px;
+	opacity: 0;
+	transform: scale(0.75, 0.75);
 }
 
 

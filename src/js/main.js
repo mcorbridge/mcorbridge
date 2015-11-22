@@ -10,7 +10,6 @@ angular.module('main', ['IntroRotate','InfoWindows','Media'])
 		$scope.ngIncludeLoaded = function(file){
 			console.log(file + ' is loaded');
 
-
 			if(file === 'mcorbridgeTitle'){
 				setTitle();
 			}
@@ -19,6 +18,9 @@ angular.module('main', ['IntroRotate','InfoWindows','Media'])
 			}
 			if(file === 'madeWithGreenSock'){
 				setGreenSockSVG();
+			}
+			if (file === 'madeWith') {
+				setMadeWithSVG();
 			}
 		};
 
@@ -39,11 +41,15 @@ angular.module('main', ['IntroRotate','InfoWindows','Media'])
 		};
 
 		var setAngularSVG = function(){
-
+			//stub for future code
 		};
 
 		var setGreenSockSVG = function(){
+			//stub for future code
+		};
 
+		var setMadeWithSVG = function () {
+			//stub for future code
 		};
 
 		$rootScope.$on('startTitle',function(){

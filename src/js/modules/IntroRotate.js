@@ -71,13 +71,12 @@ angular.module('IntroRotate', [])
 				TweenLite.to(".co",2,{css:{opacity:0}});
 				TweenLite.to(".madeWithAngular",0.5,{css:{opacity:0}});
 				TweenLite.to(".madeWithGreenSock",0.5,{css:{opacity:0}});
+				TweenLite.to(".madeWithTitle", 0.5, {css: {opacity: 0}});
 				TweenMax.to(".startIcon", 0.5, { y:30 , opacity:1 , ease:Power1.easeInOut});
 				$rootScope.$emit('reset');
 				console.log('SVG rotate reset');
 			}
-
-
-		}
+		};
 
 		var doRotationComplete = function(){
 			console.log('doRotationComplete');
@@ -99,7 +98,7 @@ angular.module('IntroRotate', [])
 			TweenLite.set(".pline3",{visibility:'visible'});
 			tl.from([".pline0",".pline1",".pline2",".pline3"],1,{drawSVG:0, onComplete:doDrawLinesComplete});
 
-		}
+		};
 
 		var doDrawLinesComplete = function(){
 			console.log('doDrawLinesComplete');
@@ -110,7 +109,7 @@ angular.module('IntroRotate', [])
 			TweenLite.set(".rect2",{visibility:'visible'});
 			TweenLite.set(".rect3",{visibility:'visible'});
 			tl.from([".rect0",".rect1",".rect2",".rect3"],1.0,{drawSVG:0, onComplete:doDrawRectComplete});
-		}
+		};
 
 		var doDrawRectComplete = function(){
 			console.log('doDrawRectComplete');
@@ -127,7 +126,7 @@ angular.module('IntroRotate', [])
 			TweenLite.set(".cardWrapper3",{visibility:'visible', opacity:0});
 			TweenLite.to(".cardWrapper3",0.5,{css:{opacity:1},onComplete:removeProgressInfo});
 			isRunning = false;
-		}
+		};
 
 		var removeProgressInfo = function(){
 			TweenLite.to(".progressInfo2",2,{css:{opacity:0}});
@@ -143,8 +142,9 @@ angular.module('IntroRotate', [])
 			TweenLite.set(".footerContent",{css:{visibility:'visible'}});
 			TweenLite.set(".co",{css:{visibility:'visible'}});
 			TweenLite.to(".co",2,{css:{opacity:1}});
+			TweenLite.set(".madeWithTitle", {css: {opacity: 1}, delay: 3});
 			$rootScope.$emit('startTitle');
-		}
+		};
 
 		$scope.doClickBox = function(box){
 			console.log('box ' + box + ' was clicked');
@@ -181,7 +181,7 @@ angular.module('IntroRotate', [])
 			TweenLite.set(".cardWrapper3",{visibility:'hidden'});
 			TweenLite.set(".div6",{visibility:'hidden'});
 			TweenLite.to(".div6", 1, {css:{left:'-150%'}});
-		}
+		};
 
 		$scope.doStart = function(event){
 			console.log(event.type);
@@ -195,7 +195,7 @@ angular.module('IntroRotate', [])
 				TweenMax.to(".startIcon", 1, { y:900 , opacity:0 , ease:Power1.easeInOut});
 				$rootScope.startBounce = false;
 			}
-		}
+		};
 
 		//------------------------------------------------------
 		//                      card flip
