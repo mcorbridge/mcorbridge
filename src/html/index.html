@@ -18,9 +18,12 @@
 <div class="header" ng-controller="headerCtrl">
 	<div class="co"></div>
 	<div class="mcorbridgeAppArch">
-		<div ng-include="'partials/_mcorbridgeTitle.html'" onload="ngIncludeLoaded('test')"></div>
+		<div ng-include="'partials/_mcorbridgeTitle.html'" onload="ngIncludeLoaded('mcorbridgeTitle')"></div>
 	</div>
-	<div class="madeWithAngular"></div>
+	<div class="madeWith">
+		<div ng-include="'partials/_madeWithGreensock.html'" onload="ngIncludeLoaded('madeWithGreensock')"></div>
+		<div ng-include="'partials/_madeWithAngular.html'" onload="ngIncludeLoaded('madeWithAngular')"></div>
+	</div>
 </div>
 
 <div class="screenDimensions" ng-controller="initCtrl" ng-bind="screenDimension"></div>

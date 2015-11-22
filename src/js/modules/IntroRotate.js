@@ -69,7 +69,8 @@ angular.module('IntroRotate', [])
 				TweenLite.to(".footer",2,{css:{width:'0%'}});
 				TweenLite.set(".footerContent",{css:{visibility:'hidden'}});
 				TweenLite.to(".co",2,{css:{opacity:0}});
-				TweenLite.to(".madeWithAngular",1,{css:{opacity:0}});
+				TweenLite.to(".madeWithAngular",0.5,{css:{opacity:0}});
+				TweenLite.to(".madeWithGreenSock",0.5,{css:{opacity:0}});
 				TweenMax.to(".startIcon", 0.5, { y:30 , opacity:1 , ease:Power1.easeInOut});
 				$rootScope.$emit('reset');
 				console.log('SVG rotate reset');
@@ -132,7 +133,7 @@ angular.module('IntroRotate', [])
 			TweenLite.to(".progressInfo2",2,{css:{opacity:0}});
 			TweenMax.set('.header', {css:{visibility:'visible'}});
 			TweenMax.set('.footer', {css:{visibility:'visible'}});
-			TweenLite.to(".madeWithAngular",4,{css:{opacity:1}});
+			TweenLite.to(".madeWithAngular",4,{css:{opacity:1},delay:2});
 			TweenLite.to(".header",2,{css:{width:'100%'},delay:0.25});
 			TweenLite.to(".footer",2,{css:{width:'100%'},delay:0.25,onComplete:headerFooterComplete});
 		};

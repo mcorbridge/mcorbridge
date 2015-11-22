@@ -9,10 +9,21 @@ angular.module('main', ['IntroRotate','InfoWindows','Media'])
 		// do not try to do anything to the included file UNTIL we know it is loaded
 		$scope.ngIncludeLoaded = function(file){
 			console.log(file + ' is loaded');
-			setTitle();
 
+
+			if(file === 'mcorbridgeTitle'){
+				setTitle();
+			}
+			if(file === 'madeWithAngular'){
+				setAngularSVG();
+			}
+			if(file === 'madeWithGreenSock'){
+				setGreenSockSVG();
+			}
 		};
+
 		var arrPath = [];
+
 		var setTitle = function(){
 			var pathNumStart = 4145;
 
@@ -25,7 +36,15 @@ angular.module('main', ['IntroRotate','InfoWindows','Media'])
 			for(var n=0; n<arrPath.length; n++){
 				TweenLite.to(arrPath[n],5,{drawSVG:'0%'});
 			}
-		}
+		};
+
+		var setAngularSVG = function(){
+
+		};
+
+		var setGreenSockSVG = function(){
+
+		};
 
 		$rootScope.$on('startTitle',function(){
 			for(var n=0; n<arrPath.length; n++){
@@ -44,6 +63,18 @@ angular.module('main', ['IntroRotate','InfoWindows','Media'])
 				TweenLite.set(arrPath[n],{css:{opacity:0}});
 			}
 		});
+
+		var wasMadeByClicked = false;
+		$rootScope.doHeaderImgTransform = function(target){
+			if(!wasMadeByClicked){
+				TweenLite.to('.madeWithAngular',1,{css:{opacity:0}});
+				TweenLite.to('.madeWithGreenSock',1,{css:{opacity:1}});
+			}else{
+				TweenLite.to('.madeWithAngular',1,{css:{opacity:1}});
+				TweenLite.to('.madeWithGreenSock',1,{css:{opacity:0}});
+			}
+			wasMadeByClicked = !wasMadeByClicked;
+		};
 
 	}])
 
