@@ -3,6 +3,7 @@
  */
 angular.module('IntroRotate', [])
 
+
 	.controller('rotateSegmentCtrl', ['$scope', '$rootScope', function ($scope,$rootScope) {
 
 		console.log('IntroRotate :' + $rootScope.screenDimensions.height + 'x' + $rootScope.screenDimensions.width);
@@ -20,6 +21,15 @@ angular.module('IntroRotate', [])
 
 		var isRun = false;
 		var isRunning = false;
+
+		//application will reset after ** 20 minutes **
+		$rootScope.$on('timeout', function () {
+			console.log('*** on timeout received ***');
+			console.log('*** reset application ***');
+			if (isRun) {
+				$scope.doRotation();
+			}
+		});
 
 		$scope.doRotation = function(){
 
