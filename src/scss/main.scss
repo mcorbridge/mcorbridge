@@ -149,4 +149,122 @@ body{
 	transform: scale(0.75, 0.75);
 }
 
+.aboutMe {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 125px;
+	width: 225px;
+	opacity: 1;
+}
 
+.aboutMeSVG {
+	position: absolute;
+	top: 10px;
+	left: 0px;
+	height: 125px;
+	width: 225px;
+	opacity: 1;
+	transform: scale(1.2, 1.2);
+}
+
+.aboutMeIcon {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 125px;
+	width: 225px;
+	background-image: url("../img/about.png");
+	background-repeat: no-repeat;
+	opacity: 1;
+}
+
+.skunkWorks {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 125px;
+	width: 225px;
+	opacity: 1;
+}
+
+.skunkWorksSVG {
+	position: absolute;
+	top: 0px;
+	left: 20px;
+	height: 125px;
+	width: 225px;
+	opacity: 1;
+	transform: scale(1.2, 1.2);
+}
+
+.skunkWorksIcon {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 125px;
+	width: 225px;
+	background-image: url("../img/projects.png");
+	background-repeat: no-repeat;
+	opacity: 1;
+}
+
+.portfolio {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 125px;
+	width: 225px;
+	opacity: 1;
+}
+
+.portfolioSVG {
+	position: absolute;
+	top: 0px;
+	left: 20px;
+	height: 125px;
+	width: 225px;
+	opacity: 1;
+	transform: scale(1.2, 1.2);
+}
+
+.portfolioIcon {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 125px;
+	width: 225px;
+	background-image: url("../img/portfolio.png");
+	background-repeat: no-repeat;
+	opacity: 1;
+}
+
+.blog {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 125px;
+	width: 225px;
+	opacity: 1;
+}
+
+.blogSVG {
+	position: absolute;
+	top: 0px;
+	left: 20px;
+	height: 125px;
+	width: 225px;
+	opacity: 1;
+	transform: scale(1.2, 1.2);
+}
+
+.blogIcon {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 125px;
+	width: 225px;
+	background-image: url("../img/blog.png");
+	background-repeat: no-repeat;
+	opacity: 1;
+}
