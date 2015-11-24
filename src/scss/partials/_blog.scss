@@ -1,0 +1,34 @@
+
+.blogTopicMain {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	height: 500px;
+	width: 1310px;
+	border: 1px solid black;
+}
+
+.blogTopicText {
+	position: absolute;
+	top: -25px;
+	left: -25px;
+}
+
+.blogContainer {
+	position: absolute;
+	top: 75px;
+	left: 10px;
+	border: 1px solid black;
+	display: table-cell;
+	width: 1275px;
+	height: 400px;
+	overflow: auto;
+
+	.blogItem {
+		height: 50px;
+		width: 1250px;
+		border: 1px solid rgba(124, 158, 163, 0.86);
+		margin: 5px;
+	}
+}
+

@@ -1,7 +1,7 @@
 /**
  * Created by Mike on 11/10/2015.
  */
-angular.module('main', ['IntroRotate','InfoWindows','Media'])
+angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', 'PortfolioTopic', 'ProjectsTopic', 'BlogTopic'])
 
 	.run(['$rootScope', '$timeout', function ($rootScope, $timeout) {
 		console.log('*** starting 20 min timeout ***');
@@ -36,17 +36,7 @@ angular.module('main', ['IntroRotate','InfoWindows','Media'])
 		var arrPath = [];
 
 		var setTitle = function(){
-			var pathNumStart = 4145;
-
-			for(var n=0; n<38; n++){
-				var tmp = '#path' + pathNumStart;
-				pathNumStart = pathNumStart + 2;
-				arrPath.push(tmp);
-			}
-
-			for(var n=0; n<arrPath.length; n++){
-				TweenLite.to(arrPath[n],5,{drawSVG:'0%'});
-			}
+			//stub for future code
 		};
 
 		var setAngularSVG = function(){
@@ -61,23 +51,6 @@ angular.module('main', ['IntroRotate','InfoWindows','Media'])
 			//stub for future code
 		};
 
-		$rootScope.$on('startTitle',function(){
-			for(var n=0; n<arrPath.length; n++){
-				TweenLite.to(arrPath[n],1,{css:{opacity:1}});
-			}
-			for(var n=0; n<arrPath.length; n++){
-				TweenLite.to(arrPath[n],5,{drawSVG:'100%'});
-			}
-		});
-
-		$rootScope.$on('reset',function(){
-			for(var n=0; n<arrPath.length; n++){
-				TweenLite.set(arrPath[n],{drawSVG:'0%'});
-			}
-			for(var n=0; n<arrPath.length; n++){
-				TweenLite.set(arrPath[n],{css:{opacity:0}});
-			}
-		});
 
 		var wasMadeByClicked = false;
 		$rootScope.doHeaderImgTransform = function () {

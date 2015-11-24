@@ -2,27 +2,33 @@
 <!-- dependencies:   _infoWindows.scss, infoWindows.js-->
 
 <div ng-controller="infoCtrl">
+
+	<!--               ABOUT ME                 -->
 	<div class="info0"><i class="fa fa-bars fa-3x menuIcon" ng-click="menuAction($event,0)"
 						  ng-mouseover="menuAction($event,0)" ng-mouseleave="menuAction($event,0)"></i>
 
-		<div style="position:absolute;top:40px;left:100px">about</div>
+		<div ng-include="'partials/_aboutMeTopic.html'"></div>
 	</div>
 
+	<!--               PROJECTS                 -->
 	<div class="info1"><i class="fa fa-bars fa-3x menuIcon" ng-click="menuAction($event,1)"
 						  ng-mouseover="menuAction($event,1)" ng-mouseleave="menuAction($event,1)"></i>
 
-		<div style="position:absolute;top:40px;left:100px">projects</div>
+		<div ng-include="'partials/_projectsTopic.html'"></div>
 	</div>
 
+	<!--               PORTFOLIO                 -->
 	<div class="info2"><i class="fa fa-bars fa-3x menuIcon" ng-click="menuAction($event,2)"
 						  ng-mouseover="menuAction($event,2)" ng-mouseleave="menuAction($event,2)"></i>
 
-		<div style="position:absolute;top:40px;left:100px">portfolio</div>
+		<div ng-include="'partials/_portfolioTopic.html'"></div>
 	</div>
 
+	<!--               BLOG                 -->
 	<div class="info3"><i class="fa fa-bars fa-3x menuIcon" ng-click="menuAction($event,3)"
 						  ng-mouseover="menuAction($event,3)" ng-mouseleave="menuAction($event,3)"></i>
 
-		<div style="position:absolute;top:40px;left:100px">blog</div>
+		<div ng-include="'partials/_blogTopic.html'"></div>
 	</div>
+
 </div>

@@ -82,6 +82,7 @@ angular.module('IntroRotate', [])
 				TweenLite.to(".madeWithAngular",0.5,{css:{opacity:0}});
 				TweenLite.to(".madeWithGreenSock",0.5,{css:{opacity:0}});
 				TweenLite.to(".madeWithTitle", 0.5, {css: {opacity: 0}});
+				TweenLite.to(".mcorbridgeAppArch", 0.5, {css: {opacity: 0}});
 				TweenMax.to(".startIcon", 0.5, { y:30 , opacity:1 , ease:Power1.easeInOut});
 				$rootScope.$emit('reset');
 				console.log('SVG rotate reset');
@@ -152,6 +153,7 @@ angular.module('IntroRotate', [])
 			TweenLite.set(".footerContent",{css:{visibility:'visible'}});
 			TweenLite.set(".co",{css:{visibility:'visible'}});
 			TweenLite.to(".co",2,{css:{opacity:1}});
+			TweenLite.to(".mcorbridgeAppArch", 2, {css: {opacity: 1}});
 			TweenLite.set(".madeWithTitle", {css: {opacity: 1}, delay: 3});
 			$rootScope.$emit('startTitle');
 		};
