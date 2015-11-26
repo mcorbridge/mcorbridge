@@ -2,8 +2,17 @@
 
 	<div class="blogTopicText" ng-include="'../img/blog.svg'"></div>
 
+	<div class="fullBlogArticle" ng-controller="fullBlogArticleCtrl" ng-click="doClick()">
+		<div class="blogItemTitle" ng-bind="blogTitle"></div>
+		<div class="blogItemDate" ng-bind="blogDate"></div>
+		<div class="blogItemAbstract" ng-bind="blogAbstract"></div>
+		<div class="blogItemContent" ng-bind="blogContent"></div>
+		<i class="fa fa-times-circle fa-3x closeBlogItem"></i>
+	</div>
+
 	<div class="blogContainer">
-
+		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
+		<div ng-controller="blog1Ctrl" ng-include="'blog/_blog1.html'"></div>
 		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
 		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
 		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
@@ -13,8 +22,15 @@
 		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
 		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
 		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
+		<div ng-controller="blog1Ctrl" ng-include="'blog/_blog1.html'"></div>
 		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
-
+		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
+		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
+		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
+		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
+		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
+		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
+		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
 	</div>
 
 

@@ -22,13 +22,51 @@
 	display: table-cell;
 	width: 1275px;
 	height: 400px;
-	overflow: auto;
+	overflow-y: auto; // hide vertical
+	overflow-x: hidden; // hide horizontal
+	visibility: visible;
 
 	.blogItem {
 		height: 50px;
 		width: 1250px;
 		border: 1px solid rgba(124, 158, 163, 0.86);
 		margin: 5px;
+
+		.blogItemTitle {
+
+		}
+
+		.blogItemDate {
+
+		}
+
+		.blogItemAbstract {
+
+		}
+
+		.blogItemContent {
+
+		}
+
 	}
+}
+
+.fullBlogArticle {
+	position: absolute;
+	top: 63px;
+	left: 10px;
+	border: 2px solid #d8d8d8;
+	height: 84%;
+	width: 98%;
+	visibility: hidden;
+	overflow-y: hidden; // hide vertical
+	overflow-x: hidden; // hide horizontal
+}
+
+.closeBlogItem {
+	position: absolute;
+	top: -3px;
+	left: 1242px;
+	color: #ff0000;
 }
 
