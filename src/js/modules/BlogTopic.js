@@ -4,10 +4,13 @@
 
 angular.module('BlogTopic', ['BlogData'])
 
+	//------------------------------------------------------------------------------------------------------------------
 
 	.controller('blogTopicCtrl', ['$rootScope', '$scope', function ($rootScope, $scope) {
-		console.log('---> blogTopicCtrl');
+
 	}])
+
+	//------------------------------------------------------------------------------------------------------------------
 
 	.controller('fullBlogArticleCtrl', ['$rootScope', '$scope', 'blogDataFactory', function ($rootScope, $scope, blogDataFactory) {
 
@@ -31,6 +34,8 @@ angular.module('BlogTopic', ['BlogData'])
 		}
 	}])
 
+	//------------------------------------------------------------------------------------------------------------------
+
 	.controller('blog0Ctrl', ['$rootScope', '$scope', 'blogTopic0', 'blogDataFactory', function ($rootScope, $scope, blogTopic0, blogDataFactory) {
 
 		$scope.doBlogClick = function () {
@@ -46,6 +51,8 @@ angular.module('BlogTopic', ['BlogData'])
 
 	}])
 
+	//------------------------------------------------------------------------------------------------------------------
+
 	.controller('blog1Ctrl', ['$rootScope', '$scope', 'blogTopic1', 'blogDataFactory', function ($rootScope, $scope, blogTopic1, blogDataFactory) {
 
 		$scope.doBlogClick = function () {
@@ -59,6 +66,24 @@ angular.module('BlogTopic', ['BlogData'])
 		$scope.blogDate = blogTopic1.blogDate;
 		$scope.blogAbstract = blogTopic1.blogAbstract;
 	}])
+
+	//------------------------------------------------------------------------------------------------------------------
+
+	.controller('blog2Ctrl', ['$rootScope', '$scope', 'blogTopic2', 'blogDataFactory', function ($rootScope, $scope, blogTopic2, blogDataFactory) {
+
+		$scope.doBlogClick = function () {
+			blogDataFactory.setBlogInfo(blogTopic2.blogTitle, blogTopic2.blogDate, blogTopic2.blogAbstract, blogTopic2.blogContent);
+			TweenMax.set('.blogContainer', {visibility: 'hidden'});
+			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
+			$rootScope.$emit('blogItemClicked');
+		};
+
+		$scope.blogTitle = blogTopic2.blogTitle;
+		$scope.blogDate = blogTopic2.blogDate;
+		$scope.blogAbstract = blogTopic2.blogAbstract;
+	}])
+
+	//------------------------------------------------------------------------------------------------------------------
 
 	.factory('blogDataFactory', function () {
 

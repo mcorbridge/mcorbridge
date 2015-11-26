@@ -59,14 +59,14 @@
 	height: 84%;
 	width: 98%;
 	visibility: hidden;
-	overflow-y: hidden; // hide vertical
+	overflow-y: auto; // hide vertical
 	overflow-x: hidden; // hide horizontal
 }
 
 .closeBlogItem {
 	position: absolute;
 	top: -3px;
-	left: 1242px;
+	left: 1225px;
 	color: #ff0000;
 }
 
