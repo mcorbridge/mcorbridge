@@ -5,9 +5,43 @@
 angular.module('BlogTopic', ['BlogData'])
 
 	//------------------------------------------------------------------------------------------------------------------
+	//I'm gonna find a way to add this functionality after I have added enough blog content
+	.controller('blogTopicCtrl', ['$rootScope', '$scope', 'blogTopic0', 'blogTopic1', 'blogTopic2', function ($rootScope, $scope, blogTopic0, blogTopic1, blogTopic2) {
 
-	.controller('blogTopicCtrl', ['$rootScope', '$scope', function ($rootScope, $scope) {
+		var blogs = [
+			blogTopic0.blogData(),
+			blogTopic1.blogData(),
+			blogTopic2.blogData()
+		];
 
+		$scope.doBlogSearch = function (searchTerm) {
+			//searchTerm = ' ' + searchTerm + ' ';
+			var isSearchTermPresent;
+			for (var n = 0; n < blogs.length; n++) {
+				isSearchTermPresent = false;
+				if (searchTitle(searchTerm, blogs[n].title) !== -1) {
+					isSearchTermPresent = true;
+				}
+				if (searchContent(searchTerm, blogs[n].content) !== -1) {
+					isSearchTermPresent = true;
+				}
+				if (isSearchTermPresent) {
+					console.log('the search term ' + searchTerm + ' was found in the blog dated ' + blogs[n].date);
+				}
+
+			}
+			if (!isSearchTermPresent) {
+				console.log('search term ' + searchTerm + ' is not present');
+			}
+		}
+
+		var searchTitle = function (searchTerm, blogTitle) {
+			return blogTitle.indexOf(searchTerm);
+		}
+
+		var searchContent = function (searchTerm, blogContent) {
+			return blogContent.indexOf(searchTerm);
+		}
 	}])
 
 	//------------------------------------------------------------------------------------------------------------------

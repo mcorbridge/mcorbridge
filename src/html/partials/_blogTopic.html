@@ -1,11 +1,9 @@
 <div class="blogTopicMain" ng-controller="blogTopicCtrl">
 
-	<div class="blogTopicText" ng-include="'../img/blog.svg'"></div>
+	<div class="blogTopicText" ng-include="'../img/blog.svg'" ng-click="doBlogSearch('foo')"></div>
 
 	<div class="fullBlogArticle" ng-controller="fullBlogArticleCtrl" ng-click="doClick()">
-		<div class="blogItemTitle" ng-bind="blogTitle"></div>
-		<div class="blogItemDate" ng-bind="blogDate"></div>
-		<div class="blogItemAbstract" ng-bind="blogAbstract"></div>
+		<div class="blogItemTitleArticle" ng-bind="blogTitle"></div>
 		<div class="blogItemContent" ng-bind="blogContent"></div>
 		<i class="fa fa-times-circle fa-3x closeBlogItem"></i>
 	</div>

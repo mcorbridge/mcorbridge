@@ -33,21 +33,28 @@
 		margin: 5px;
 
 		.blogItemTitle {
-
+			font-family: Consolas, Menlo, Monaco, monospace;
+			font-weight: bold;
+			position: relative;
+			left: 200px;
+			top: 2px;
 		}
 
 		.blogItemDate {
-
+			font-family: Consolas, Menlo, Monaco, monospace;
+			font-style: italic;
+			position: relative;
+			top: -17px;
+			left: 5px;
+			color: #515370;
 		}
 
 		.blogItemAbstract {
-
+			position: relative;
+			top: -15px;
+			left: 5px;
+			font-family: Consolas, Menlo, Monaco, monospace;
 		}
-
-		.blogItemContent {
-
-		}
-
 	}
 }
 
@@ -68,5 +75,21 @@
 	top: -3px;
 	left: 1225px;
 	color: #ff0000;
+}
+
+.blogItemTitleArticle {
+	font-family: Consolas, Menlo, Monaco, monospace;
+	font-weight: bold;
+	position: absolute;
+	left: 20px;
+	top: 2px;
+	font-size: 24pt;
+}
+
+.blogItemContent {
+	font-family: Consolas, Menlo, Monaco, monospace;
+	position: absolute;
+	top: 60px;
+	left: 5px;
 }
 
