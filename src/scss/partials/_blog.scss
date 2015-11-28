@@ -66,8 +66,9 @@
 	height: 84%;
 	width: 98%;
 	visibility: hidden;
-	overflow-y: auto; // hide vertical
+	overflow-y: auto;
 	overflow-x: hidden; // hide horizontal
+	//white-space: pre;
 }
 
 .closeBlogItem {
@@ -75,6 +76,13 @@
 	top: -3px;
 	left: 1225px;
 	color: #ff0000;
+}
+
+.searchTermInput {
+	position: absolute;
+	top: 12px;
+	left: 600px;
+	width: 300px;
 }
 
 .blogItemTitleArticle {
@@ -91,5 +99,28 @@
 	position: absolute;
 	top: 60px;
 	left: 5px;
+}
+
+pre {
+	position: relative;
+	left: 20%;
+	width: 400px;
+	display: block;
+	padding: 9.5px;
+	margin: 0 0 10px;
+	font-size: 13px;
+	line-height: 1.42857143;
+	color: #333;
+	word-break: break-all;
+	word-wrap: break-word;
+	background-color: #f5f5f5;
+	border: 3px solid #ccc;
+	border-radius: 4px;
+}
+
+.newLine {
+	position: relative;
+	height: 10px;
+	width: 100%;
 }
 
