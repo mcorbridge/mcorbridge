@@ -2,51 +2,72 @@
  * Created by Mike on 11/23/2015.
  */
 
-angular.module('BlogTopic', ['BlogData'])
+angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 
 	//------------------------------------------------------------------------------------------------------------------
-	//I'm gonna find a way to add this functionality after I have added enough blog content
-	.controller('blogTopicCtrl', ['$rootScope', '$scope', 'blogTopic0', 'blogTopic1', 'blogTopic2', function ($rootScope, $scope, blogTopic0, blogTopic1, blogTopic2) {
+	//todo I'm going to find a way to add more to this search functionality after I have added enough blog content
+	.controller('blogTopicCtrl',
+	['$rootScope', '$scope',
+		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3',
+		'$filter', 'ngDialog',
+		function ($rootScope, $scope, blogTopic0, blogTopic1, blogTopic2, blogTopic3, $filter, ngDialog) {
 
 		var blogs = [
 			blogTopic0.blogData(),
 			blogTopic1.blogData(),
-			blogTopic2.blogData()
+			blogTopic2.blogData(),
+			blogTopic3.blogData()
 		];
 
-		$scope.doBlogSearch = function (searchTerm) {
-			//searchTerm = ' ' + searchTerm + ' ';
-			var isSearchTermPresent;
+			$scope.doBlogSearch = function () {
+
+				var isSearchTermFound = false;
+				var searchResults = '';
+
 			for (var n = 0; n < blogs.length; n++) {
-				isSearchTermPresent = false;
-				if (searchTitle(searchTerm, blogs[n].title) !== -1) {
-					isSearchTermPresent = true;
+				if (searchTitle($scope.searchTerm, blogs[n].title) !== -1) {
+					isSearchTermFound = true;
 				}
-				if (searchContent(searchTerm, blogs[n].content) !== -1) {
-					isSearchTermPresent = true;
+				if (searchContent($scope.searchTerm, blogs[n].content) !== -1) {
+					isSearchTermFound = true;
 				}
-				if (isSearchTermPresent) {
-					console.log('the search term ' + searchTerm + ' was found in the blog dated ' + blogs[n].date);
+				if (isSearchTermFound) {
+					searchResults += blogs[n].date;
 				}
 
+				//todo eventually I would like the highlight the actual text in the blog (somehow)
+				var addSpan = $filter('AddSpan')(blogs[n].title, $scope.searchTerm);
+				console.log(addSpan);
+
 			}
-			if (!isSearchTermPresent) {
-				console.log('search term ' + searchTerm + ' is not present');
-			}
+				openDialog(searchResults);
+			};
+
+			var openDialog = function (searchResults) {
+				$scope.dialogBind = searchResults;
+
+				ngDialog.open({
+					template: 'partials/_searchDialog.html',
+					controller: 'blogTopicCtrl',
+					className: 'ngdialog-theme-plain',
+					closeByDocument: true,
+					scope: $scope
+				});
 		}
+
 
 		var searchTitle = function (searchTerm, blogTitle) {
 			return blogTitle.indexOf(searchTerm);
-		}
+		};
 
 		var searchContent = function (searchTerm, blogContent) {
 			return blogContent.indexOf(searchTerm);
-		}
+		};
 	}])
 
 	//------------------------------------------------------------------------------------------------------------------
 
-	.controller('fullBlogArticleCtrl', ['$rootScope', '$scope', 'blogDataFactory', function ($rootScope, $scope, blogDataFactory) {
+	.controller('fullBlogArticleCtrl', ['$rootScope', '$scope', '$sce', 'blogDataFactory', function ($rootScope, $scope, $sce, blogDataFactory) {
 
 		var data;
 
@@ -55,16 +76,12 @@ angular.module('BlogTopic', ['BlogData'])
 			$scope.blogTitle = data.blogTitle;
 			$scope.blogDate = data.blogDate;
 			$scope.blogAbstract = data.blogAbstract;
-			$scope.blogContent = data.blogContent;
+			$scope.blogContent = $sce.trustAsHtml(data.blogContent);
 		});
 
 		$scope.doClick = function () {
 			TweenMax.set('.blogContainer', {visibility: 'visible'});
 			TweenMax.set('.fullBlogArticle', {visibility: 'hidden'});
-			console.log('blogTitle ' + $scope.blogTitle);
-			console.log('blogDate ' + $scope.blogDate);
-			console.log('blogAbstract ' + $scope.blogAbstract);
-			console.log('blogContent ' + $scope.blogContent);
 		}
 	}])
 
@@ -118,6 +135,22 @@ angular.module('BlogTopic', ['BlogData'])
 	}])
 
 	//------------------------------------------------------------------------------------------------------------------
+	.controller('blog3Ctrl', ['$rootScope', '$scope', 'blogTopic3', 'blogDataFactory', function ($rootScope, $scope, blogTopic3, blogDataFactory) {
+
+		$scope.doBlogClick = function () {
+			blogDataFactory.setBlogInfo(blogTopic3.blogTitle, blogTopic3.blogDate, blogTopic3.blogAbstract, blogTopic3.blogContent);
+			TweenMax.set('.blogContainer', {visibility: 'hidden'});
+			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
+			$rootScope.$emit('blogItemClicked');
+		};
+
+		$scope.blogTitle = blogTopic3.blogTitle;
+		$scope.blogDate = blogTopic3.blogDate;
+		$scope.blogAbstract = blogTopic3.blogAbstract;
+	}])
+
+
+	//------------------------------------------------------------------------------------------------------------------
 
 	.factory('blogDataFactory', function () {
 
@@ -134,4 +167,14 @@ angular.module('BlogTopic', ['BlogData'])
 			}
 		}
 	})
+
+	.filter("AddSpan", function () {
+		return function (searchContent, searchTerm) {
+			if (searchContent.indexOf(searchTerm) > -1) {
+				return "<span class='x'>" + searchTerm + "</span>";
+			} else {
+				return searchTerm;
+			}
+		}
+	});
 

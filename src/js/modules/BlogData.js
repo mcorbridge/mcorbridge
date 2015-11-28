@@ -51,13 +51,59 @@ angular.module('BlogData', [])
 			blogTitle: 'Notes on installing and running my first Famo.us project',
 			blogAbstract: 'There are some great resources on getting your first Famo.us project running locally but the best resource is ...',
 			blogContent: 'There are some great resources on getting your first Famo.us project running locally but the best resource is YouTube, of course. ' +
-			'YouTube has been my goTo source of Do-It-Yourself inspiration ever since I found my self in need of replacing a spoke on my Fulcrum wheel, on my ' +
+			'YouTube has been my goTo source of Do-It-Yourself inspiration ever since I found my self in need of replacing a spoke on my Fulcrum wheel on my ' +
 			'road bike.  Seriously,who would have thought that little supermagnet in the package had such an inventive use?  But I digress... ' +
-			'"Getting started with the new Famo.us Javascript Engine" placed in the YouTube search field will take you directly to the video devoted to getting' +
+			'"Getting started with the new Famo.us Javascript Engine" placed in the YouTube search field will take you directly to the video devoted to getting ' +
 			'the neophyte started on this powerful Javascript engine.  As always, I faithfully played "follow the expert" and promptly became lost.' +
-			'\n\nGotcha #1: Make sure that you call the correct package.json' +
+			'<div class="newLine"></div>' +
+			'<code>Gotcha #1: Make sure that you call the correct package.json</code>' +
+			'<div class="newLine"></div>' +
 			'I come from a java and actionscript world, so I am familiar with the need to download jar files and place them in the proper paths, as well as the ' +
 			'similar process with swc files.  Javascript uses npm to accomplish the same thing, and once you get used to npm, it is a very sweet little system.',
+			blogData: function () {
+				var tmp = {};
+				tmp.date = this.blogDate;
+				tmp.title = this.blogTitle;
+				tmp.content = this.blogContent;
+				return tmp;
+			}
+		}
+
+	})
+
+	.factory('blogTopic3', function () {
+
+		var codeExample1 = '<pre>$scope.safeApply = function(fn) {\n' +
+			'var phase = this.$root.$$phase;\n' +
+			'&nbsp;if(phase == "$apply" || phase == "$digest") {\n' +
+			'&nbsp;if(fn && (typeof(fn) === "function")) {\n' +
+			'&nbsp;&nbsp;fn();\n' +
+			'&nbsp;}\n' +
+			'&nbsp;} else {\n' +
+			'&nbsp;&nbsp;this.$apply(fn);\n' +
+			'&nbsp;}\n' +
+			'};</pre>';
+
+		var codeExample2 = '<pre>$scope.safeApply(function() {\n' +
+			'&nbsp;&nbsp;&nbsp;alert("Now I am wrapped for protection!");\n' +
+			'});</pre>';
+
+		var codeExample3 = '<pre>if(!$scope.$$phase) {\n' +
+			'&nbsp;&nbsp;&nbsp;//$digest or $apply\n' +
+			'});</pre>';
+
+		return {
+			blogDate: 'November 28, 2015',
+			abbrBlogDate: '28-11-15',
+			blogTitle: 'Huh? $apply already in progress ?',
+			blogAbstract: 'What to do when you find yourself triggering the $apply already in progress error while developing with Angular.JS',
+			blogContent: 'If you find yourself triggering the <code>$apply already in progress</code> error while developing with Angular.JS (for me I find I hit most often when integrating third party plugins that trigger a lot of DOM events), you can use a <code>safeApply</code> method that checks the current phase before executing your function. I usually just monkey patch this into the $scope object of my topmost controller, and Angular is nice enough to propagate it throughout the rest of my application for me:\n' +
+			codeExample1 +
+			'And then just replace $apply with safeApply wherever you need it' +
+			codeExample2 +
+			'You can check if a <code>$digest</code> is already in progress by checking <code>$scope.$$phase</code>' +
+			codeExample3 +
+			'<code>$scope.$$phase</code> will return <code>$digest</code> or <code>$apply</code> if a <code>$digest</code> or <code>$apply</code> is in progress. I believe the difference between these states is that <code>$digest</code> will process the watches of the current scope and it&#39;s children, and <code>$apply</code> will process the watchers of all scopes.if you find yourself calling <code>$digest</code> or <code>$apply</code> frequently, you may be doing it wrong. I generally find I need to digest when I need to update the scope&#39;s state as a result of a DOM event firing outside the reach of Angular. For example, when a twitter bootstrap modal becomes hidden. Sometimes the DOM event fires when a <code>$digest</code> is in progress, sometimes not. That is why I use this check.',
 			blogData: function () {
 				var tmp = {};
 				tmp.date = this.blogDate;
