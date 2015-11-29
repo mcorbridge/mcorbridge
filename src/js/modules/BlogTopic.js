@@ -8,15 +8,20 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 	//todo I'm going to find a way to add more to this search functionality after I have added enough blog content
 	.controller('blogTopicCtrl',
 	['$rootScope', '$scope',
-		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3',
+		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6',
 		'$filter', 'ngDialog',
-		function ($rootScope, $scope, blogTopic0, blogTopic1, blogTopic2, blogTopic3, $filter, ngDialog) {
+		function ($rootScope, $scope,
+				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6,
+				  $filter, ngDialog) {
 
 		var blogs = [
 			blogTopic0.blogData(),
 			blogTopic1.blogData(),
 			blogTopic2.blogData(),
-			blogTopic3.blogData()
+			blogTopic3.blogData(),
+			blogTopic4.blogData(),
+			blogTopic5.blogData(),
+			blogTopic6.blogData()
 		];
 
 			$scope.doBlogSearch = function () {
@@ -147,6 +152,51 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 		$scope.blogTitle = blogTopic3.blogTitle;
 		$scope.blogDate = blogTopic3.blogDate;
 		$scope.blogAbstract = blogTopic3.blogAbstract;
+	}])
+
+	//------------------------------------------------------------------------------------------------------------------
+	.controller('blog4Ctrl', ['$rootScope', '$scope', 'blogTopic4', 'blogDataFactory', function ($rootScope, $scope, blogTopic4, blogDataFactory) {
+
+		$scope.doBlogClick = function () {
+			blogDataFactory.setBlogInfo(blogTopic4.blogTitle, blogTopic4.blogDate, blogTopic4.blogAbstract, blogTopic4.blogContent);
+			TweenMax.set('.blogContainer', {visibility: 'hidden'});
+			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
+			$rootScope.$emit('blogItemClicked');
+		};
+
+		$scope.blogTitle = blogTopic4.blogTitle;
+		$scope.blogDate = blogTopic4.blogDate;
+		$scope.blogAbstract = blogTopic4.blogAbstract;
+	}])
+
+	//------------------------------------------------------------------------------------------------------------------
+	.controller('blog5Ctrl', ['$rootScope', '$scope', 'blogTopic5', 'blogDataFactory', function ($rootScope, $scope, blogTopic5, blogDataFactory) {
+
+		$scope.doBlogClick = function () {
+			blogDataFactory.setBlogInfo(blogTopic5.blogTitle, blogTopic5.blogDate, blogTopic5.blogAbstract, blogTopic5.blogContent);
+			TweenMax.set('.blogContainer', {visibility: 'hidden'});
+			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
+			$rootScope.$emit('blogItemClicked');
+		};
+
+		$scope.blogTitle = blogTopic5.blogTitle;
+		$scope.blogDate = blogTopic5.blogDate;
+		$scope.blogAbstract = blogTopic5.blogAbstract;
+	}])
+
+	//------------------------------------------------------------------------------------------------------------------
+	.controller('blog6Ctrl', ['$rootScope', '$scope', 'blogTopic6', 'blogDataFactory', function ($rootScope, $scope, blogTopic6, blogDataFactory) {
+
+		$scope.doBlogClick = function () {
+			blogDataFactory.setBlogInfo(blogTopic6.blogTitle, blogTopic6.blogDate, blogTopic6.blogAbstract, blogTopic6.blogContent);
+			TweenMax.set('.blogContainer', {visibility: 'hidden'});
+			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
+			$rootScope.$emit('blogItemClicked');
+		};
+
+		$scope.blogTitle = blogTopic6.blogTitle;
+		$scope.blogDate = blogTopic6.blogDate;
+		$scope.blogAbstract = blogTopic6.blogAbstract;
 	}])
 
 
