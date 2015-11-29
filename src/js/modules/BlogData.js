@@ -257,6 +257,29 @@ angular.module('BlogData', [])
 	})
 
 	// -----------------------------------------------------------------------------------------------------------------
+
+	.factory('blogTopic8', function () {
+
+		return {
+			blogDate: 'October 25, 2015',
+			abbrBlogDate: '25-10-2015',
+			blogTitle: 'Git along little doggie',
+			blogCategory: 'development, tools',
+			blogAbstract: 'A productivity tool with an unpleasant command line interface, that treats its users with such utter contempt.',
+			blogContent: 'Git is the source code version control system that is rapidly becoming the standard for open source projects. It has a powerful distributed model which allows advanced users to do tricky things with branches, and rewriting history. What a pity that it&#39;s so hard to learn, has such an unpleasant command line interface, and treats its users with such utter contempt.' +
+			'<img src="../img/git.png" style="float:left;margin:10px">' +
+			'',
+			blogData: function () {
+				var tmp = {};
+				tmp.date = this.blogDate;
+				tmp.title = this.blogTitle;
+				tmp.content = this.blogContent;
+				return tmp;
+			}
+		}
+	})
+
+	// -----------------------------------------------------------------------------------------------------------------
 	// -----------------------------------------------------------------------------------------------------------------
 
 	.factory('blogTopicX', function () {

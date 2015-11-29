@@ -8,10 +8,10 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 	//todo I'm going to find a way to add more to this search functionality after I have added enough blog content
 	.controller('blogTopicCtrl',
 	['$rootScope', '$scope',
-		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6', 'blogTopic7',
+		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6', 'blogTopic7', 'blogTopic8',
 		'$filter', 'ngDialog',
 		function ($rootScope, $scope,
-				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6, blogTopic7,
+				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6, blogTopic7, blogTopic8,
 				  $filter, ngDialog) {
 
 		var blogs = [
@@ -22,7 +22,8 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 			blogTopic4.blogData(),
 			blogTopic5.blogData(),
 			blogTopic6.blogData(),
-			blogTopic7.blogData()
+			blogTopic7.blogData(),
+			blogTopic8.blogData()
 		];
 
 			$scope.doBlogSearch = function () {
@@ -213,6 +214,21 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 		$scope.blogTitle = blogTopic7.blogTitle;
 		$scope.blogDate = blogTopic7.blogDate;
 		$scope.blogAbstract = blogTopic7.blogAbstract;
+	}])
+
+	//------------------------------------------------------------------------------------------------------------------
+	.controller('blog8Ctrl', ['$rootScope', '$scope', 'blogTopic8', 'blogDataFactory', function ($rootScope, $scope, blogTopic8, blogDataFactory) {
+
+		$scope.doBlogClick = function () {
+			blogDataFactory.setBlogInfo(blogTopic8.blogTitle, blogTopic8.blogDate, blogTopic8.blogAbstract, blogTopic8.blogContent);
+			TweenMax.set('.blogContainer', {visibility: 'hidden'});
+			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
+			$rootScope.$emit('blogItemClicked');
+		};
+
+		$scope.blogTitle = blogTopic8.blogTitle;
+		$scope.blogDate = blogTopic8.blogDate;
+		$scope.blogAbstract = blogTopic8.blogAbstract;
 	}])
 
 
