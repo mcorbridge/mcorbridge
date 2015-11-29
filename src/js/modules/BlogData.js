@@ -280,6 +280,54 @@ angular.module('BlogData', [])
 	})
 
 	// -----------------------------------------------------------------------------------------------------------------
+
+	.factory('blogTopic9', function () {
+
+		return {
+			blogDate: 'November 10, 2015',
+			abbrBlogDate: '10-11-2015',
+			blogTitle: 'How to add a new entry to this blog.',
+			blogCategory: 'blog, angularjs',
+			blogAbstract: 'It can be a bit complicated, so someone should write down the steps (me!)',
+			blogContent: 'I really don&#39;t think that this is the most user friendly blog in the world.  In fact, it might be categorized ' +
+			'as one of the least user friendly blog applications.  But since only I am using it, I don&#39;t think anyone will be impacted.  But ' +
+			'because there might be some periods between my entries, I have better list out the steps to add a new blog entry!' +
+			'<div class="newLine"></div>' +
+			'Step #1 :: Add a new html blog template to the blog folder.  You can simply cut/paste any file in this directory.  Just ensure that ' +
+			'it has a file name consistent with the following changes you are about to make.' +
+			'<div class="newLine"></div>' +
+			'<img src="../img/newBlog1.png" style="margin:10px">' +
+			'<div class="newLine"></div>' +
+			'Step #2 :: In <code>_blogTopic.html</code>, add the line to include the previously created blog template. ' +
+			'Note how you create a reference to a new controller.' +
+			'<div class="newLine"></div>' +
+			'<img src="../img/newBlog2.png" style="margin:10px">' +
+			'<div class="newLine"></div>' +
+			'Step #3 :: Create a new controller in <code>BlogTopic.js</code>.  This controller is set in <code>_blogTopic.html</code>' +
+			'<div class="newLine"></div>' +
+			'<img src="../img/newBlog3.png" style="margin:10px">' +
+			'<div class="newLine"></div>' +
+			'Step #4 ::  In <code>BlogTopic.js</code> add the code to inject the new controller and blog entry data.  This will also include this new blog ' +
+			'entry in the search.' +
+			'<div class="newLine"></div>' +
+			'<img src="../img/newBlog4.png" style="margin:10px">' +
+			'<div class="newLine"></div>' +
+			'Step #5 :: Finally, in <code>BlogData.js</code> create the new blog entry as an Angularjs factory using this pattern.' +
+			'<div class="newLine"></div>' +
+			'<img src="../img/newBlog5.png" style="margin:10px">' +
+			'<div class="newLine"></div>' +
+			'That&#39;s all there is to it! How simple is that!',
+			blogData: function () {
+				var tmp = {};
+				tmp.date = this.blogDate;
+				tmp.title = this.blogTitle;
+				tmp.content = this.blogContent;
+				return tmp;
+			}
+		}
+	})
+
+	// -----------------------------------------------------------------------------------------------------------------
 	// -----------------------------------------------------------------------------------------------------------------
 
 	.factory('blogTopicX', function () {

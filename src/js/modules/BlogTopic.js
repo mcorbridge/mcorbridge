@@ -8,10 +8,10 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 	//todo I'm going to find a way to add more to this search functionality after I have added enough blog content
 	.controller('blogTopicCtrl',
 	['$rootScope', '$scope',
-		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6', 'blogTopic7', 'blogTopic8',
+		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6', 'blogTopic7', 'blogTopic8', 'blogTopic9',
 		'$filter', 'ngDialog',
 		function ($rootScope, $scope,
-				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6, blogTopic7, blogTopic8,
+				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6, blogTopic7, blogTopic8, blogTopic9,
 				  $filter, ngDialog) {
 
 		var blogs = [
@@ -23,7 +23,8 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 			blogTopic5.blogData(),
 			blogTopic6.blogData(),
 			blogTopic7.blogData(),
-			blogTopic8.blogData()
+			blogTopic8.blogData(),
+			blogTopic9.blogData()
 		];
 
 			$scope.doBlogSearch = function () {
@@ -229,6 +230,21 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 		$scope.blogTitle = blogTopic8.blogTitle;
 		$scope.blogDate = blogTopic8.blogDate;
 		$scope.blogAbstract = blogTopic8.blogAbstract;
+	}])
+
+	//------------------------------------------------------------------------------------------------------------------
+	.controller('blog9Ctrl', ['$rootScope', '$scope', 'blogTopic9', 'blogDataFactory', function ($rootScope, $scope, blogTopic9, blogDataFactory) {
+
+		$scope.doBlogClick = function () {
+			blogDataFactory.setBlogInfo(blogTopic9.blogTitle, blogTopic9.blogDate, blogTopic9.blogAbstract, blogTopic9.blogContent);
+			TweenMax.set('.blogContainer', {visibility: 'hidden'});
+			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
+			$rootScope.$emit('blogItemClicked');
+		};
+
+		$scope.blogTitle = blogTopic9.blogTitle;
+		$scope.blogDate = blogTopic9.blogDate;
+		$scope.blogAbstract = blogTopic9.blogAbstract;
 	}])
 
 
