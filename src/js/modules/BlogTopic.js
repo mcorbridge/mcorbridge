@@ -8,10 +8,10 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 	//todo I'm going to find a way to add more to this search functionality after I have added enough blog content
 	.controller('blogTopicCtrl',
 	['$rootScope', '$scope',
-		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6',
+		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6', 'blogTopic7',
 		'$filter', 'ngDialog',
 		function ($rootScope, $scope,
-				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6,
+				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6, blogTopic7,
 				  $filter, ngDialog) {
 
 		var blogs = [
@@ -21,7 +21,8 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 			blogTopic3.blogData(),
 			blogTopic4.blogData(),
 			blogTopic5.blogData(),
-			blogTopic6.blogData()
+			blogTopic6.blogData(),
+			blogTopic7.blogData()
 		];
 
 			$scope.doBlogSearch = function () {
@@ -197,6 +198,21 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 		$scope.blogTitle = blogTopic6.blogTitle;
 		$scope.blogDate = blogTopic6.blogDate;
 		$scope.blogAbstract = blogTopic6.blogAbstract;
+	}])
+
+	//------------------------------------------------------------------------------------------------------------------
+	.controller('blog7Ctrl', ['$rootScope', '$scope', 'blogTopic7', 'blogDataFactory', function ($rootScope, $scope, blogTopic7, blogDataFactory) {
+
+		$scope.doBlogClick = function () {
+			blogDataFactory.setBlogInfo(blogTopic7.blogTitle, blogTopic7.blogDate, blogTopic7.blogAbstract, blogTopic7.blogContent);
+			TweenMax.set('.blogContainer', {visibility: 'hidden'});
+			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
+			$rootScope.$emit('blogItemClicked');
+		};
+
+		$scope.blogTitle = blogTopic7.blogTitle;
+		$scope.blogDate = blogTopic7.blogDate;
+		$scope.blogAbstract = blogTopic7.blogAbstract;
 	}])
 
 
