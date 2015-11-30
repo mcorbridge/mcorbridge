@@ -241,11 +241,25 @@ angular.module('BlogData', [])
 			blogAbstract: 'When WordPress, Typepad, Squarespace, LiveJournal, Blogger (the list goes on and on) are all available?',
 			blogContent: 'What idiot would make their own bread?  Even worse, what idiot would make their own whole wheat bread?  I suppose ' +
 			'I should put my hand up.  Humans have been making bread for (<a href="https://en.wikipedia.org/wiki/Bread#History" target="_blank">anthropologists have determined</a>) 30,000 years, so it is reasonable to assume that some things should be left to experts.  Making bread has always seemed to me to be a past-time of ' +
-			'the artisan, or the product of the industrial food complex.  Art versus "efficiency of scale".  ' +
+			'the artisan, or the product of the industrial food complex.  Bread making has become the domain of art, or "efficiency of scale".  ' +
 			'<div class="newLine"></div>' +
 			'<img src="http://images.bigoven.com/image/upload/t_recipe-256/artisan-bread-b4441d.jpg" style="float:left;margin:10px">' +
-			'Angular is both the fastest road to a Minimally Viable Product, and the most Future-Proof way for us to implement a proper contemporary ' +
-			'single page web app (SPA) that will address all foreseeable needs, from the simplest Website to the most complicated Web Application.',
+			'As I sat at my kitchen office working on some particularly vexing Angularjs code, my mind wandered over to a comforting thought ' +
+			'"How nice it would be, sitting alone with my coding problems, to enjoy the smell of bread filling the room"  Why not?  In this age of ' +
+			'instant gratification, there is a corollary: instant access to learning.  Well perhaps "instant" doesn&#39;t accurately describe making bread, but it ' +
+			'describe accurately how long it takes YouTube to return a bevy of excellent breadmaking videos.  I settled on a video detailing <a href="https://www.youtube.com/watch?v=-Rjd1NZfG4Y" target="_blank">whole wheat bread</a>.  Soon (quick trip to the market notwithstanding), under the tuteladge of my YouTube advisor, ' +
+			'I was watching bread yeast foaming in bathwarm water, and smelling it&#39;s beer-like aroma.  I poured the frothy liquid into a bowl of whole wheat flour ' +
+			'and was rewarded with a sticky, gluey mess of dough.  Now what?  But with the guiding hand of Lester (35 years of breadmaking under his belt) I persevered. ' +
+			'In the end, I was indeed rewarded with the aroma of fresh bread baking in the oven, and if I don&#39;t say so myself, it tasted pretty darned good!' +
+			'<div class="newLine"></div>' +
+			'The real value of making bread is seeing these simple ingrediants mix together to create something new, and tasty.  It is gratifying to tap into those ' +
+			'thousands of years of breadmaking skills that our ancestors, and ancestors ancestors used to survive.  The action of kneeding, the smell and texture, the ' +
+			'patience, and the pride of creating something so wonderful far outweighs standing in line at the grocery waiting to shove your debit card into the reader. ' +
+			'<div class="newLine"></div>' +
+			'So, I circle back to the original question: "Why build your own blog software?  For the same reasons, I suppose, I would bake my own bread.  I don&#39;t deny ' +
+			'for a second that the blog software experts who have devoted tremendous amounts of time, enery and money to create a blog platform is better than mine, in the same way that the bread that comes from companies that bake bread is better than mine.  But I learned something in the process.  I am proud of what I created.  And ' +
+			'I am encouraged to keep learning and exploring as I gain more confidence.  And while I&#39;m doing just that, I think I&#39;ll have nice warm slice of ' +
+			'freshly baked bread with a generous slab of butter!',
 			blogData: function () {
 				var tmp = {};
 				tmp.date = this.blogDate;
@@ -317,6 +331,83 @@ angular.module('BlogData', [])
 			'<img src="../img/newBlog5.png" style="margin:10px">' +
 			'<div class="newLine"></div>' +
 			'That&#39;s all there is to it! How simple is that!',
+			blogData: function () {
+				var tmp = {};
+				tmp.date = this.blogDate;
+				tmp.title = this.blogTitle;
+				tmp.content = this.blogContent;
+				return tmp;
+			}
+		}
+	})
+
+	// -----------------------------------------------------------------------------------------------------------------
+
+	.factory('blogTopic10', function () {
+
+		return {
+			blogDate: 'December 1, 2015',
+			abbrBlogDate: '1-12-2015',
+			blogTitle: 'Dalvik does not like me anymore',
+			blogCategory: 'android',
+			blogAbstract: 'Dealing with the DEX methods limit on Android and Google ',
+			blogContent: 'It happens in the blink of an eye. Before, you are an happy Android developer, head down on your (or your company&#39;s) application, adding the coolest libraries to provide more functionalities and to write simpler code. Afterwards, you stare at the dreaded output that states:',
+			blogData: function () {
+				var tmp = {};
+				tmp.date = this.blogDate;
+				tmp.title = this.blogTitle;
+				tmp.content = this.blogContent;
+				return tmp;
+			}
+		}
+	})
+
+	// -----------------------------------------------------------------------------------------------------------------
+
+	.factory('blogTopic11', function () {
+
+		var codeExample1 = '<pre style="width:600px">//minify html\n' +
+			'&nbsp;&nbsp;&nbsp;gulp.task("html", function () {\n' +
+			'&nbsp;&nbsp;&nbsp;gulp.src("src/html/**/*.html") // path to files\n' +
+			'&nbsp;&nbsp;&nbsp;.pipe(minifyHtml())\n' +
+			'&nbsp;&nbsp;&nbsp;.pipe(gulp.dest("dist/html"));\n' +
+			'&nbsp;&nbsp;});</pre>';
+
+		var codeExample2 = '<pre style="width:600px">//minify html\n' +
+			'&nbsp;&nbsp;&nbsp;gulp.task("html", function () {\n' +
+			'&nbsp;&nbsp;&nbsp;gulp.src("src/html/**/*.html") // path to files\n' +
+			'&nbsp;&nbsp;&nbsp;.pipe(minifyHtml())\n' +
+			'&nbsp;&nbsp;&nbsp;.pipe(gulp.dest("dist/html"));\n' +
+			'\n' +
+			'\n' +
+			'&nbsp;&nbsp;&nbsp;gulp.src("src/html/partials/_blogTopic.html") // path to THIS file\n' +
+			'&nbsp;&nbsp;&nbsp;.pipe(minifyHtml())\n' +
+			'&nbsp;&nbsp;&nbsp;.pipe(gulp.dest("dist/html/partials/"));\n' +
+			'&nbsp;&nbsp;});</pre>';
+
+		return {
+			blogDate: 'December 1, 2015',
+			abbrBlogDate: '1-12-2015',
+			blogTitle: '"gulp-minify-html" suddenly stops minifying a file in a directory?',
+			blogCategory: 'development, gulp',
+			blogAbstract: 'I was happily minifying my AngularJS project, when suddenly ...',
+			blogContent: 'It sneaks up on you doesn&#39;t.  Everything is going along smoothly.  You feel like the Code Gods are finally starting to smile at you. ' +
+			'You can virtually feel the wind filling your sails, as your spinnaker billows in the warm blue ocean sky.  Then,  "crunch", out of the blue you hit a  sandbar.  I my particular case, I was running my Gulp build process through a series of watchers.  Ok, I will admit that for safety I would regularly run Gulp just to ' +
+			'make sure all my code has "compiled".  (Side note: coming from a world where code was truly compiled, I find the use of the term "compiled" slightly humerous.) ' +
+			'I had a number of html files that I kept organized in a separate directly that I used in <code>ngIncludes</code> that were reqularly updating from the <code>src</code> to ' +
+			'the <code>dist</code>.  When my changes suddenly stopped appearing on my web page, I was perplexed.  I checked and indeed the file was there.  I checked the <code>dist</code>, and indeed an earlier version was there, but it had stopped updating.  "Here we go again", I mumbled to myself.  I changed the file name and "Presto!", it appeared back in the <code>dist</code> ' +
+			'albeit with the new file name.  I checked the file.  Nothing seemed untoward about it.  No missing tags, or weird chars, or unusual comments. Nada, Nothing, Ziltch. ' +
+			'It just suddenly decided, or Gulp minify decided, that it no longer was invited to the party.  With no errors present to give any hint as to why this would happen ' +
+			'my Google search did not turn up anything.  I was flummoxed.  Without any further ado, this is the solution. ' +
+			'<div class="newLine"></div>' +
+			'Here is my Gulp minify code before:' +
+			'<div class="newLine"></div>' +
+			codeExample1 +
+			'<div class="newLine"></div>' +
+			'Here is my Gulp minify code after:' +
+			'<div class="newLine"></div>' +
+			codeExample2 +
+			'Notice that I needed to explicity add *that* particular file to the minify. It works.  I have NO idea why the original minify stopped working.  But the wind is back in my sails until I hear that unwelcome grinding on the keel again.',
 			blogData: function () {
 				var tmp = {};
 				tmp.date = this.blogDate;

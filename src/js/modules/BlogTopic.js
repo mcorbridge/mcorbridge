@@ -8,10 +8,10 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 	//todo I'm going to find a way to add more to this search functionality after I have added enough blog content
 	.controller('blogTopicCtrl',
 	['$rootScope', '$scope',
-		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6', 'blogTopic7', 'blogTopic8', 'blogTopic9',
+		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6', 'blogTopic7', 'blogTopic8', 'blogTopic9', 'blogTopic10', 'blogTopic11',
 		'$filter', 'ngDialog',
 		function ($rootScope, $scope,
-				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6, blogTopic7, blogTopic8, blogTopic9,
+				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6, blogTopic7, blogTopic8, blogTopic9, blogTopic10, blogTopic11,
 				  $filter, ngDialog) {
 
 		var blogs = [
@@ -24,7 +24,9 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 			blogTopic6.blogData(),
 			blogTopic7.blogData(),
 			blogTopic8.blogData(),
-			blogTopic9.blogData()
+			blogTopic9.blogData(),
+			blogTopic10.blogData(),
+			blogTopic11.blogData()
 		];
 
 			$scope.doBlogSearch = function () {
@@ -245,6 +247,36 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 		$scope.blogTitle = blogTopic9.blogTitle;
 		$scope.blogDate = blogTopic9.blogDate;
 		$scope.blogAbstract = blogTopic9.blogAbstract;
+	}])
+
+	//------------------------------------------------------------------------------------------------------------------
+	.controller('blog10Ctrl', ['$rootScope', '$scope', 'blogTopic10', 'blogDataFactory', function ($rootScope, $scope, blogTopic10, blogDataFactory) {
+
+		$scope.doBlogClick = function () {
+			blogDataFactory.setBlogInfo(blogTopic10.blogTitle, blogTopic10.blogDate, blogTopic10.blogAbstract, blogTopic10.blogContent);
+			TweenMax.set('.blogContainer', {visibility: 'hidden'});
+			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
+			$rootScope.$emit('blogItemClicked');
+		};
+
+		$scope.blogTitle = blogTopic10.blogTitle;
+		$scope.blogDate = blogTopic10.blogDate;
+		$scope.blogAbstract = blogTopic10.blogAbstract;
+	}])
+
+	//------------------------------------------------------------------------------------------------------------------
+	.controller('blog11Ctrl', ['$rootScope', '$scope', 'blogTopic11', 'blogDataFactory', function ($rootScope, $scope, blogTopic11, blogDataFactory) {
+
+		$scope.doBlogClick = function () {
+			blogDataFactory.setBlogInfo(blogTopic11.blogTitle, blogTopic11.blogDate, blogTopic11.blogAbstract, blogTopic11.blogContent);
+			TweenMax.set('.blogContainer', {visibility: 'hidden'});
+			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
+			$rootScope.$emit('blogItemClicked');
+		};
+
+		$scope.blogTitle = blogTopic11.blogTitle;
+		$scope.blogDate = blogTopic11.blogDate;
+		$scope.blogAbstract = blogTopic11.blogAbstract;
 	}])
 
 
