@@ -14,6 +14,16 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6, blogTopic7, blogTopic8, blogTopic9, blogTopic10, blogTopic11,
 				  $filter, ngDialog) {
 
+
+			$scope.year = {
+				OhOneSix: "2016",
+				OhOneFive: "2015",
+				OhOneFour: "2014",
+				OhOneThree: "2013",
+				OhOneTwo: "2012",
+				OhOneOne: "2011"
+			}
+
 		var blogs = [
 			blogTopic0.blogData(),
 			blogTopic1.blogData(),

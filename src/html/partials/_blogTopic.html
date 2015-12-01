@@ -1,25 +1,35 @@
 <div class="blogTopicMain" ng-controller="blogTopicCtrl">
+
 	<div class="blogTopicText" ng-include="'../img/blog.svg'"></div>
+
 	<div class="input-group input-group-lg searchTermInput"><span class="input-group-addon" id="sizing-addon2"
 																  ng-click="doBlogSearch()">search</span> <input
 			type="text" class="form-control" placeholder="I'm looking for..." aria-describedby="sizing-addon2"
-			ng-model="searchTerm"></div>
+			ng-model="searchTerm">
+	</div>
+
 	<div class="fullBlogArticle" ng-controller="fullBlogArticleCtrl">
 		<div class="blogItemTitleArticle" ng-bind="blogTitle"></div>
 		<div class="blogItemContent" ng-bind-html="blogContent"></div>
-		<i class="fa fa-times-circle fa-3x closeBlogItem" ng-click="doClick()"></i></div>
+		<i class="fa fa-times-circle fa-3x closeBlogItem" ng-click="doClick()"></i>
+	</div>
+
 	<div class="blogContainer">
+		<div class="yearDivider"><span ng-bind="year.OhOneSix"></span></div>
 		<div ng-controller="blog0Ctrl" ng-include="'blog/_blog0.html'"></div>
 		<div ng-controller="blog1Ctrl" ng-include="'blog/_blog1.html'"></div>
 		<div ng-controller="blog2Ctrl" ng-include="'blog/_blog2.html'"></div>
 		<div ng-controller="blog3Ctrl" ng-include="'blog/_blog3.html'"></div>
 		<div ng-controller="blog4Ctrl" ng-include="'blog/_blog4.html'"></div>
 		<div ng-controller="blog5Ctrl" ng-include="'blog/_blog5.html'"></div>
+		<div class="yearDivider"><span ng-bind="year.OhOneFive"></span></div>
 		<div ng-controller="blog6Ctrl" ng-include="'blog/_blog6.html'"></div>
 		<div ng-controller="blog7Ctrl" ng-include="'blog/_blog7.html'"></div>
 		<div ng-controller="blog8Ctrl" ng-include="'blog/_blog8.html'"></div>
 		<div ng-controller="blog9Ctrl" ng-include="'blog/_blog9.html'"></div>
 		<div ng-controller="blog10Ctrl" ng-include="'blog/_blog10.html'"></div>
+		<div class="yearDivider"><span ng-bind="year.OhOneFour"></span></div>
 		<div ng-controller="blog11Ctrl" ng-include="'blog/_blog11.html'"></div>
 	</div>
+
 </div>

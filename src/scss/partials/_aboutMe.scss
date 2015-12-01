@@ -1,4 +1,8 @@
 
+a:hover, a:visited, a:link, a:active {
+	text-decoration: none !important;
+}
+
 .aboutMeTopicMain {
 	position: absolute;
 	top: 10px;
@@ -6,10 +10,76 @@
 	height: 500px;
 	width: 1310px;
 	border: 3px solid #dfdfdf;
+
+	.thisIsAboutMe {
+		position: relative;
+		top: 50px;
+		left: 10px;
+		height: 440px;
+		width: 98%;
+		overflow-y: auto; // show vertical
+		overflow-x: hidden; // hide horizontal
+		//border: 1px black solid;
+	}
+
+	.aboutMeShort {
+		position: relative;
+		top: -390px;
+		left: 10px;
+		height: 440px;
+		width: 98%;
+		overflow-y: auto; // show vertical
+		overflow-x: hidden; // hide horizontal
+		background-color: white;
+		//border: 1px black solid;
+		visibility: hidden;
+	}
+}
+
+.longVersion {
+	position: absolute;
+	top: 15px;
+	left: 400px;
+	cursor: hand;
+	a:hover {
+		background-color: yellow;
+		cursor: hand;
+	}
+}
+
+.shortVersion {
+	position: absolute;
+	top: 15px;
+	left: 580px;
+	cursor: hand;
+	a:hover {
+		background-color: yellow;
+		cursor: hand;
+	}
 }
 
 .aboutTopicText {
 	position: absolute;
 	top: -25px;
 	left: -25px;
+
 }
+
+.myPre {
+	white-space: pre-wrap; /* css-3 */
+	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+.btnResume {
+	position: absolute;
+	top: 15px;
+	left: 900px;
+}
+
+.androidGreen {
+	font-weight: bolder;
+	color: #A4C639;
+}
+

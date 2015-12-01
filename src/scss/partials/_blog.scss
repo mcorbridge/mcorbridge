@@ -22,7 +22,7 @@
 	display: table-cell;
 	width: 1275px;
 	height: 400px;
-	overflow-y: auto; // hide vertical
+	overflow-y: auto; // show vertical
 	overflow-x: hidden; // hide horizontal
 	visibility: visible;
 
@@ -122,5 +122,20 @@ pre {
 	position: relative;
 	height: 10px;
 	width: 100%;
+}
+
+.yearDivider {
+	position: relative;
+	height: 10px;
+	width: 100%;
+	background-color: #e2e2e2;
+
+	span {
+		font-size: 9pt;
+		font-weight: bold;
+		position: relative;
+		left: 50%;
+		top: -5px;
+	}
 }
 

@@ -5,11 +5,11 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 
 	.run(['$rootScope', '$timeout', function ($rootScope, $timeout) {
 		console.log('*** starting 20 min timeout ***');
-		var twentyMinTimeout = 1000 * 60 * 20;
+		var oneDayTimeout = 1000 * 60 * 60 * 24; // I just did this for fun
 		$timeout(function () {
 			console.log('*** timeout fired ***');
 			$rootScope.$emit('timeout');
-		}, twentyMinTimeout);
+		}, oneDayTimeout);
 	}])
 
 
