@@ -4,6 +4,23 @@
 
 angular.module('BlogData', [])
 
+	// todo store all the blog post data in json then populate the factory objects when that data is returned and processed
+	.controller('getBlogPostsCtrl', ['$rootScope', '$http', 'blogTopic0', function ($scope, $http, blogTopic0) {
+		$http.get('../js/json/blogData.json').
+			success(function (data, status, headers, config) {
+				console.log('------------> blog data coming at ya');
+				console.log(data);
+				var tmp = '';
+				for (var n = 0; n < data[0].blogContent.length; n++) {
+					tmp += data[0].blogContent[n];
+				}
+				blogTopic0.blogContent = tmp;
+			}).
+			error(function (data, status, headers, config) {
+				console.log('Something went wrong. Very, very, very wrong.');
+			});
+	}])
+
 
 	.factory('blogTopic0', function () {
 
@@ -408,6 +425,40 @@ angular.module('BlogData', [])
 			'<div class="newLine"></div>' +
 			codeExample2 +
 			'Notice that I needed to explicity add *that* particular file to the minify. It works.  I have NO idea why the original minify stopped working.  But the wind is back in my sails until I hear that unwelcome grinding on the keel again.',
+			blogData: function () {
+				var tmp = {};
+				tmp.date = this.blogDate;
+				tmp.title = this.blogTitle;
+				tmp.content = this.blogContent;
+				return tmp;
+			}
+		}
+	})
+
+	// -----------------------------------------------------------------------------------------------------------------
+
+	.factory('blogTopic12', function () {
+
+		return {
+			blogDate: 'December 2, 2015',
+			abbrBlogDate: '2-12-2015',
+			blogTitle: 'Storing multi-line comments in JSON',
+			blogCategory: 'javascript, json',
+			blogAbstract: "Look at what happens if you attempt to store entire blog entries in JSON!",
+			blogContent: 'JSON is an extremely rigid schema. It is great, but it has a couple of shortcomings, the largest of which is the inability to store multi-line strings. This can be particularly annoying for storing things like structured text and public keys in JSON for later interaction with JavaScript code in the browser. ' +
+			'Here is a solution that works great!' +
+			'<div class="newLine"></div>' +
+			'<pre style="left:25px;width:1200px">' +
+			'&nbsp;{\n' +
+			'&nbsp;&nbsp;"blogContent": [\n' +
+			'&nbsp;&nbsp;&nbsp;"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo",\n' +
+			'&nbsp;&nbsp;&nbsp;"inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit",\n' +
+			'&nbsp;&nbsp;&nbsp;"sed quia consequuntur magni dolores eos qui cunning lingus voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet",\n' +
+			'&nbsp;&nbsp;&nbsp;"consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad.",\n' +
+			'&nbsp;&nbsp;]}' +
+			'</pre>' +
+			'<div class="newLine"></div>' +
+			'Notice that the paragraph is broken up in an array of strings.  Now once the json data is received by the web page, it is a simple matter to loop through the array of strings and rebuild the paragraph.',
 			blogData: function () {
 				var tmp = {};
 				tmp.date = this.blogDate;

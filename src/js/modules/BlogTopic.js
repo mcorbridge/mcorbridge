@@ -8,10 +8,11 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 	//todo I'm going to find a way to add more to this search functionality after I have added enough blog content
 	.controller('blogTopicCtrl',
 	['$rootScope', '$scope',
-		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6', 'blogTopic7', 'blogTopic8', 'blogTopic9', 'blogTopic10', 'blogTopic11',
+		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6', 'blogTopic7', 'blogTopic8',
+		'blogTopic9', 'blogTopic10', 'blogTopic11', 'blogTopic12',
 		'$filter', 'ngDialog',
 		function ($rootScope, $scope,
-				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6, blogTopic7, blogTopic8, blogTopic9, blogTopic10, blogTopic11,
+				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6, blogTopic7, blogTopic8, blogTopic9, blogTopic10, blogTopic11, blogTopic12,
 				  $filter, ngDialog) {
 
 
@@ -36,7 +37,8 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 			blogTopic8.blogData(),
 			blogTopic9.blogData(),
 			blogTopic10.blogData(),
-			blogTopic11.blogData()
+			blogTopic11.blogData(),
+			blogTopic12.blogData()
 		];
 
 			$scope.doBlogSearch = function () {
@@ -289,6 +291,20 @@ angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
 		$scope.blogAbstract = blogTopic11.blogAbstract;
 	}])
 
+	//------------------------------------------------------------------------------------------------------------------
+	.controller('blog12Ctrl', ['$rootScope', '$scope', 'blogTopic12', 'blogDataFactory', function ($rootScope, $scope, blogTopic12, blogDataFactory) {
+
+		$scope.doBlogClick = function () {
+			blogDataFactory.setBlogInfo(blogTopic12.blogTitle, blogTopic12.blogDate, blogTopic12.blogAbstract, blogTopic12.blogContent);
+			TweenMax.set('.blogContainer', {visibility: 'hidden'});
+			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
+			$rootScope.$emit('blogItemClicked');
+		};
+
+		$scope.blogTitle = blogTopic12.blogTitle;
+		$scope.blogDate = blogTopic12.blogDate;
+		$scope.blogAbstract = blogTopic12.blogAbstract;
+	}])
 
 	//------------------------------------------------------------------------------------------------------------------
 
