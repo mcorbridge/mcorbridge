@@ -14,7 +14,7 @@
 	<div class="info1"><i class="fa fa-bars fa-3x menuIcon" ng-click="menuAction($event,1)"
 						  ng-mouseover="menuAction($event,1)" ng-mouseleave="menuAction($event,1)"></i>
 
-		<div ng-include="'partials/_projectsTopic.html'"></div>
+		<div ng-include="'partials/_projectsTopic.html'" onload="ngIncludeLoaded('skunkWorks')"></div>
 	</div>
 
 	<!--               PORTFOLIO                 -->

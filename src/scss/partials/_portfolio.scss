@@ -5,11 +5,50 @@
 	left: 10px;
 	height: 500px;
 	width: 1310px;
-	border: 1px solid black;
+	//border: 1px solid black;
+
+	.portfolioContainer {
+		position: relative;
+		top: 60px;
+		left: 10px;
+		height: 430px;
+		width: 98%;
+		overflow-y: auto; // show vertical
+		overflow-x: hidden; // hide horizontal
+		//border: 3px black solid;
+	}
+
+	.portfolioTable {
+		position: relative;
+		top: -370px;
+		left: 10px;
+		height: 430px;
+		width: 1275px;
+		background-color: #e2e2e2;
+		//border: 1px solid black;
+		td {
+			width: 255px;
+			height: 85px;
+			//border: 1px solid black;
+			text-align: center;
+			padding: 3px;
+		}
+	}
 }
 
 .portfolioTopicText {
 	position: absolute;
 	top: -25px;
 	left: 10px;
+}
+
+.portfolioContainer {
+	position: relative;
+	top: 50px;
+	left: 10px;
+	height: 440px;
+	width: 98%;
+	overflow-y: auto; // show vertical
+	overflow-x: hidden; // hide horizontal
+	//border: 3px black solid;
 }

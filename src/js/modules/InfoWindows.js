@@ -9,7 +9,8 @@ angular.module('InfoWindows', [])
 
 		// do not try to do anything to the included file UNTIL we know it is loaded
 		$scope.ngIncludeLoaded = function(file){
-			console.log(file  + ' is loaded');
+			console.log('inside "InfoWindows" -------------> ' + file + ' is loaded');
+			$rootScope.$emit('skunkWorksLoaded');
 		};
 
 

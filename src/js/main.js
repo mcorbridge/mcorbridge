@@ -1,10 +1,11 @@
 /**
  * Created by Mike on 11/10/2015.
  */
-angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', 'PortfolioTopic', 'ProjectsTopic', 'BlogTopic'])
+angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', 'PortfolioTopic', 'ProjectsTopic', 'BlogTopic', 'ngRoute'])
 
 	.run(['$rootScope', '$timeout', function ($rootScope, $timeout) {
-		console.log('*** starting 20 min timeout ***');
+		$rootScope.isRouted = false;
+		console.log('*** starting 24 hr timeout ***');
 		var oneDayTimeout = 1000 * 60 * 60 * 24; // I just did this for fun
 		$timeout(function () {
 			console.log('*** timeout fired ***');
@@ -12,9 +13,34 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 		}, oneDayTimeout);
 	}])
 
+	.config(['$routeProvider', function ($routeProvider) {
+		console.log('-------------- main config --------------');
+		$routeProvider.
+			when('/projects', {
+				controller: 'RouterCtrl'
+			});
+	}])
+
+	.controller('RouterCtrl', ['$rootScope', '$scope', '$routeParams', '$route', function ($rootScope, $scope, $routeParams, $route) {
+		//If you want to use URL attributes before the website is loaded
+		$rootScope.$on('$routeChangeSuccess', function () {
+			$rootScope.isRouted = true;
+			TweenMax.set('.header', {css: {visibility: 'visible'}});
+			TweenMax.set('.footer', {css: {visibility: 'visible'}});
+			TweenLite.set(".madeWithAngular", 4, {css: {opacity: 1}});
+			TweenLite.set(".header", {css: {width: '100%'}});
+			TweenLite.set(".footer", {css: {width: '100%'}});
+			TweenLite.set(".footerContent", {css: {visibility: 'visible'}});
+			TweenLite.set(".co", {css: {visibility: 'visible'}});
+			TweenLite.set(".co", {css: {opacity: 1}});
+
+			$rootScope.$emit('startTitle');
+			$rootScope.$emit('routedEvent');
+		});
+	}])
+
 
 	.controller('headerCtrl', ['$rootScope', '$scope', '$interval', function ($rootScope, $scope, $interval) {
-
 		// do not try to do anything to the included file UNTIL we know it is loaded
 		$scope.ngIncludeLoaded = function(file){
 			console.log(file + ' is loaded');
@@ -36,7 +62,9 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 		var arrPath = [];
 
 		var setTitle = function(){
-			//stub for future code
+			if ($rootScope.isRouted)
+				TweenLite.set(".mcorbridgeAppArch", {css: {opacity: 1}});
+
 		};
 
 		var setAngularSVG = function(){
@@ -48,9 +76,9 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 		};
 
 		var setMadeWithSVG = function () {
-			//stub for future code
+			if ($rootScope.isRouted)
+				TweenLite.set(".madeWithTitle", {css: {opacity: 1}});
 		};
-
 
 		var wasMadeByClicked = false;
 		$rootScope.doHeaderImgTransform = function () {
@@ -68,6 +96,7 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 
 		// automagically swap out the 'made by' images
 		$rootScope.$on('startTitle', function () {
+
 			swapMadeByImgInterval = $interval(function () {
 				$rootScope.doHeaderImgTransform()
 			}, 10000, 0);

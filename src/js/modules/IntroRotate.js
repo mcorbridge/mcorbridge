@@ -195,6 +195,21 @@ angular.module('IntroRotate', [])
 			TweenLite.to(".div6", 1, {css:{left:'-150%'}});
 		};
 
+		$rootScope.$on('routedEvent', function () {
+			$scope.doRotation();
+			TweenMax.to(".startIcon", 1, {y: 900, opacity: 0, ease: Power1.easeInOut});
+			$rootScope.startBounce = false;
+			$scope.doFlip(0);
+			$scope.doFlip(1);
+			$scope.doFlip(2);
+			$scope.doFlip(3);
+		});
+
+		$rootScope.$on('skunkWorksLoaded', function () {
+			if ($rootScope.isRouted)
+				$scope.doClickBox(1);
+		});
+
 		$scope.doStart = function(event){
 			console.log(event.type);
 			if(event.type === 'mouseover'){
