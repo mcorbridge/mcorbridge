@@ -2,4 +2,50 @@
 
 	<div class="projectsTopicText" ng-include="'../img/projects.svg'"></div>
 
+	<div class="projectsContainer">
+
+
+		<div class="passwordProtector" ng-click="goProject('passwordProtector')">
+			<div class="imgPasswordProtector"></div>
+			<div class="txtPasswordProtector">
+				A web/mobile application that used AES encryption to store your personal information, like passwords, in
+				the cloud.
+				This application uses Google Cloud Platform to store the encypted data throught the use of a custom java
+				based
+				Java Data Objects persistence mechanism. The Android application allows access of the encrypted
+				information on
+				your smartphone, or via a web browser.
+			</div>
+		</div>
+
+		<div class="sudoku" ng-click="goProject('sudoku')">
+			<div class="imgSudoku"></div>
+			<div class="txtSudoku">
+				A demonstration of the synergy of AngularJS and complex javascript algorithms. This was an experiment of
+				mine to
+				learn how to integrate MVC concepts into the AngularJS framework, and create a series of recursive
+				functions
+				that solve hard Sudoku puzzles. This is not an attempt to improve upon the zillions of other Sudoku
+				applications that already exist.
+				It was a personal challenge to see how AngularJS (and the browser Javascript engine) stands up to a
+				stiff challenge.
+			</div>
+		</div>
+
+		<div class="robotArm" ng-click="goProject('robotArm')">
+			<div class="imgRobotArm"></div>
+			<div class="txtRobotArm">
+				An exploration of animation techniques using the Greensock api. The Greensock community has constructed
+				a reliable, well
+				crafted and robust Javascript library that allows web developers to craft rich and dynamic animations.
+				The tools the team
+				at Greensock created are professional-grade components that are nothing short of astounding. It is fun
+				to work with, and allows developers
+				to build compelling experiences that were once only the domain of Flash professionals.
+			</div>
+		</div>
+
+
+	</div>
+
 </div>

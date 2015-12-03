@@ -5,8 +5,107 @@
 	left: 10px;
 	height: 500px;
 	width: 1310px;
-	border: 1px solid black;
 }
+
+.projectsContainer {
+	position: absolute;
+	top: 60px;
+	left: 10px;
+	height: 430px;
+	width: 98%;
+	overflow-y: auto; // show vertical
+	overflow-x: hidden; // hide horizontal
+}
+
+.passwordProtector {
+	position: absolute;
+	top: 10px;
+	left: 60px;
+	height: 400px;
+	width: 300px;
+	border: 1px #000000 solid;
+
+	.imgPasswordProtector {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		height: 195px;
+		width: 299px;
+		background-image: url("../img/passwordProtector.png");
+		background-repeat: no-repeat;
+	}
+
+	.txtPasswordProtector {
+		position: relative;
+		margin: 5px 2.5px 5px 3px;
+		height: 190px;
+		width: 290px;
+		font-size: 10pt;
+		font-family: sans-serif;
+		color: #10203f;
+	}
+}
+
+.sudoku {
+	position: absolute;
+	top: 10px;
+	left: 495px;
+	height: 400px;
+	width: 300px;
+	border: 1px #000000 solid;
+
+	.imgSudoku {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		height: 195px;
+		width: 299px;
+		background-image: url("../img/ngSudoku.png");
+		background-repeat: no-repeat;
+	}
+
+	.txtSudoku {
+		position: relative;
+		margin: 5px 2.5px 5px 3px;
+		height: 190px;
+		width: 290px;
+		font-size: 10pt;
+		font-family: sans-serif;
+		color: #10203f;
+	}
+}
+
+.robotArm {
+	position: absolute;
+	top: 10px;
+	left: 925px;
+	height: 400px;
+	width: 300px;
+	border: 1px #000000 solid;
+
+	.imgRobotArm {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		height: 195px;
+		width: 298px;
+		background-image: url("../img/robotArm.png");
+		background-repeat: no-repeat;
+	}
+
+	.txtRobotArm {
+		position: relative;
+		margin: 5px 2.5px 5px 3px;
+		height: 190px;
+		width: 290px;
+		font-size: 10pt;
+		font-family: sans-serif;
+		color: #10203f;
+	}
+}
+
+
+
 
 .projectsTopicText {
 	position: absolute;
