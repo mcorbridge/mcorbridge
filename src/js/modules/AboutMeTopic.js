@@ -6,6 +6,9 @@ angular.module('AboutMeTopic', [])
 
 	.controller('aboutMeTopicCtrl', ['$rootScope', '$scope', function ($rootScope, $scope) {
 
+		// default version state
+		TweenLite.set('.longVersion', {css: {background: '#ffff00'}});
+
 		$scope.divStyle = '#000000';
 
 		$scope.doResumeDownload = function () {
@@ -16,15 +19,36 @@ angular.module('AboutMeTopic', [])
 		}
 
 		$scope.onVersionClick = function (state) {
+
+			TweenLite.set('.longVersion', {css: {background: '#ffffff'}});
+			TweenLite.set('.shortVersion', {css: {background: '#ffffff'}});
+			TweenLite.set('.faqVersion', {css: {background: '#ffffff'}});
+			TweenLite.set('.contactVersion', {css: {background: '#ffffff'}});
+
+			TweenLite.set('.thisIsAboutMe', {visibility: 'hidden'});
+			TweenLite.set('.aboutMeShort', {visibility: 'hidden'});
+			TweenLite.set('.aboutFAQ', {visibility: 'hidden'});
+			TweenLite.set('.aboutContact', {visibility: 'hidden'});
+
 			switch (state) {
 				case 'long':
+					TweenLite.set('.longVersion', {css: {background: '#ffff00'}});
 					TweenLite.set('.thisIsAboutMe', {visibility: 'visible'});
-					TweenLite.set('.aboutMeShort', {visibility: 'hidden'});
 					break;
 
 				case 'short':
-					TweenLite.set('.thisIsAboutMe', {visibility: 'hidden'});
+					TweenLite.set('.shortVersion', {css: {background: '#ffff00'}});
 					TweenLite.set('.aboutMeShort', {visibility: 'visible'});
+					break;
+
+				case 'faq':
+					TweenLite.set('.faqVersion', {css: {background: '#ffff00'}});
+					TweenLite.set('.aboutFAQ', {visibility: 'visible'});
+					break;
+
+				case 'contact':
+					TweenLite.set('.contactVersion', {css: {background: '#ffff00'}});
+					TweenLite.set('.aboutContact', {visibility: 'visible'});
 					break;
 			}
 		}

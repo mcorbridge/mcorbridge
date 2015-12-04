@@ -2,8 +2,13 @@
 
 	<div class="aboutTopicText" ng-include="'../img/aboutMe.svg'"></div>
 
-	<div class="longVersion" ng-click="onVersionClick('long')"><a>long version</a></div>
-	<div class="shortVersion" ng-click="onVersionClick('short')"><a>short version</a></div>
+	<div class="aboutVersions">
+		<div class="longVersion" ng-click="onVersionClick('long')"><a>long version</a></div>
+		<div class="shortVersion" ng-click="onVersionClick('short')"><a>short version</a></div>
+		<div class="faqVersion" ng-click="onVersionClick('faq')"><a>FAQs</a></div>
+		<div class="contactVersion" ng-click="onVersionClick('contact')"><a>Contact</a></div>
+	</div>
+
 
 	<button class="btn btn-success btnResume" ng-click="doResumeDownload()">download resume</button>
 
@@ -176,5 +181,44 @@
 	</div>
 
 	<div class="aboutMeShort">Don't worry the short version is coming soon!</div>
+
+	<div class="aboutFAQ">Frequently Asked Questions are on their way!</div>
+
+	<div class="aboutContact">
+		<div class="addressEmail">
+			<strong>email:</strong> mikecorbridge@mcorbridge.com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>cell:</strong>617.964.4529
+		</div>
+
+		<div class="addressToronto">
+			133 Hazelton Ave, Suite 401<br>
+			<strong>Toronto</strong>, Ontario, Canada <br>
+			M5R 0A6<br>
+			416.962.5785
+			<br><br><br>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d219728.55536353288!2d-79.31864513237153!3d43.64785803623462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sca!4v1449190737103"
+					width="200" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+		</div>
+
+		<div class="addressBoston">
+			197 8th St., #620<br>
+			<strong>Boston</strong>, Massachusetts, USA<br>
+			02129<br>
+			617.242.0585
+			<br><br><br>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d94366.2590246443!2d-71.07947515459752!3d42.34368329128621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3652d0d3d311b%3A0x787cbf240162e8a0!2sBoston%2C+MA%2C+USA!5e0!3m2!1sen!2sca!4v1449192222270"
+					width="200" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+		</div>
+
+		<div class="addressCapeCod">
+			321 School St<br>
+			<strong>Cape Cod</strong>, Massachusetts, USA<br>
+			02635<br>
+			508.428.8898
+			<br><br><br>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d381041.4682042548!2d-70.34796862056197!3d41.744541592158306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sca!4v1449192329479"
+					width="200" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+		</div>
+	</div>
+
 
 </div>

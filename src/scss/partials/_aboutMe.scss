@@ -12,49 +12,144 @@ a:hover, a:visited, a:link, a:active {
 	border: 3px solid #dfdfdf;
 
 	.thisIsAboutMe {
-		position: relative;
+		position: absolute;
+		display: inline-block;
 		top: 50px;
 		left: 10px;
 		height: 440px;
 		width: 98%;
 		overflow-y: auto; // show vertical
 		overflow-x: hidden; // hide horizontal
-		//border: 1px black solid;
+		//border: 3px #2545e5 solid;
 	}
 
 	.aboutMeShort {
-		position: relative;
-		top: -390px;
+		position: absolute;
+		display: inline-block;
+		top: 50px;
 		left: 10px;
 		height: 440px;
 		width: 98%;
 		overflow-y: auto; // show vertical
 		overflow-x: hidden; // hide horizontal
 		background-color: white;
-		//border: 1px black solid;
+		//border: 3px #ff761f solid;
 		visibility: hidden;
 	}
-}
 
-.longVersion {
-	position: absolute;
-	top: 15px;
-	left: 400px;
-	cursor: hand;
-	a:hover {
-		background-color: yellow;
-		cursor: hand;
+	.aboutFAQ {
+		position: absolute;
+		display: inline-block;
+		top: 50px;
+		left: 10px;
+		height: 440px;
+		width: 98%;
+		overflow-y: auto; // show vertical
+		overflow-x: hidden; // hide horizontal
+		background-color: white;
+		//border: 3px #ff0000 solid;
+		visibility: hidden;
+	}
+
+	.aboutContact {
+		position: absolute;
+		display: inline-block;
+		top: 50px;
+		left: 10px;
+		height: 440px;
+		width: 98%;
+		overflow-y: hidden; // show vertical
+		overflow-x: hidden; // hide horizontal
+		background-color: white;
+		//border: 3px #33db39 solid;
+		visibility: hidden;
+
+		.addressEmail {
+			position: absolute;
+			top: 10px;
+			left: 20px;
+		}
+
+		.addressToronto {
+			position: absolute;
+			top: 50px;
+			left: 200px;
+			height: 400px;
+			width: 300px;
+			//border: 1px solid #ff7423;
+		}
+
+		.addressBoston {
+			position: absolute;
+			top: 50px;
+			left: 500px;
+			height: 400px;
+			width: 300px;
+			//border: 1px solid #ff7423;
+		}
+
+		.addressCapeCod {
+			position: absolute;
+			top: 50px;
+			left: 800px;
+			height: 300px;
+			width: 250px;
+			//border: 1px solid #ff7423;
+		}
 	}
 }
 
-.shortVersion {
+.aboutVersions {
 	position: absolute;
-	top: 15px;
-	left: 580px;
-	cursor: hand;
-	a:hover {
-		background-color: yellow;
-		cursor: hand;
+	top: 20px;
+	left: 300px;
+	//border: 1px solid black;
+
+	.longVersion {
+		float: left;
+		position: relative;
+		margin-right: 50px;
+		width: 90px;
+		cursor: pointer;
+		//border: 1px solid black;
+		a:hover {
+			background-color: yellow;
+		}
+	}
+
+	.shortVersion {
+		float: left;
+		position: relative;
+		margin-right: 53px;
+		width: 90px;
+		cursor: pointer;
+		//border: 1px solid black;
+		a:hover {
+			background-color: yellow;
+		}
+	}
+
+	.faqVersion {
+		float: left;
+		position: relative;
+		width: 40px;
+		margin-right: 60px;
+		cursor: pointer;
+		//border: 1px solid black;
+		a:hover {
+			background-color: yellow;
+		}
+	}
+
+	.contactVersion {
+		float: left;
+		position: relative;
+		width: 55px;
+		cursor: pointer;
+		//border: 1px solid black;
+		a:hover {
+			background-color: yellow;
+		}
 	}
 }
 
@@ -82,4 +177,7 @@ a:hover, a:visited, a:link, a:active {
 	font-weight: bolder;
 	color: #A4C639;
 }
+
+
+
 
