@@ -1,7 +1,7 @@
 /**
  * Created by Mike on 11/10/2015.
  */
-angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', 'PortfolioTopic', 'ProjectsTopic', 'BlogTopic', 'ngRoute'])
+angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', 'PortfolioTopic', 'ProjectsTopic', 'BlogTopic', 'ngRoute', 'ui.bootstrap'])
 
 	.run(['$rootScope', '$timeout', function ($rootScope, $timeout) {
 		$rootScope.isRouted = false;
@@ -25,14 +25,11 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 		//If you want to use URL attributes before the website is loaded
 		$rootScope.$on('$routeChangeSuccess', function () {
 			$rootScope.isRouted = true;
-			TweenMax.set('.header', {css: {visibility: 'visible'}});
-			TweenMax.set('.footer', {css: {visibility: 'visible'}});
+			TweenMax.set('.header', {css: {visibility: 'visible', width: '100%'}});
+			TweenMax.set('.footer', {css: {visibility: 'visible', width: '100%'}});
 			TweenLite.set(".madeWithAngular", 4, {css: {opacity: 1}});
-			TweenLite.set(".header", {css: {width: '100%'}});
-			TweenLite.set(".footer", {css: {width: '100%'}});
 			TweenLite.set(".footerContent", {css: {visibility: 'visible'}});
-			TweenLite.set(".co", {css: {visibility: 'visible'}});
-			TweenLite.set(".co", {css: {opacity: 1}});
+			TweenLite.set(".co", {css: {visibility: 'visible', opacity: 1}});
 
 			$rootScope.$emit('startTitle');
 			$rootScope.$emit('routedEvent');
@@ -149,5 +146,40 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 		// the 'play' icon bounces slightly to alert user that action is required
 		startBounce();
 
+	}])
+
+	.controller('leaveMsgCtrl', ['$rootScope', '$scope', '$uibModal', function ($rootScope, $scope, $uibModal) {
+
+		$scope.open = function (size) {
+
+			var modalInstance = $uibModal.open({
+				animation: true,
+				templateUrl: 'myModalContent.html',
+				controller: 'ModalInstanceCtrl',
+				size: size
+			});
+
+
+			modalInstance.result.then(function (selectedItem) {
+				$scope.selected = selectedItem;
+			}, function () {
+				console.log('Modal dismissed at: ' + new Date());
+			});
+		};
+
+
+	}])
+
+	.controller('ModalInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+
+		$scope.title = 'Leave a message for Mike ...';
+
+		$scope.ok = function () {
+			$uibModalInstance.close('close');
+		};
+
+		$scope.cancel = function () {
+			$uibModalInstance.dismiss('cancel');
+		};
 	}]);
 

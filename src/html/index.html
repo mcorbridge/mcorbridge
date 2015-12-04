@@ -188,12 +188,36 @@
 			<i class="fa fa-google-plus-square"></i>
 			<i class="fa fa-linkedin-square"></i>
 		</div>
-
 	</div>
+	<div class="contactInfo">mikecorbridge@mcorbridge.com :: 617.964.4529</div>
+	<div class="leaveMessage" ng-controller="leaveMsgCtrl">
+		<i class="fa fa-envelope-o fa-2x" style="position: absolute;top:1px;left:11px" ng-click="open('lg')"></i>
+
+		<div class="vr">&nbsp;</div>
+		<span class="copyRight" style="position:absolute;top:3px;left:60px" ng-click="open('lg')"><strong>leave a
+			message</strong></span>
+	</div>
+</div>
+
+<!--leave comment modal-->
+<div>
+	<script type="text/ng-template" id="myModalContent.html">
+		<div class="modal-header">
+			<h3 class="modal-title">{{title}}</h3>
+		</div>
+		<div class="modal-body">
+			<div class="modalFoo"></div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+			<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+		</div>
+	</script>
 </div>
 
 <!--this is used in the router-->
 <div ng-controller="RouterCtrl"></div>
+
 
 </body>
 
@@ -206,6 +230,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-sanitize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap.min.js"></script>
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>

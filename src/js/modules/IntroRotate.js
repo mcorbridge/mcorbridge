@@ -155,6 +155,7 @@ angular.module('IntroRotate', [])
 			TweenLite.to(".co",2,{css:{opacity:1}});
 			TweenLite.to(".mcorbridgeAppArch", 2, {css: {opacity: 1}});
 			TweenLite.set(".madeWithTitle", {css: {opacity: 1}, delay: 3});
+			TweenLite.set(".leaveMessage", {css: {visibility: 'visible'}});
 			$rootScope.$emit('startTitle');
 		};
 
