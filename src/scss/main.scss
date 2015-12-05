@@ -319,8 +319,22 @@ body{
 }
 
 .modalFoo {
-	height: 60px;
-	width: 200px;
+	height: 150px;
+	width: 850px;
 	border-radius: 20px;
 	border: 3px black solid;
+
+	.textComment {
+		height: 120px;
+		width: 820px;
+		margin: 5px 5px 5px 5px;
+		resize: none;
+		border: none;
+		outline: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+	}
 }
+
+

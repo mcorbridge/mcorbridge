@@ -1,7 +1,7 @@
 /**
  * Created by Mike on 11/10/2015.
  */
-angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', 'PortfolioTopic', 'ProjectsTopic', 'BlogTopic', 'ngRoute', 'ui.bootstrap'])
+angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', 'PortfolioTopic', 'ProjectsTopic', 'BlogTopic', 'ngRoute', 'ui.bootstrap', 'AngularFire'])
 
 	.run(['$rootScope', '$timeout', function ($rootScope, $timeout) {
 		$rootScope.isRouted = false;
@@ -159,7 +159,6 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 				size: size
 			});
 
-
 			modalInstance.result.then(function (selectedItem) {
 				$scope.selected = selectedItem;
 			}, function () {
@@ -175,6 +174,8 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 		$scope.title = 'Leave a message for Mike ...';
 
 		$scope.ok = function () {
+			console.log($scope.comment);
+			//angularFire to persist comment
 			$uibModalInstance.close('close');
 		};
 
