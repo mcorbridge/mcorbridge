@@ -49,7 +49,7 @@ gulp.task('scripts', function () {
 
 // Minify JSON
 gulp.task('json', function () {
-	return gulp.src(['src/js/json/blogData.json'])
+	return gulp.src(['src/js/json/*.json'])
 		.pipe(jsonminify())
 		.pipe(gulp.dest('dist/js/json'));
 });

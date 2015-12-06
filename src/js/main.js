@@ -165,22 +165,39 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 				console.log('Modal dismissed at: ' + new Date());
 			});
 		};
-
-
 	}])
 
-	.controller('ModalInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+	.controller('ModalInstanceCtrl', ['$scope', '$uibModalInstance', 'angularFireFactory', 'sanitizeInput', function ($scope, $uibModalInstance, angularFireFactory, sanitizeInput) {
 
 		$scope.title = 'Leave a message for Mike ...';
+		$scope.comment = '';
+
+		angularFireFactory.init();
+
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth() + 1; //January is 0!
+		var yyyy = today.getFullYear();
+		var dateToday = dd + '-' + mm + '-' + yyyy;
+
+		sanitizeInput.getBadWords();
 
 		$scope.ok = function () {
-			console.log($scope.comment);
-			//angularFire to persist comment
+			console.log('save info || date: ' + dateToday + ' comment: ' + $scope.comment + ' isRead: false');
+			angularFireFactory.create(dateToday, $scope.comment, 'false');
 			$uibModalInstance.close('close');
 		};
 
 		$scope.cancel = function () {
 			$uibModalInstance.dismiss('cancel');
 		};
+
+		$scope.checkInput = function () {
+			var arrInput = $scope.comment.split(" ");
+			for (var n = 0; n < arrInput.length; n++) {
+				if (sanitizeInput.checkInput(arrInput[n]))
+					$scope.comment = 'Try again, but this time with less profanity.';
+			}
+		}
 	}]);
 
