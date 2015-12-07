@@ -212,17 +212,9 @@ angular.module('IntroRotate', [])
 		});
 
 		$scope.doStart = function(event){
-			console.log(event.type);
-			if(event.type === 'mouseover'){
-				TweenLite.set(".startIcon",{css:{color:'green'}});
-			}else if(event.type === 'mouseout'){
-				TweenLite.set(".startIcon",{css:{color:'black'}});
-			}else{
-				TweenLite.set(".startIcon",{css:{color:'red'}});
-				$scope.doRotation();
-				TweenMax.to(".startIcon", 1, { y:900 , opacity:0 , ease:Power1.easeInOut});
-				$rootScope.startBounce = false;
-			}
+			$scope.doRotation();
+			TweenMax.to(".startIcon", 1, {y: 900, opacity: 0, ease: Power1.easeInOut});
+			$rootScope.startBounce = false;
 		};
 
 		//------------------------------------------------------

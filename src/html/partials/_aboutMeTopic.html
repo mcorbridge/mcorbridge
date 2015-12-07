@@ -59,9 +59,9 @@
 
 	<div class="tools">
 		tools for mcorbridge.com
-		<div style="position: absolute; top:50px; left:20px">
-			<div class="commentItem" ng-repeat="blogComment in blogComments"><span style="font-style: italic">{{blogComment.date}}</span>
-				someone wrote: "{{blogComment.comment}}"
+		<div class="commentList">
+			<div class="commentItem hvr-pop" ng-repeat="blogComment in blogComments"><span style="font-style: italic">{{blogComment.date}}</span>
+				"{{blogComment.comment}}"
 			</div>
 		</div>
 	</div>

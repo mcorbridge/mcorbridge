@@ -125,7 +125,7 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 			if(!$rootScope.startBounce)
 				return;
 
-			TweenMax.to('.startIcon', 1.0, {top:"210px", onComplete:startBounce, ease:Bounce.easeOut});
+			TweenMax.to('.startIcon', 1.0, {top: "216px", onComplete: startBounce, ease: Bounce.easeOut});
 		};
 
 		$rootScope.$on('reset',function(){

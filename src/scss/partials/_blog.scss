@@ -29,7 +29,8 @@
 	.blogItem {
 		height: 50px;
 		width: 1250px;
-		border: 1px solid rgba(124, 158, 163, 0.86);
+		border: 1px solid rgba(124, 158, 163, 0.95);
+		background-color: rgba(123, 144, 213, 0.32);
 		margin: 5px;
 
 		.blogItemTitle {
@@ -73,9 +74,8 @@
 
 .closeBlogItem {
 	position: absolute;
-	top: -3px;
-	left: 1225px;
-	color: #ff0000;
+	top: 5px;
+	left: 1238px;
 }
 
 .searchTermInput {
@@ -137,5 +137,9 @@ pre {
 		left: 50%;
 		top: -5px;
 	}
+}
+
+.fa-arrow-circle-left:hover {
+	color: #33db39;
 }
 
