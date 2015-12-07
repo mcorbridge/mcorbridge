@@ -9,14 +9,13 @@ angular.module('AngularFire', ['firebase'])
 		var URL = "https://burning-fire-2704.firebaseio.com/comments";
 		var ref = new Firebase(URL);
 		var obj = $firebaseObject(ref);
+		var comments = [];
 
 		return {
 			init: function () {
 				obj.$loaded().then(function () {
-					console.log("loaded record:", obj.$id);
-					// To iterate the key/value pairs of the object, use angular.forEach()
 					angular.forEach(obj, function (value, key) {
-						console.log(key, value);
+						comments.push({a: key, b: value});
 					});
 				});
 			},
@@ -43,7 +42,7 @@ angular.module('AngularFire', ['firebase'])
 				});
 			},
 			read: function () {
-				console.log(obj);
+				return comments;
 			},
 			update: function () {
 

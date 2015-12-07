@@ -11,7 +11,7 @@ a:hover, a:visited, a:link, a:active {
 	width: 1310px;
 	border: 3px solid #dfdfdf;
 
-	.thisIsAboutMe {
+	.aboutMelong {
 		position: absolute;
 		display: inline-block;
 		top: 50px;
@@ -38,6 +38,20 @@ a:hover, a:visited, a:link, a:active {
 	}
 
 	.aboutFAQ {
+		position: absolute;
+		display: inline-block;
+		top: 50px;
+		left: 10px;
+		height: 440px;
+		width: 98%;
+		overflow-y: auto; // show vertical
+		overflow-x: hidden; // hide horizontal
+		background-color: white;
+		//border: 3px #ff0000 solid;
+		visibility: hidden;
+	}
+
+	.tools {
 		position: absolute;
 		display: inline-block;
 		top: 50px;
@@ -173,10 +187,24 @@ a:hover, a:visited, a:link, a:active {
 	left: 900px;
 }
 
+.iconCogs {
+	position: absolute;
+	top: 5px;
+	left: 1250px;
+}
+
 .androidGreen {
 	font-weight: bolder;
 	color: #A4C639;
 }
+
+.commentItem {
+	border: 1px solid black;
+	margin: 3px 3px 3px 3px;
+	background-color: rgba(123, 144, 213, 0.32);
+}
+
+
 
 
 
