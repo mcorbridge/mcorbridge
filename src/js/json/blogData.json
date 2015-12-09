@@ -234,5 +234,30 @@
       "I am encouraged to keep learning and exploring as I gain more confidence.  And while I&#39;m doing just that, I think I&#39;ll have nice warm slice of ",
       "freshly baked bread with a generous slab of butter!"
     ]
+  },
+  //                                     blogTopic8
+  {
+    "blogDate": "December 8, 2015",
+    "abbrBlogDate": "8-12-2015",
+    "blogTitle": "How cool is this!",
+    "blogCategory": "javascript, animation",
+    "blogAbstract": "Mike Bostock (PhD Stanford) is creating these amazing javascript animations with the D3 Plugin he created",
+    "blogContent": [
+      "<form>",
+      "  <input type='radio' name='reference' id='ref-annulus'>",
+      "  <label for='ref-annulus'>Annulus</label><br>",
+      "  <input type='radio' name='reference' id='ref-planet' checked=''>",
+      "  <label for='ref-planet'>Planets</label><br>",
+      "  <input type='radio' name='reference' id='ref-sun'>",
+      "  <label for='ref-sun'>Sun</label>",
+      "</form>",
+      "<link rel='stylesheet' href='../js/modules/bostock.css'>",
+      "<script src='../js/modules/bostock.js'></script>",
+      "This is one of a series of animations that can be found at <a href='http://bl.ocks.org/'>bl.ocks.org</a> by Mike Bostock, who must ",
+      "be WICKED SMAHT! I was browsing through his collection and they simply blew me away.  Incredibly cool ... check them out. ",
+      "What is also amazing is that I inserted all this code asynchronously from the my blog content, which is stored as JSON, and was added dynamically ",
+      "only when the blog topic was clicked on.  I think that is way cool as well.  It also opens up a HUGE potential for adding javascript ",
+      "modules dynamically.  I'm no expert in the matter, but it would also seem to open up some doors for hackers?  Just saying ..."
+    ]
   }
 ]

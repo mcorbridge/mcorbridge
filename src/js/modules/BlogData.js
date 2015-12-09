@@ -6,9 +6,9 @@ angular.module('BlogData', [])
 
 	// todo store all the blog post data in json then populate the factory objects when that data is returned and processed
 	.controller('getBlogPostsCtrl', ['$rootScope', '$http',
-		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6', 'blogTopic7',
+		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6', 'blogTopic7', 'blogTopic8',
 		function ($scope, $http,
-				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6, blogTopic7) {
+				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6, blogTopic7, blogTopic8) {
 		$http.get('../js/json/blogData.json').
 			success(function (data, status, headers, config) {
 				var re = new RegExp('_', 'g');
@@ -20,6 +20,7 @@ angular.module('BlogData', [])
 				blogTopic5.blogContent = data[5].blogContent.join('_').toString().replace(re, '');
 				blogTopic6.blogContent = data[6].blogContent.join('_').toString().replace(re, '');
 				blogTopic7.blogContent = data[7].blogContent.join('_').toString().replace(re, '');
+				blogTopic8.blogContent = data[8].blogContent.join('_').toString().replace(re, '');
 			}).
 			error(function (data, status, headers, config) {
 				console.log('Blog json data was not received correctly.');
@@ -189,14 +190,12 @@ angular.module('BlogData', [])
 
 	.factory('blogTopic8', function () {
 		return {
-			blogDate: 'October 25, 2015',
-			abbrBlogDate: '25-10-2015',
-			blogTitle: 'Git along little doggie',
-			blogCategory: 'development, tools',
-			blogAbstract: 'A productivity tool with an unpleasant command line interface, that treats its users with such utter contempt.',
-			blogContent: 'Git is the source code version control system that is rapidly becoming the standard for open source projects. It has a powerful distributed model which allows advanced users to do tricky things with branches, and rewriting history. What a pity that it&#39;s so hard to learn, has such an unpleasant command line interface, and treats its users with such utter contempt.' +
-			'<img src="../img/git.png" style="float:left;margin:10px">' +
-			'',
+			blogDate: "December 8, 2015",
+			abbrBlogDate: "8-12-2015",
+			blogTitle: "How cool is this!",
+			blogCategory: "javascript, animation",
+			blogAbstract: "Mike Bostock (PhD Stanford) is creating these amazing javascript animations with the D3 Plugin he created",
+			blogContent: '',
 			blogData: function () {
 				var tmp = {};
 				tmp.date = this.blogDate;
@@ -352,6 +351,26 @@ angular.module('BlogData', [])
 			'</pre>' +
 			'<div class="newLine"></div>' +
 			'Notice that the paragraph is broken up in an array of strings.  Now once the json data is received by the web page, it is a simple matter to loop through the array of strings and rebuild the paragraph.',
+			blogData: function () {
+				var tmp = {};
+				tmp.date = this.blogDate;
+				tmp.title = this.blogTitle;
+				tmp.content = this.blogContent;
+				return tmp;
+			}
+		}
+	})
+
+	.factory('blogTopic13', function () {
+		return {
+			blogDate: 'October 25, 2015',
+			abbrBlogDate: '25-10-2015',
+			blogTitle: 'Git along little doggie',
+			blogCategory: 'development, tools',
+			blogAbstract: 'A productivity tool with an unpleasant command line interface, that treats its users with such utter contempt.',
+			blogContent: 'Git is the source code version control system that is rapidly becoming the standard for open source projects. It has a powerful distributed model which allows advanced users to do tricky things with branches, and rewriting history. What a pity that it&#39;s so hard to learn, has such an unpleasant command line interface, and treats its users with such utter contempt.' +
+			'<img src="../img/git.png" style="float:left;margin:10px">' +
+			'',
 			blogData: function () {
 				var tmp = {};
 				tmp.date = this.blogDate;
