@@ -2,335 +2,83 @@
  * Created by Mike on 11/23/2015.
  */
 
-angular.module('BlogTopic', ['BlogData', 'ngDialog', 'ngSanitize'])
+angular.module('BlogTopic', ['ngSanitize'])
 
-	//------------------------------------------------------------------------------------------------------------------
-	//todo I'm going to find a way to add more to this search functionality after I have added enough blog content
-	.controller('blogTopicCtrl',
-	['$rootScope', '$scope',
-		'blogTopic0', 'blogTopic1', 'blogTopic2', 'blogTopic3', 'blogTopic4', 'blogTopic5', 'blogTopic6', 'blogTopic7', 'blogTopic8',
-		'blogTopic9', 'blogTopic10', 'blogTopic11', 'blogTopic12',
-		'$filter', 'ngDialog',
-		function ($rootScope, $scope,
-				  blogTopic0, blogTopic1, blogTopic2, blogTopic3, blogTopic4, blogTopic5, blogTopic6, blogTopic7, blogTopic8, blogTopic9, blogTopic10, blogTopic11, blogTopic12,
-				  $filter, ngDialog) {
+	.controller('blogSearchCtrl', ['$scope', '$http', '$sce', function ($scope, $http, $sce) {
 
+		$http.get('../js/json/blogData.json').
+			success(function (data, status, headers, config) {
+				$scope.blogItems = data;
+			}).
+			error(function (data, status, headers, config) {
+				console.log('Blog json data was not received correctly.');
+			});
 
-			$scope.year = {
-				OhOneSix: "2016",
-				OhOneFive: "2015",
-				OhOneFour: "2014",
-				OhOneThree: "2013",
-				OhOneTwo: "2012",
-				OhOneOne: "2011"
-			}
+		$scope.itemClick = function (blogItem) {
+			TweenMax.set('.blogContainer', {visibility: 'hidden'});
+			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
 
-		var blogs = [
-			blogTopic0.blogData(),
-			blogTopic1.blogData(),
-			blogTopic2.blogData(),
-			blogTopic3.blogData(),
-			blogTopic4.blogData(),
-			blogTopic5.blogData(),
-			blogTopic6.blogData(),
-			blogTopic7.blogData(),
-			blogTopic8.blogData(),
-			blogTopic9.blogData(),
-			blogTopic10.blogData(),
-			blogTopic11.blogData(),
-			blogTopic12.blogData()
-		];
-
-			$scope.doBlogSearch = function () {
-
-				var isSearchTermFound = false;
-				var searchResults = '';
-
-			for (var n = 0; n < blogs.length; n++) {
-				if (searchTitle($scope.searchTerm, blogs[n].title) !== -1) {
-					isSearchTermFound = true;
-				}
-				if (searchContent($scope.searchTerm, blogs[n].content) !== -1) {
-					isSearchTermFound = true;
-				}
-				if (isSearchTermFound) {
-					searchResults += blogs[n].date;
-				}
-
-				//todo eventually I would like the highlight the actual text in the blog (somehow)
-				var addSpan = $filter('AddSpan')(blogs[n].title, $scope.searchTerm);
-				console.log(addSpan);
-
-			}
-				openDialog(searchResults);
-			};
-
-			var openDialog = function (searchResults) {
-				$scope.dialogBind = searchResults;
-
-				ngDialog.open({
-					template: 'partials/_searchDialog.html',
-					controller: 'blogTopicCtrl',
-					className: 'ngdialog-theme-plain',
-					closeByDocument: true,
-					scope: $scope
-				});
-		}
-
-
-		var searchTitle = function (searchTerm, blogTitle) {
-			return blogTitle.indexOf(searchTerm);
+			$scope.blogTitle = blogItem.blogTitle;
+			$scope.blogDate = blogItem.blogDate;
+			$scope.blogAbstract = blogItem.blogAbstract;
+			var re = new RegExp('_', 'g');
+			$scope.blogContent = $sce.trustAsHtml(blogItem.blogContent.join('_').toString().replace(re, ''));
 		};
 
-		var searchContent = function (searchTerm, blogContent) {
-			return blogContent.indexOf(searchTerm);
+		$scope.srchBtnLbl = 'search';
+
+		var expr1 = function (item) {
+			if (searchAllBlogText(item, $scope.searchTerm)) {
+				return true;
+			} else {
+				return false;
+			}
 		};
-	}])
 
-	//------------------------------------------------------------------------------------------------------------------
+		var expr2 = function (item) {
+			return true;
+		};
 
-	.controller('fullBlogArticleCtrl', ['$rootScope', '$scope', '$sce', 'blogDataFactory', function ($rootScope, $scope, $sce, blogDataFactory) {
+		var searchAllBlogText = function (item, searchTerm) {
+			var blogContent = item.blogContent.toString();
+			var searchTermFound = false;
+			if (item.blogDate.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase()) !== -1) {
+				searchTermFound = true;
+			}
+			if (item.blogTitle.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase()) !== -1) {
+				searchTermFound = true;
+			}
+			if (item.blogAbstract.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase()) !== -1) {
+				searchTermFound = true;
+			}
+			if (blogContent.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase()) !== -1) {
+				searchTermFound = true;
+			}
+			return searchTermFound;
+		};
 
-		var data;
+		$scope.filterExpr = expr2;
 
-		$rootScope.$on('blogItemClicked', function () {
-			data = blogDataFactory.getBlogInfo();
-			$scope.blogTitle = data.blogTitle;
-			$scope.blogDate = data.blogDate;
-			$scope.blogAbstract = data.blogAbstract;
-			$scope.blogContent = $sce.trustAsHtml(data.blogContent);
-		});
+		var isSearch = false;
 
-		$scope.doClick = function () {
+		$scope.doBlogSearch = function () {
+			if (!isSearch) {
+				$scope.filterExpr = expr1;
+				$scope.srchBtnLbl = 'clear';
+			} else {
+				$scope.filterExpr = expr2;
+				$scope.srchBtnLbl = 'search';
+				$scope.searchTerm = '';
+			}
+			isSearch = !isSearch;
+		};
+
+		$scope.closeFullBlogItem = function () {
 			TweenMax.set('.blogContainer', {visibility: 'visible'});
 			TweenMax.set('.fullBlogArticle', {visibility: 'hidden'});
 		}
-	}])
-
-	//------------------------------------------------------------------------------------------------------------------
-
-	.controller('blog0Ctrl', ['$rootScope', '$scope', 'blogTopic0', 'blogDataFactory', function ($rootScope, $scope, blogTopic0, blogDataFactory) {
-
-		$scope.doBlogClick = function () {
-			blogDataFactory.setBlogInfo(blogTopic0.blogTitle, blogTopic0.blogDate, blogTopic0.blogAbstract, blogTopic0.blogContent);
-			TweenMax.set('.blogContainer', {visibility: 'hidden'});
-			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
-			$rootScope.$emit('blogItemClicked');
-		};
-
-		$scope.blogTitle = blogTopic0.blogTitle;
-		$scope.blogDate = blogTopic0.blogDate;
-		$scope.blogAbstract = blogTopic0.blogAbstract;
 
 	}])
 
-	//------------------------------------------------------------------------------------------------------------------
 
-	.controller('blog1Ctrl', ['$rootScope', '$scope', 'blogTopic1', 'blogDataFactory', function ($rootScope, $scope, blogTopic1, blogDataFactory) {
-
-		$scope.doBlogClick = function () {
-			blogDataFactory.setBlogInfo(blogTopic1.blogTitle, blogTopic1.blogDate, blogTopic1.blogAbstract, blogTopic1.blogContent);
-			TweenMax.set('.blogContainer', {visibility: 'hidden'});
-			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
-			$rootScope.$emit('blogItemClicked');
-		};
-
-		$scope.blogTitle = blogTopic1.blogTitle;
-		$scope.blogDate = blogTopic1.blogDate;
-		$scope.blogAbstract = blogTopic1.blogAbstract;
-	}])
-
-	//------------------------------------------------------------------------------------------------------------------
-
-	.controller('blog2Ctrl', ['$rootScope', '$scope', 'blogTopic2', 'blogDataFactory', function ($rootScope, $scope, blogTopic2, blogDataFactory) {
-
-		$scope.doBlogClick = function () {
-			blogDataFactory.setBlogInfo(blogTopic2.blogTitle, blogTopic2.blogDate, blogTopic2.blogAbstract, blogTopic2.blogContent);
-			TweenMax.set('.blogContainer', {visibility: 'hidden'});
-			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
-			$rootScope.$emit('blogItemClicked');
-		};
-
-		$scope.blogTitle = blogTopic2.blogTitle;
-		$scope.blogDate = blogTopic2.blogDate;
-		$scope.blogAbstract = blogTopic2.blogAbstract;
-	}])
-
-	//------------------------------------------------------------------------------------------------------------------
-	.controller('blog3Ctrl', ['$rootScope', '$scope', 'blogTopic3', 'blogDataFactory', function ($rootScope, $scope, blogTopic3, blogDataFactory) {
-
-		$scope.doBlogClick = function () {
-			blogDataFactory.setBlogInfo(blogTopic3.blogTitle, blogTopic3.blogDate, blogTopic3.blogAbstract, blogTopic3.blogContent);
-			TweenMax.set('.blogContainer', {visibility: 'hidden'});
-			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
-			$rootScope.$emit('blogItemClicked');
-		};
-
-		$scope.blogTitle = blogTopic3.blogTitle;
-		$scope.blogDate = blogTopic3.blogDate;
-		$scope.blogAbstract = blogTopic3.blogAbstract;
-	}])
-
-	//------------------------------------------------------------------------------------------------------------------
-	.controller('blog4Ctrl', ['$rootScope', '$scope', 'blogTopic4', 'blogDataFactory', function ($rootScope, $scope, blogTopic4, blogDataFactory) {
-
-		$scope.doBlogClick = function () {
-			blogDataFactory.setBlogInfo(blogTopic4.blogTitle, blogTopic4.blogDate, blogTopic4.blogAbstract, blogTopic4.blogContent);
-			TweenMax.set('.blogContainer', {visibility: 'hidden'});
-			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
-			$rootScope.$emit('blogItemClicked');
-		};
-
-		$scope.blogTitle = blogTopic4.blogTitle;
-		$scope.blogDate = blogTopic4.blogDate;
-		$scope.blogAbstract = blogTopic4.blogAbstract;
-	}])
-
-	//------------------------------------------------------------------------------------------------------------------
-	.controller('blog5Ctrl', ['$rootScope', '$scope', 'blogTopic5', 'blogDataFactory', function ($rootScope, $scope, blogTopic5, blogDataFactory) {
-
-		$scope.doBlogClick = function () {
-			blogDataFactory.setBlogInfo(blogTopic5.blogTitle, blogTopic5.blogDate, blogTopic5.blogAbstract, blogTopic5.blogContent);
-			TweenMax.set('.blogContainer', {visibility: 'hidden'});
-			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
-			$rootScope.$emit('blogItemClicked');
-		};
-
-		$scope.blogTitle = blogTopic5.blogTitle;
-		$scope.blogDate = blogTopic5.blogDate;
-		$scope.blogAbstract = blogTopic5.blogAbstract;
-	}])
-
-	//------------------------------------------------------------------------------------------------------------------
-	.controller('blog6Ctrl', ['$rootScope', '$scope', 'blogTopic6', 'blogDataFactory', function ($rootScope, $scope, blogTopic6, blogDataFactory) {
-
-		$scope.doBlogClick = function () {
-			blogDataFactory.setBlogInfo(blogTopic6.blogTitle, blogTopic6.blogDate, blogTopic6.blogAbstract, blogTopic6.blogContent);
-			TweenMax.set('.blogContainer', {visibility: 'hidden'});
-			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
-			$rootScope.$emit('blogItemClicked');
-		};
-
-		$scope.blogTitle = blogTopic6.blogTitle;
-		$scope.blogDate = blogTopic6.blogDate;
-		$scope.blogAbstract = blogTopic6.blogAbstract;
-	}])
-
-	//------------------------------------------------------------------------------------------------------------------
-	.controller('blog7Ctrl', ['$rootScope', '$scope', 'blogTopic7', 'blogDataFactory', function ($rootScope, $scope, blogTopic7, blogDataFactory) {
-
-		$scope.doBlogClick = function () {
-			blogDataFactory.setBlogInfo(blogTopic7.blogTitle, blogTopic7.blogDate, blogTopic7.blogAbstract, blogTopic7.blogContent);
-			TweenMax.set('.blogContainer', {visibility: 'hidden'});
-			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
-			$rootScope.$emit('blogItemClicked');
-		};
-
-		$scope.blogTitle = blogTopic7.blogTitle;
-		$scope.blogDate = blogTopic7.blogDate;
-		$scope.blogAbstract = blogTopic7.blogAbstract;
-	}])
-
-	//------------------------------------------------------------------------------------------------------------------
-	.controller('blog8Ctrl', ['$rootScope', '$scope', 'blogTopic8', 'blogDataFactory', function ($rootScope, $scope, blogTopic8, blogDataFactory) {
-
-		$scope.doBlogClick = function () {
-			blogDataFactory.setBlogInfo(blogTopic8.blogTitle, blogTopic8.blogDate, blogTopic8.blogAbstract, blogTopic8.blogContent);
-			TweenMax.set('.blogContainer', {visibility: 'hidden'});
-			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
-			$rootScope.$emit('blogItemClicked');
-		};
-
-		$scope.blogTitle = blogTopic8.blogTitle;
-		$scope.blogDate = blogTopic8.blogDate;
-		$scope.blogAbstract = blogTopic8.blogAbstract;
-	}])
-
-	//------------------------------------------------------------------------------------------------------------------
-	.controller('blog9Ctrl', ['$rootScope', '$scope', 'blogTopic9', 'blogDataFactory', function ($rootScope, $scope, blogTopic9, blogDataFactory) {
-
-		$scope.doBlogClick = function () {
-			blogDataFactory.setBlogInfo(blogTopic9.blogTitle, blogTopic9.blogDate, blogTopic9.blogAbstract, blogTopic9.blogContent);
-			TweenMax.set('.blogContainer', {visibility: 'hidden'});
-			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
-			$rootScope.$emit('blogItemClicked');
-		};
-
-		$scope.blogTitle = blogTopic9.blogTitle;
-		$scope.blogDate = blogTopic9.blogDate;
-		$scope.blogAbstract = blogTopic9.blogAbstract;
-	}])
-
-	//------------------------------------------------------------------------------------------------------------------
-	.controller('blog10Ctrl', ['$rootScope', '$scope', 'blogTopic10', 'blogDataFactory', function ($rootScope, $scope, blogTopic10, blogDataFactory) {
-
-		$scope.doBlogClick = function () {
-			blogDataFactory.setBlogInfo(blogTopic10.blogTitle, blogTopic10.blogDate, blogTopic10.blogAbstract, blogTopic10.blogContent);
-			TweenMax.set('.blogContainer', {visibility: 'hidden'});
-			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
-			$rootScope.$emit('blogItemClicked');
-		};
-
-		$scope.blogTitle = blogTopic10.blogTitle;
-		$scope.blogDate = blogTopic10.blogDate;
-		$scope.blogAbstract = blogTopic10.blogAbstract;
-	}])
-
-	//------------------------------------------------------------------------------------------------------------------
-	.controller('blog11Ctrl', ['$rootScope', '$scope', 'blogTopic11', 'blogDataFactory', function ($rootScope, $scope, blogTopic11, blogDataFactory) {
-
-		$scope.doBlogClick = function () {
-			blogDataFactory.setBlogInfo(blogTopic11.blogTitle, blogTopic11.blogDate, blogTopic11.blogAbstract, blogTopic11.blogContent);
-			TweenMax.set('.blogContainer', {visibility: 'hidden'});
-			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
-			$rootScope.$emit('blogItemClicked');
-		};
-
-		$scope.blogTitle = blogTopic11.blogTitle;
-		$scope.blogDate = blogTopic11.blogDate;
-		$scope.blogAbstract = blogTopic11.blogAbstract;
-	}])
-
-	//------------------------------------------------------------------------------------------------------------------
-	.controller('blog12Ctrl', ['$rootScope', '$scope', 'blogTopic12', 'blogDataFactory', function ($rootScope, $scope, blogTopic12, blogDataFactory) {
-
-		$scope.doBlogClick = function () {
-			blogDataFactory.setBlogInfo(blogTopic12.blogTitle, blogTopic12.blogDate, blogTopic12.blogAbstract, blogTopic12.blogContent);
-			TweenMax.set('.blogContainer', {visibility: 'hidden'});
-			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
-			$rootScope.$emit('blogItemClicked');
-		};
-
-		$scope.blogTitle = blogTopic12.blogTitle;
-		$scope.blogDate = blogTopic12.blogDate;
-		$scope.blogAbstract = blogTopic12.blogAbstract;
-	}])
-
-	//------------------------------------------------------------------------------------------------------------------
-
-	.factory('blogDataFactory', function () {
-
-		var data = {};
-		return {
-			setBlogInfo: function (blogTitle, blogDate, blogAbstract, blogContent) {
-				data.blogTitle = blogTitle;
-				data.blogDate = blogDate;
-				data.blogAbstract = blogAbstract;
-				data.blogContent = blogContent;
-			},
-			getBlogInfo: function () {
-				return data;
-			}
-		}
-	})
-
-	.filter("AddSpan", function () {
-		return function (searchContent, searchTerm) {
-			if (searchContent.indexOf(searchTerm) > -1) {
-				return "<span class='x'>" + searchTerm + "</span>";
-			} else {
-				return searchTerm;
-			}
-		}
-	});
 

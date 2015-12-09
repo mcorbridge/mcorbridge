@@ -14,14 +14,14 @@ angular.module('AboutMeTopic', [])
 			url: '../js/json/about.json'
 		}).then(function successCallback(response) {
 			var re = new RegExp('_', 'g');
-			var aboutMeLong = response.data.aboutMeLong.join('_').toString().replace(re, '');
-			$scope.aboutMeLongText = aboutMeLong;
+			$scope.aboutMeLongText = response.data.aboutMeLong.join('_').toString().replace(re, '');
 		}, function errorCallback(response) {
 			console.log('something went very, very wrong with retrieval of "about me" text.')
 		});
 
 		// default version state
 		TweenLite.set('.shortVersion', {css: {background: '#ffff00'}});
+		TweenLite.set('.aboutMeShort', {visibility: 'visible'});
 
 		$scope.divStyle = '#000000';
 
@@ -33,8 +33,6 @@ angular.module('AboutMeTopic', [])
 		};
 
 		$scope.onVersionClick = function (state) {
-
-			console.log('-----------> ' + state);
 
 			TweenLite.set('.longVersion', {css: {background: '#ffffff'}});
 			TweenLite.set('.shortVersion', {css: {background: '#ffffff'}});
