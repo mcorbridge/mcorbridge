@@ -176,15 +176,18 @@ a:hover, a:visited, a:link, a:active {
 	left: 900px;
 }
 
-.iconCogs {
-	position: absolute;
-	top: 5px;
-	left: 1250px;
-
+.fa-cogs {
+	color: #ffffff;
 }
 
 .fa-cogs:hover {
 	color: #33db39;
+}
+
+.iconCogs {
+	position: absolute;
+	top: 5px;
+	left: 5px;
 }
 
 .androidGreen {
@@ -192,20 +195,6 @@ a:hover, a:visited, a:link, a:active {
 	color: #A4C639;
 }
 
-.commentItem {
-	border: 1px solid black;
-	margin: 3px 3px 3px 3px;
-	background-color: rgba(123, 144, 213, 0.32);
-	width: 100%;
-}
-
-.commentList {
-	position: absolute;
-	top: 25px;
-	left: 20px;
-	width: 1230px;
-	height: 415px;
-}
 
 
 

@@ -338,4 +338,72 @@ body{
 	}
 }
 
+.toolsChest {
+	position: absolute;
+	top: 0;
+	left: -420px;
+	width: 400px;
+	height: 100%;
+	background-color: black;
+	border: 1px solid #333;
+	-webkit-box-shadow: 10px 0 5px -2px rgba(0, 0, 0, 0.32);
+	box-shadow: 10px 0 5px -2px rgba(0, 0, 0, 0.32);
+	font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+	.getComments {
+		position: absolute;
+		top: 100px;
+		left: 10%;
+		width: 70%;
+		font-size: large;
+		color: white;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		//border: 1px white solid;
+	}
+}
+
+.fa-times-circle-o {
+	position: absolute;
+	top: 5px;
+	left: 90%;
+	color: white;
+	&:hover {
+		color: red;
+	}
+}
+
+.fa-commenting-o {
+	color: white;
+	float: right;
+	&:hover {
+		color: #33db39;
+	}
+}
+
+.commentItem {
+	border: 1px solid black;
+	margin: 3px 3px 3px 3px;
+	background-color: rgba(123, 144, 213, 0.32);
+	width: 95%;
+}
+
+.commentList {
+	position: absolute;
+	top: 5px;
+	left: 20px;
+	width: 790px;
+	height: 385px;
+	//border: 1px solid black;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.modal-body {
+	width: 800px;
+	height: 400px;
+}
+
+
 

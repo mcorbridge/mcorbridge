@@ -4,9 +4,7 @@
 
 angular.module('AboutMeTopic', [])
 
-	.controller('aboutMeTopicCtrl', ['$rootScope', '$scope', '$sce', '$http', 'angularFireFactory', function ($rootScope, $scope, $sce, $http, angularFireFactory) {
-
-		angularFireFactory.init();
+	.controller('aboutMeTopicCtrl', ['$rootScope', '$scope', '$sce', '$http', 'angularFireFactory', function ($rootScope, $scope, $sce, $http) {
 
 		//get 'about me' text
 		$http({
@@ -73,19 +71,7 @@ angular.module('AboutMeTopic', [])
 			}
 		};
 
-		var getComments = function () {
-			var comments = angularFireFactory.read();
-			$scope.blogComments = [];
 
-			for (var n = 0; n < comments.length; n++) {
-				var comment = comments[n];
-				$scope.blogComments.push({
-					comment: comment.b.comment.comment,
-					date: comment.b.comment.date,
-					isRead: comment.b.comment.isRead
-				});
-			}
-		};
 
 		// ---------------------------------------------------
 		// Create dummy data

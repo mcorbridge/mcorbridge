@@ -37,22 +37,8 @@
 
 <body>
 
-<!-- Templates -->
-<script type="text/ng-template" id="firstDialogId">
-	<div class="ngdialog-message">
-		<h3>ngDialog template</h3>
-		<!--<p ng-show="theme">Test content for <code>{{theme}}</code></p>-->
-		<!--<p ng-show="ngDialogId">Dialog Id: <code>{{ngDialogId}}</code></p>-->
-		<!--<p class="data-passed-through" ng-show="ngDialogData.foo">Data passed through: <code>{{ngDialogData.foo}}</code></p>-->
-		<!--<p ng-show="dialogModel.message">Scope passed through: <code>{{dialogModel.message}}</code></p>-->
-		<p>Close this dialog:
-			<button class="inline close-this-dialog">Close</button>
-		</p>
-	</div>
-</script>
-
 <div class="header" ng-controller="headerCtrl">
-	<div class="co"></div>
+	<div class="co" ng-click="subRosa()"></div>
 	<div class="mcorbridgeAppArch">
 		<div ng-include="'partials/_mcorbridgeTitle.html'" onload="ngIncludeLoaded('mcorbridgeTitle')"></div>
 	</div>
@@ -61,7 +47,13 @@
 		<div ng-include="'partials/_madeWithAngular.html'" onload="ngIncludeLoaded('madeWithAngular')"></div>
 		<div ng-include="'partials/_madeWith.html'" onload="ngIncludeLoaded('madeWith')"></div>
 	</div>
-	<toast></toast>
+</div>
+
+<div class="toolsChest" ng-controller="toolsCtrl">
+	<i class="fa fa-cogs fa-5x iconCogs"></i>
+	<i class="fa fa-times-circle-o fa-3x" ng-click="closeToolsChest()"></i>
+
+	<div class="getComments">get comments<i class="fa fa-commenting-o fa-3x" ng-click="toolsGetComments()"></i></div>
 </div>
 
 <div class="screenDimensions" ng-controller="initCtrl" ng-bind="screenDimension"></div>
@@ -203,11 +195,11 @@
 
 <!--leave comment modal-->
 <div>
-	<script type="text/ng-template" id="myModalContent.html">
+	<script type="text/ng-template" id="addCommentContent.html">
 		<div class="modal-header">
 			<h3 class="modal-title">{{title}}</h3>
 		</div>
-		<div class="modal-body">
+		<div class="modal-body" style="height:170px">
 			<div class="modalFoo">
 				<form>
 					<textarea class="textComment" name="comment" placeholder="Enter comment here..." maxlength="500"
@@ -218,6 +210,27 @@
 		<div class="modal-footer">
 			<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
 			<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+		</div>
+	</script>
+</div>
+
+<!--show comments modal-->
+<div>
+	<script type="text/ng-template" id="showCommentsContent.html">
+		<div class="modal-header">
+			<h3 class="modal-title">{{title}}</h3>
+		</div>
+		<div class="modal-body">
+			<div class="commentList">
+				<div class="commentItem hvr-pop" ng-repeat="blogComment in blogComments"><span
+						style="font-style: italic">{{blogComment.date}}</span>
+					"{{blogComment.comment}}"
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<!--<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>-->
+			<button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
 		</div>
 	</script>
 </div>

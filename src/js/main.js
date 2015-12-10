@@ -103,7 +103,14 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 			$interval.cancel(swapMadeByImgInterval);
 		});
 
-
+		var subRosaClicks = 0;
+		$scope.subRosa = function () {
+			subRosaClicks++;
+			if (subRosaClicks >= 3) {
+				subRosaClicks = 0;
+				TweenLite.to('.toolsChest', 1, {left: '0', zIndex: '9999'});
+			}
+		};
 	}])
 
 	.controller('initCtrl', ['$rootScope', '$scope', 'getMedia', function($rootScope, $scope, getMedia) {
@@ -154,8 +161,8 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 
 			var modalInstance = $uibModal.open({
 				animation: true,
-				templateUrl: 'myModalContent.html',
-				controller: 'ModalInstanceCtrl',
+				templateUrl: 'addCommentContent.html',
+				controller: 'modalCommentInstanceCtrl',
 				size: size
 			});
 
@@ -167,7 +174,7 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 		};
 	}])
 
-	.controller('ModalInstanceCtrl', ['$scope', '$uibModalInstance', 'angularFireFactory', 'sanitizeInput', function ($scope, $uibModalInstance, angularFireFactory, sanitizeInput) {
+	.controller('modalCommentInstanceCtrl', ['$scope', '$uibModalInstance', 'angularFireFactory', 'sanitizeInput', function ($scope, $uibModalInstance, angularFireFactory, sanitizeInput) {
 
 		$scope.title = 'Leave a message for Mike ...';
 		$scope.comment = '';
@@ -199,5 +206,78 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 					$scope.comment = 'Try again, but this time with less profanity.';
 			}
 		}
-	}]);
+	}])
+
+	.controller('toolsCtrl', ['$rootScope', '$scope', '$uibModal', 'angularFireFactory', function ($rootScope, $scope, $uibModal, angularFireFactory) {
+
+		$scope.closeToolsChest = function () {
+			TweenLite.to('.toolsChest', 0.33, {left: '-420'});
+		};
+
+		$scope.toolsGetComments = function () {
+			console.log('toolsGetComments');
+
+			var openShowComments = function (size) {
+
+				var modalInstance = $uibModal.open({
+					animation: true,
+					templateUrl: 'showCommentsContent.html',
+					controller: 'modalShowCommentInstanceCtrl',
+					size: size,
+					backdrop: 'static'
+				});
+
+				modalInstance.result.then(function (selectedItem) {
+					$scope.selected = selectedItem;
+				}, function () {
+					console.log('Modal dismissed at: ' + new Date());
+				});
+			};
+
+			openShowComments('lg');
+			TweenLite.to('.toolsChest', 0.33, {left: '-420'});
+			angularFireFactory.init();
+		};
+
+	}])
+
+	.controller('modalShowCommentInstanceCtrl', ['$scope', '$uibModalInstance', 'angularFireFactory', function ($scope, $uibModalInstance, angularFireFactory) {
+
+		$scope.title = 'Comments for Mike ...';
+
+
+		var getComments = function () {
+			var comments = angularFireFactory.read();
+
+			console.log('comments');
+			console.log(comments);
+			console.log('comments');
+
+			$scope.blogComments = [];
+
+			for (var n = 0; n < comments.length; n++) {
+				var comment = comments[n];
+				$scope.blogComments.push({
+					comment: comment.b.comment.comment,
+					date: comment.b.comment.date,
+					isRead: comment.b.comment.isRead
+				});
+			}
+		};
+
+
+		$scope.ok = function () {
+			$uibModalInstance.close('close');
+			TweenLite.to('.toolsChest', 1, {left: '0', zIndex: '9999'});
+		};
+
+		$scope.cancel = function () {
+			$uibModalInstance.dismiss('cancel');
+			TweenLite.to('.toolsChest', 1, {left: '0', zIndex: '9999'});
+		};
+
+		getComments();
+
+	}])
+
 
