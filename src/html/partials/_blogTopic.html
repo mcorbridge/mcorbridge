@@ -6,7 +6,7 @@
 		<span class="input-group-addon" style="cursor:pointer" id="sizing-addon2" ng-click="doBlogSearch()">{{srchBtnLbl}}</span>
 		<input
 				type="text" class="form-control" placeholder="I'm looking for..." aria-describedby="sizing-addon2"
-				ng-model="searchTerm">
+				ng-model="searchTerm" ng-keyup="searchInputKeyUp($event)">
 	</div>
 
 	<div class="blogContainer">

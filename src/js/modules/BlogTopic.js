@@ -94,6 +94,12 @@ angular.module('BlogTopic', ['ngSanitize'])
 			}
 		}
 
+		$scope.searchInputKeyUp = function (event) {
+			if (event.keyCode === 13) {
+				$scope.doBlogSearch();
+			}
+		}
+
 	}])
 
 
