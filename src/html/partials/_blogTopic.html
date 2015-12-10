@@ -2,7 +2,7 @@
 
 	<div class="blogTopicText" ng-include="'../img/blog.svg'"></div>
 
-	<div class="input-group input-group-lg searchTermInput">
+	<div class="input-group input-group-lg searchTermInput" ng-show="showSearch">
 		<span class="input-group-addon" style="cursor:pointer" id="sizing-addon2" ng-click="doBlogSearch()">{{srchBtnLbl}}</span>
 		<input
 				type="text" class="form-control" placeholder="I'm looking for..." aria-describedby="sizing-addon2"
@@ -10,10 +10,13 @@
 	</div>
 
 	<div class="blogContainer">
-		<div class="blogItem" ng-repeat="blogItem in blogItems|filter:filterExpr">
-			<div class="blogItemTitle" ng-click="itemClick(blogItem)">{{blogItem.blogTitle}}</div>
-			<div class="blogItemDate" ng-click="itemClick(blogItem)">{{blogItem.blogDate}}</div>
-			<div class="blogItemAbstract" ng-click="itemClick(blogItem)">{{blogItem.blogAbstract}}</div>
+		<div ng-repeat="blogItem in blogItems|filter:filterExpr">
+			<div class="yearDivider" ng-if="isNewYear(blogItem.blogDate)"><span>{{blogYear}}</span></div>
+			<div class="blogItem">
+				<div class="blogItemTitle" ng-click="itemClick(blogItem)">{{blogItem.blogTitle}}</div>
+				<div class="blogItemDate" ng-click="itemClick(blogItem)">{{blogItem.blogDate}}</div>
+				<div class="blogItemAbstract" ng-click="itemClick(blogItem)">{{blogItem.blogAbstract}}</div>
+			</div>
 		</div>
 	</div>
 

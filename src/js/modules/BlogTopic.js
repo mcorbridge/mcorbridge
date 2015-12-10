@@ -6,6 +6,8 @@ angular.module('BlogTopic', ['ngSanitize'])
 
 	.controller('blogSearchCtrl', ['$scope', '$http', '$sce', function ($scope, $http, $sce) {
 
+		$scope.showSearch = true;
+
 		$http.get('../js/json/blogData.json').
 			success(function (data, status, headers, config) {
 				$scope.blogItems = data;
@@ -15,6 +17,7 @@ angular.module('BlogTopic', ['ngSanitize'])
 			});
 
 		$scope.itemClick = function (blogItem) {
+			$scope.showSearch = false;
 			TweenMax.set('.blogContainer', {visibility: 'hidden'});
 			TweenMax.set('.fullBlogArticle', {visibility: 'visible'});
 
@@ -74,8 +77,21 @@ angular.module('BlogTopic', ['ngSanitize'])
 		};
 
 		$scope.closeFullBlogItem = function () {
+			$scope.showSearch = true;
 			TweenMax.set('.blogContainer', {visibility: 'visible'});
 			TweenMax.set('.fullBlogArticle', {visibility: 'hidden'});
+		};
+
+		$scope.blogYear = '';
+
+		$scope.isNewYear = function (blogDate) {
+			var yr = blogDate.split(',')[1].toString();
+			if ($scope.blogYear !== yr) {
+				$scope.blogYear = yr;
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 	}])
