@@ -149,3 +149,31 @@ pre {
 	color: #33db39;
 }
 
+.sortAsc {
+	position: absolute;
+	top: 50px;
+	left: 200px;
+	//border: 1px solid black;
+	.fa-calendar {
+		color: #7c9ea3;
+	}
+	.fa-arrow-up {
+		position: relative;
+		left: -7px;
+	}
+}
+
+.sortDesc {
+	position: absolute;
+	top: 50px;
+	left: 240px;
+	//border: 1px solid black;
+	.fa-calendar {
+		color: #7c9ea3;
+	}
+	.fa-arrow-down {
+		position: relative;
+		left: -7px;
+	}
+}
+

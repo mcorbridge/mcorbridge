@@ -9,9 +9,20 @@
 				ng-model="searchTerm" ng-keyup="searchInputKeyUp($event)">
 	</div>
 
+	<div class="sortAsc" ng-click="sortByDate('asc')" ng-show="showSearch">
+		<i class="fa fa-calendar"></i>
+		<i class="fa fa-arrow-up"></i>
+	</div>
+
+	<div class="sortDesc" ng-click="sortByDate('desc')" ng-show="showSearch">
+		<i class="fa fa-calendar"></i>
+		<i class="fa fa-arrow-down"></i>
+	</div>
+
 	<div class="blogContainer">
 		<div ng-repeat="blogItem in blogItems|filter:filterExpr">
-			<div class="yearDivider" ng-if="isNewYear(blogItem.blogDate)"><span>{{blogYear}}</span></div>
+			<div class="yearDivider" ng-if="isNewYear(blogItem.blogDate)" ng-show="isSortDesc"><span>{{blogYear}}</span>
+			</div>
 			<div class="blogItem">
 				<div class="blogItemTitle" ng-click="itemClick(blogItem)">{{blogItem.blogTitle}}</div>
 				<div class="blogItemDate" ng-click="itemClick(blogItem)">{{blogItem.blogDate}}</div>

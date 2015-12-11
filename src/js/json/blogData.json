@@ -2,7 +2,7 @@
   //                                     blogTopic0
   {
     "blogDate": "November 1, 2015",
-    "abbrblogDate": "26-11-15",
+    "abbrBlogDate": "1-11-15",
     "blogTitle": "Abandon Greensock in favor of Famo.us?",
     "blogCategory": "animation, javascript",
     "blogAbstract": " An opinionated framework for building your entire app/site like famo.us, or Greensock?",
@@ -28,7 +28,7 @@
   //                                     blogTopic1
   {
     "blogDate": "November 26, 2015",
-    "abbrblogDate": "26-11-15",
+    "abbrBlogDate": "26-11-15",
     "blogTitle": "P = NP",
     "blogCategory": "general, personal",
     "blogAbstract": "How to Explain Zero-Knowledge Protocols to Your Children",
@@ -52,7 +52,7 @@
   //                                     blogTopic2
   {
     "blogDate": "November 12, 2015",
-    "abbrblogDate": "27-11-15",
+    "abbrBlogDate": "12-11-15",
     "blogTitle": "Notes on installing and running my first Famo.us project",
     "blogCategory": "animation, javascript",
     "blogAbstract": "There are some great resources on getting your first Famo.us project running locally but the best resource is ...",
@@ -108,7 +108,7 @@
   //                                     blogTopic4
   {
     "blogDate": "November 29, 2015",
-    "abbrBlogDate": "11-11-15",
+    "abbrBlogDate": "29-11-15",
     "blogTitle": "Biscotti",
     "blogCategory": "general, personal",
     "blogAbstract": "Twice baked ideas that taste best dipped in chocolate",
@@ -131,7 +131,7 @@
   //                                     blogTopic5
   {
     "blogDate": "January 9, 2011",
-    "abbrBlogDate": "9-1-2011",
+    "abbrBlogDate": "9-1-11",
     "blogTitle": "A winter kayak excursion",
     "blogCategory": "general, personal",
     "blogAbstract": "The blue sky and brilliant sun belied the fact that his was indeed a frigid place to be.",
@@ -166,7 +166,7 @@
   //                                     blogTopic6
   {
     "blogDate": "January 4, 2011",
-    "abbrBlogDate": "4-1-2011",
+    "abbrBlogDate": "4-1-11",
     "blogTitle": "Flex Fiber in your Diet",
     "blogCategory": "flex, actionscript",
     "blogAbstract": "No it's not the fiber you're thinking of.",
@@ -201,7 +201,7 @@
   //                                     blogTopic7
   {
     "blogDate": "November 11, 2015",
-    "abbrBlogDate": "11-11-2015",
+    "abbrBlogDate": "11-11-15",
     "blogTitle": "Honesty ... what idiot would build their own blog application?",
     "blogCategory": "angularjs",
     "blogAbstract": "When WordPress, Typepad, Squarespace, LiveJournal, Blogger (the list goes on and on) are all available?",
@@ -238,7 +238,7 @@
   //                                     blogTopic8
   {
     "blogDate": "December 8, 2015",
-    "abbrBlogDate": "8-12-2015",
+    "abbrBlogDate": "8-12-15",
     "blogTitle": "How cool is this!",
     "blogCategory": "javascript, animation",
     "blogAbstract": "Mike Bostock (PhD Stanford) is creating these amazing javascript animations with the D3 Plugin he created",

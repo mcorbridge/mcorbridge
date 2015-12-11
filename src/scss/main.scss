@@ -362,6 +362,45 @@ body{
 		text-align: center;
 		//border: 1px white solid;
 	}
+
+	.signIn {
+		position: absolute;
+		top: 200px;
+		left: 10%;
+		width: 70%;
+		font-size: large;
+		color: white;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		//border: 1px white solid;
+	}
+
+	.signOut {
+		position: absolute;
+		top: 300px;
+		left: 10%;
+		width: 70%;
+		font-size: large;
+		color: white;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		//border: 1px white solid;
+	}
+
+	.deviceDims {
+		position: absolute;
+		top: 400px;
+		left: 10%;
+		width: 70%;
+		font-size: large;
+		color: white;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		//border: 1px white solid;
+	}
 }
 
 .fa-times-circle-o {
@@ -381,6 +420,31 @@ body{
 		color: #33db39;
 	}
 }
+
+.fa-sign-in {
+	color: white;
+	float: right;
+	&:hover {
+		color: #33db39;
+	}
+}
+
+.fa-sign-out {
+	color: white;
+	float: right;
+	&:hover {
+		color: #33db39;
+	}
+}
+
+.fa-arrows {
+	color: white;
+	float: right;
+	&:hover {
+		color: #33db39;
+	}
+}
+
 
 .commentItem {
 	border: 1px solid black;

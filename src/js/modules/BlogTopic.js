@@ -7,14 +7,36 @@ angular.module('BlogTopic', ['ngSanitize'])
 	.controller('blogSearchCtrl', ['$scope', '$http', '$sce', function ($scope, $http, $sce) {
 
 		$scope.showSearch = true;
+		$scope.isSortDesc = true;
 
 		$http.get('../js/json/blogData.json').
 			success(function (data, status, headers, config) {
-				$scope.blogItems = data;
+				$scope.blogItems = doSpecialDateSort(data);
 			}).
 			error(function (data, status, headers, config) {
 				console.log('Blog json data was not received correctly.');
 			});
+
+		var doSpecialDateSort = function (data) {
+			for (var obj in data) {
+				var dateStr = data[obj]['abbrBlogDate'].split('-');
+				var date = new Date('20' + dateStr[2], dateStr[1] - 1, dateStr[0]);
+				data[obj]['dateObj'] = date;
+			}
+			return data.sort(date_sort_desc);
+		}
+
+		var date_sort_asc = function (obj1, obj2) {
+			if (obj1.dateObj > obj2.dateObj) return 1;
+			if (obj1 < obj2.dateObj) return -1;
+			return 0;
+		};
+
+		var date_sort_desc = function (obj1, obj2) {
+			if (obj1.dateObj < obj2.dateObj) return 1;
+			if (obj1 > obj2.dateObj) return -1;
+			return 0;
+		};
 
 		$scope.itemClick = function (blogItem) {
 			$scope.showSearch = false;
@@ -92,11 +114,22 @@ angular.module('BlogTopic', ['ngSanitize'])
 			} else {
 				return false;
 			}
-		}
+		};
 
 		$scope.searchInputKeyUp = function (event) {
 			if (event.keyCode === 13) {
 				$scope.doBlogSearch();
+			}
+		}
+
+		$scope.sortByDate = function (direction) {
+			$scope.blogYear = '';
+			if (direction === 'asc') {
+				$scope.isSortDesc = false;
+				$scope.blogItems.sort(date_sort_asc);
+			} else if (direction === 'desc') {
+				$scope.blogItems.sort(date_sort_desc);
+				$scope.isSortDesc = true;
 			}
 		}
 

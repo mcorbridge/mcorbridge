@@ -239,6 +239,10 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 			angularFireFactory.init();
 		};
 
+		$scope.signIn = function () {
+			console.log('sign in');
+		}
+
 	}])
 
 	.controller('modalShowCommentInstanceCtrl', ['$scope', '$uibModalInstance', 'angularFireFactory', function ($scope, $uibModalInstance, angularFireFactory) {
