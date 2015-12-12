@@ -145,6 +145,14 @@ pre {
 	}
 }
 
+.monthDivider {
+	position: relative;
+	height: 3px;
+	left: 5px;
+	width: 100%;
+	background-color: #2e5dac;
+}
+
 .fa-arrow-circle-left:hover {
 	color: #33db39;
 }
@@ -176,4 +184,6 @@ pre {
 		left: -7px;
 	}
 }
+
+
 

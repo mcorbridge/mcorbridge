@@ -104,11 +104,28 @@ angular.module('BlogTopic', ['ngSanitize'])
 		};
 
 		$scope.blogYear = '';
-
+		var isNewYearDivider = false;
 		$scope.isNewYear = function (blogDate) {
 			var yr = blogDate.split(',')[1].toString();
 			if ($scope.blogYear !== yr) {
 				$scope.blogYear = yr;
+				isNewYearDivider = true;
+				return true;
+			} else {
+				return false;
+			}
+		};
+
+		var blogMonth = '';
+		$scope.isNewMonth = function (blogDate) {
+			var month = blogDate.split(',')[0].split(' ')[0].toString();
+			if (isNewYearDivider) {
+				isNewYearDivider = false;
+				blogMonth = month;
+				return;
+			}
+			if (blogMonth !== month) {
+				blogMonth = month;
 				return true;
 			} else {
 				return false;

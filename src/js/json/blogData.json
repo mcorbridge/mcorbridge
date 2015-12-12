@@ -250,5 +250,131 @@
       "only when the blog topic was clicked on.  I think that is way cool as well.  It also opens up a HUGE potential for adding javascript ",
       "modules dynamically.  I'm no expert in the matter, but it would also seem to open up some doors for hackers?  Just saying ..."
     ]
+  },
+  {
+    "blogDate": "December 2, 2015",
+    "abbrBlogDate": "2-12-15",
+    "blogTitle": "Storing multi-line comments in JSON",
+    "blogCategory": "javascript, json",
+    "blogAbstract": "Look at what happens if you attempt to store entire blog entries in JSON!",
+    "blogContent": [
+      "JSON is an extremely rigid schema. It is great, but it has a couple of shortcomings, the largest of which is the inability to store multi-line strings. This can be particularly annoying for storing things like structured text and public keys in JSON for later interaction with JavaScript code in the browser. ",
+      "Here is a solution that works great!",
+      "<br>",
+      "<pre style='left:25px;width:1200px'>",
+      "&nbsp;{\n",
+      "&nbsp;&nbsp;'blogContent': [\n",
+      "&nbsp;&nbsp;&nbsp;'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo,\n",
+      "&nbsp;&nbsp;&nbsp;'inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,\n",
+      "&nbsp;&nbsp;&nbsp;'sed quia consequuntur magni dolores eos qui cunning lingus voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,\n",
+      "&nbsp;&nbsp;&nbsp;'consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad.,\n",
+      "&nbsp;&nbsp;]}",
+      "</pre>",
+      "<br>",
+      "Notice that the paragraph is broken up in an array of strings.  Now once the json data is received by the web page, it is a simple matter to loop through the array of strings and rebuild the paragraph."
+    ]
+  },
+  {
+    "blogDate": "December 1, 2015",
+    "abbrBlogDate": "1-12-15",
+    "blogTitle": "gulp-minify-html suddenly stops minifying a file in a directory?",
+    "blogCategory": "development, gulp",
+    "blogAbstract": "I was happily minifying my AngularJS project, when suddenly ...",
+    "blogContent": [
+      "It sneaks up on you doesn&#39;t.  Everything is going along smoothly.  You feel like the Code Gods are finally starting to smile at you. ",
+      "You can virtually feel the wind filling your sails, as your spinnaker billows in the warm blue ocean sky.  Then,  'crunch', out of the blue you hit a  sandbar.  In my particular case, I was running my Gulp build process through a series of watchers.  Ok, I will admit that for safety I would regularly run Gulp just to ",
+      "make sure all my code has 'compiled'.  (Side note: coming from a world where code was truly compiled, I find the use of the term 'compiled' slightly humerous.) ",
+      "I had a number of html files that I kept organized in a separate directly that I used in <code>ngIncludes</code> that were reqularly updating from the <code>src</code> to ",
+      "the <code>dist</code>.  When my changes suddenly stopped appearing on my web page, I was perplexed.  I checked and indeed the file was there.  I checked the <code>dist</code>",
+      "and indeed an earlier version was there, but it had stopped updating.  'Here we go again', I mumbled to myself.  I changed the file name and 'Presto!', it appeared back in the <code>dist</code> ",
+      "albeit with the new file name.  I checked the file.  Nothing seemed untoward about it.  No missing tags, or weird chars, or unusual comments. Nada, Nothing, Ziltch. ",
+      "It just suddenly decided, or Gulp minify decided, that it no longer was invited to the party.  With no errors present to give any hint as to why this would happen ",
+      "my Google search did not turn up anything.  I was flummoxed.  Without any further ado, this is the solution. ",
+      "<br>",
+      "Here is my Gulp minify code before:",
+      "<br>",
+      "<pre style='width:600px'>//minify html\n",
+      "&nbsp;&nbsp;&nbsp;gulp.task('html', function () {\n",
+      "&nbsp;&nbsp;&nbsp;gulp.src('src/html/**/*.html') // path to files\n",
+      "&nbsp;&nbsp;&nbsp;.pipe(minifyHtml())\n",
+      "&nbsp;&nbsp;&nbsp;.pipe(gulp.dest('dist/html'));\n",
+      "&nbsp;&nbsp;});</pre>",
+      "<br>",
+      "Here is my Gulp minify code after:",
+      "<br>",
+      "<pre style='width:600px'>//minify html\n",
+      "&nbsp;&nbsp;&nbsp;gulp.task('html', function () {\n",
+      "&nbsp;&nbsp;&nbsp;gulp.src('src/html/**/*.html') // path to files\n",
+      "&nbsp;&nbsp;&nbsp;.pipe(minifyHtml())\n",
+      "&nbsp;&nbsp;&nbsp;.pipe(gulp.dest('dist/html'));\n",
+      "\n",
+      "\n",
+      "&nbsp;&nbsp;&nbsp;gulp.src('src/html/partials/_blogTopic.html') // path to THIS file\n",
+      "&nbsp;&nbsp;&nbsp;.pipe(minifyHtml())\n",
+      "&nbsp;&nbsp;&nbsp;.pipe(gulp.dest('dist/html/partials/'));\n",
+      "&nbsp;&nbsp;});</pre>",
+      "Notice that I needed to explicity add *that* particular file to the minify. It works.  I have NO idea why the original minify stopped working.  But the wind is back in my ",
+      "sails until I hear that unwelcome grinding on the keel again."
+    ]
+  },
+  {
+    "blogDate": "October 25, 2015",
+    "abbrBlogDate": "25-10-15",
+    "blogTitle": "Git along little doggie",
+    "blogCategory": "development, tools",
+    "blogAbstract": "A productivity tool with an unpleasant command line interface, that treats its users with such utter contempt.",
+    "blogContent": [
+      "Git is the source code version control system that is rapidly becoming the standard for open source projects. It has a powerful distributed model which allows ",
+      "advanced users to do tricky things with branches, and rewriting history. What a pity that it&#39;s so hard to learn, has such an unpleasant command line interface, and treats its  users with such utter contempt.",
+      "<img src='../img/git.png' style='float:left;margin:10px'>",
+      ""
+    ]
+  },
+  {
+    "blogDate": "November 10, 2015",
+    "abbrBlogDate": "10-11-15",
+    "blogTitle": "How to add a new entry to this blog.",
+    "blogCategory": "blog, angularjs",
+    "blogAbstract": "It is rather easy, but let me make a note anyway",
+    "blogContent": [
+      "I think that technically, this is a very user friendly blog to add updates to.  No, I have added full WYSIWYG content editing yet, ",
+      "but that is coming.",
+      "<br>",
+      "All the user needs to do is open <code>blogData.json</code> and follow the existing blog entries as examples.  Nothing more than that. ",
+      "The only *gotchas* are that the blog text is stored as an array of strings.  Not the most user friendly format, granted, but it is the only way ",
+      "to store multi-line text in JSON.",
+      "<br>",
+      "Additionally, you must ensure that the <code>abbrBlogDate</code> is in this format: dd-mm-yy.  Any other format, and the blog item will not be ",
+      "sorted correctly.",
+      "<br>",
+      "That&#39;s all there is to it! How simple is that!",
+      "<img src='../img/easy.jpg' style='float:left;margin:10px'>"
+    ]
+  },
+  {
+    "blogDate": "December 3, 2015",
+    "abbrBlogDate": "3-12-15",
+    "blogTitle": "Dalvik does not like me anymore",
+    "blogCategory": "android",
+    "blogAbstract": "Dealing with the DEX methods limit on Android and Google ",
+    "blogContent": [
+      "It happens in the blink of an eye. Before, you are an happy Android developer, head down on your (or your company&#39;s) application,",
+      "adding the coolest libraries to provide more functionalities and to write simpler code. Afterwards, you stare at the dreaded output that states:"
+    ]
+  },
+  {
+    "blogDate": "December 12, 2015",
+    "abbrBlogDate": "12-12-15",
+    "blogTitle": "How to ensure that Google can index your JSON data",
+    "blogCategory": "seo",
+    "blogAbstract": "Understanding how JS frameworks like AngularJS effect SEO results",
+    "blogContent": [
+      "Google has announced beginning of this (2014) year that it supports ",
+      "Javascript and after these tests I fully believe that it's possible to create public web ",
+      "sites with AngularJS kind of JS frameworks (which generates the content from ajax requests) without ",
+      "any fallback indexing systems for Google's crawler. Google is also one of the biggest AngularJS developer, ",
+      "<img src='../img/seo.jpg' style='float:left;margin:10px'>",
+      "so it's also in Google's interest to support those techniques and raise the rankings of sites which uses those techniques."
+    ]
   }
 ]

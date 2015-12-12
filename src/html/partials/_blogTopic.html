@@ -23,6 +23,7 @@
 		<div ng-repeat="blogItem in blogItems|filter:filterExpr">
 			<div class="yearDivider" ng-if="isNewYear(blogItem.blogDate)" ng-show="isSortDesc"><span>{{blogYear}}</span>
 			</div>
+			<div class="monthDivider" ng-if="isNewMonth(blogItem.blogDate)" ng-show="isSortDesc"></div>
 			<div class="blogItem">
 				<div class="blogItemTitle" ng-click="itemClick(blogItem)">{{blogItem.blogTitle}}</div>
 				<div class="blogItemDate" ng-click="itemClick(blogItem)">{{blogItem.blogDate}}</div>
