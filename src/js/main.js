@@ -93,13 +93,20 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 
 		// automagically swap out the 'made by' images
 		$rootScope.$on('startTitle', function () {
-
+			console.log('--------------> swapMadeByImgInterval');
 			swapMadeByImgInterval = $interval(function () {
 				$rootScope.doHeaderImgTransform()
 			}, 10000, 0);
 		});
 
 		$rootScope.$on('reset', function () {
+			wasMadeByClicked = false;
+			$interval.cancel(swapMadeByImgInterval);
+		});
+
+		$rootScope.$on('linkOutsideSite', function () {
+			console.log('cancel(swapMadeByImgInterval)');
+			wasMadeByClicked = false;
 			$interval.cancel(swapMadeByImgInterval);
 		});
 
