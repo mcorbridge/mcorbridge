@@ -28,13 +28,13 @@ angular.module('BlogTopic', ['ngSanitize'])
 
 		var date_sort_asc = function (obj1, obj2) {
 			if (obj1.dateObj > obj2.dateObj) return 1;
-			if (obj1 < obj2.dateObj) return -1;
+			if (obj1.dateObj < obj2.dateObj) return -1;
 			return 0;
 		};
 
 		var date_sort_desc = function (obj1, obj2) {
 			if (obj1.dateObj < obj2.dateObj) return 1;
-			if (obj1 > obj2.dateObj) return -1;
+			if (obj1.dateObj > obj2.dateObj) return -1;
 			return 0;
 		};
 
@@ -53,11 +53,7 @@ angular.module('BlogTopic', ['ngSanitize'])
 		$scope.srchBtnLbl = 'search';
 
 		var expr1 = function (item) {
-			if (searchAllBlogText(item, $scope.searchTerm)) {
-				return true;
-			} else {
-				return false;
-			}
+			return searchAllBlogText(item, $scope.searchTerm) ? true : false;
 		};
 
 		var expr2 = function (item) {
@@ -87,6 +83,9 @@ angular.module('BlogTopic', ['ngSanitize'])
 		var isSearch = false;
 
 		$scope.doBlogSearch = function () {
+			if ($scope.searchTerm.length === 0)
+				return;
+
 			if (!isSearch) {
 				$scope.filterExpr = expr1;
 				$scope.srchBtnLbl = 'clear';
@@ -120,12 +119,12 @@ angular.module('BlogTopic', ['ngSanitize'])
 			if (event.keyCode === 13) {
 				$scope.doBlogSearch();
 			}
-		}
+		};
 
 		$scope.sortByDate = function (direction) {
 			$scope.blogYear = '';
 			if (direction === 'asc') {
-				$scope.isSortDesc = false;
+				$scope.isSortDesc = false; // the year separators don't work right if the list is sorted desc
 				$scope.blogItems.sort(date_sort_asc);
 			} else if (direction === 'desc') {
 				$scope.blogItems.sort(date_sort_desc);

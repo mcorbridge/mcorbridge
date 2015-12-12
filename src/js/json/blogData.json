@@ -1,5 +1,4 @@
 [
-  //                                     blogTopic0
   {
     "blogDate": "November 1, 2015",
     "abbrBlogDate": "1-11-15",
@@ -25,7 +24,6 @@
       "famo.us, Velocity.js, and GSAP a try and see which feels best to you. Have fun!"
     ]
   },
-  //                                     blogTopic1
   {
     "blogDate": "November 26, 2015",
     "abbrBlogDate": "26-11-15",
@@ -49,7 +47,6 @@
       "the person who figures out the answer, yes or no, will win a <a href='https://en.wikipedia.org/wiki/Millennium_Prize_Problems' target='_blank'>million dollars</a>."
     ]
   },
-  //                                     blogTopic2
   {
     "blogDate": "November 12, 2015",
     "abbrBlogDate": "12-11-15",
@@ -67,7 +64,6 @@
       "files.  Javascript uses npm to accomplish the same thing, and once you get used to npm, it is a very sweet little system."
     ]
   },
-  //                                     blogTopic3
   {
     "blogDate": "November 28, 2015",
     "abbrBlogDate": "28-11-15",
@@ -105,7 +101,6 @@
       "fires when a <code>$digest</code> is in progress, sometimes not. That is why I use this check."
     ]
   },
-  //                                     blogTopic4
   {
     "blogDate": "November 29, 2015",
     "abbrBlogDate": "29-11-15",
@@ -128,7 +123,6 @@
       "dream and suddenly solving the structure of benzene. "
     ]
   },
-  //                                     blogTopic5
   {
     "blogDate": "January 9, 2011",
     "abbrBlogDate": "9-1-11",
@@ -163,7 +157,6 @@
       "be in the present; feel the rhythm in nature; paddle steadily and thoughtfully.I will move forward."
     ]
   },
-  //                                     blogTopic6
   {
     "blogDate": "January 4, 2011",
     "abbrBlogDate": "4-1-11",
@@ -198,7 +191,6 @@
       "All good."
     ]
   },
-  //                                     blogTopic7
   {
     "blogDate": "November 11, 2015",
     "abbrBlogDate": "11-11-15",
@@ -235,7 +227,6 @@
       "freshly baked bread with a generous slab of butter!"
     ]
   },
-  //                                     blogTopic8
   {
     "blogDate": "December 8, 2015",
     "abbrBlogDate": "8-12-15",
