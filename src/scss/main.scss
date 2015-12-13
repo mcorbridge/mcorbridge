@@ -401,6 +401,19 @@ body{
 		text-align: center;
 		//border: 1px white solid;
 	}
+
+	.madeBy {
+		position: absolute;
+		top: 500px;
+		left: 10%;
+		width: 70%;
+		font-size: large;
+		color: white;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		//border: 1px white solid;
+	}
 }
 
 .fa-times-circle-o {
@@ -468,6 +481,16 @@ body{
 	width: 800px;
 	height: 400px;
 }
+
+.fa-wrench {
+	color: white;
+	float: right;
+	&:hover {
+		color: #33db39;
+	}
+}
+
+
 
 
 
