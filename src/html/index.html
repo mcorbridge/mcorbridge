@@ -52,15 +52,10 @@
 <div class="toolsChest" ng-controller="toolsCtrl">
 	<i class="fa fa-cogs fa-5x iconCogs"></i>
 	<i class="fa fa-times-circle-o fa-3x" ng-click="closeToolsChest()"></i>
-
 	<div class="getComments">get comments<i class="fa fa-commenting-o fa-3x" ng-click="toolsGetComments()"></i></div>
-
 	<div class="signIn">sign in<i class="fa fa-sign-in fa-3x" ng-click="signIn()"></i></div>
-
 	<div class="signOut">sign out<i class="fa fa-sign-out fa-3x" ng-click="signOut()"></i></div>
-
 	<div class="deviceDims">screen dimensions<i class="fa fa-arrows fa-3x" ng-click="getDims()"></i></div>
-
 	<div class="madeBy">design & creation<i class="fa fa-wrench fa-3x" ng-click="getMadeBy()"></i></div>
 </div>
 
@@ -133,37 +128,37 @@
 	</svg>
 
 
-	<div id="wrap0" class="cardWrapper0">
+	<div id="wrap0" class="cardWrapper0" ng-class="hvrBuzz0">
 		<div class="card">
 			<div class="cardFace0 front0" ng-mouseover="doFlip(0)"></div>
-			<div class="cardFace0 back0" ng-click="doClickBox(0)" ng-mouseover="doBoxMouseOver(0)">
+			<div class="cardFace0 back0" ng-click="doClickBox(0)">
 				<div ng-include="'partials/_aboutMe.html'"></div>
 			</div>
 		</div>
 	</div>
 
-	<div id="wrap1" class="cardWrapper1">
+	<div id="wrap1" class="cardWrapper1" ng-class="hvrBuzz1">
 		<div class="card">
 			<div class="cardFace1 front1" ng-mouseover="doFlip(1)"></div>
-			<div class="cardFace1 back1" ng-click="doClickBox(1)" ng-mouseover="doBoxMouseOver(1)">
+			<div class="cardFace1 back1" ng-click="doClickBox(1)">
 				<div ng-include="'partials/_skunkWorks.html'"></div>
 			</div>
 		</div>
 	</div>
 
-	<div id="wrap2" class="cardWrapper2">
+	<div id="wrap2" class="cardWrapper2" ng-class="hvrBuzz2">
 		<div class="card">
 			<div class="cardFace2 front2" ng-mouseover="doFlip(2)"></div>
-			<div class="cardFace2 back2" ng-click="doClickBox(2)" ng-mouseover="doBoxMouseOver(2)">
+			<div class="cardFace2 back2" ng-click="doClickBox(2)">
 				<div ng-include="'partials/_portfolio.html'"></div>
 			</div>
 		</div>
 	</div>
 
-	<div id="wrap3" class="cardWrapper3">
+	<div id="wrap3" class="cardWrapper3" ng-class="hvrBuzz3">
 		<div class="card">
 			<div class="cardFace3 front3" ng-mouseover="doFlip(3)"></div>
-			<div class="cardFace3 back3" ng-click="doClickBox(3)" ng-mouseover="doBoxMouseOver(3)">
+			<div class="cardFace3 back3" ng-click="doClickBox(3)">
 				<div ng-include="'partials/_blog.html'"></div>
 			</div>
 		</div>
@@ -258,11 +253,13 @@
 				<li>AngularJS</li>
 				<li>GSAP</li>
 				<li>Bootstrap</li>
+				<li>Angular UI</li>
 				<li>D3</li>
 				<li>Labella</li>
 				<li>Firebase</li>
 				<li>Google Cloud Platform</li>
 				<li>Hover.css</li>
+				<li>Font Awesome</li>
 			</ul>
 		</div>
 		<div class="modal-footer">

@@ -12,6 +12,8 @@ angular.module('IntroRotate', [])
 
 		$scope.progressInfo = '';
 
+		$scope.hvrBuzz = null;
+
 		var tm0 = new TimelineLite();
 		var tm1 = new TimelineLite();
 		var tm2 = new TimelineLite();
@@ -238,18 +240,60 @@ angular.module('IntroRotate', [])
 		$scope.doFlip = function(box){
 			switch (box){
 				case 0:
-					TweenLite.to('#wrap0 .card', 1, {rotationX:-180, transformOrigin:"left 63px", transformStyle:"preserve-3d", ease:Back.easeInOut});
+					TweenLite.to('#wrap0 .card', 1, {
+						rotationX: -180,
+						transformOrigin: "left 63px",
+						transformStyle: "preserve-3d",
+						ease: Back.easeInOut,
+						onComplete: addHvrBuzz0
+					});
 					break;
 				case 1:
-					TweenLite.to('#wrap1 .card', 1, {rotationX:-180, transformOrigin:"left 63px", transformStyle:"preserve-3d", ease:Back.easeInOut});
+					TweenLite.to('#wrap1 .card', 1, {
+						rotationX: -180,
+						transformOrigin: "left 63px",
+						transformStyle: "preserve-3d",
+						ease: Back.easeInOut,
+						onComplete: addHvrBuzz1
+					});
 					break;
 				case 2:
-					TweenLite.to('#wrap2 .card', 1, {rotationX:-180, transformOrigin:"left 63px", transformStyle:"preserve-3d", ease:Back.easeInOut});
+					TweenLite.to('#wrap2 .card', 1, {
+						rotationX: -180,
+						transformOrigin: "left 63px",
+						transformStyle: "preserve-3d",
+						ease: Back.easeInOut,
+						onComplete: addHvrBuzz2
+					});
 					break;
 				case 3:
-					TweenLite.to('#wrap3 .card', 1, {rotationX:-180, transformOrigin:"left 63px", transformStyle:"preserve-3d", ease:Back.easeInOut});
+					TweenLite.to('#wrap3 .card', 1, {
+						rotationX: -180,
+						transformOrigin: "left 63px",
+						transformStyle: "preserve-3d",
+						ease: Back.easeInOut,
+						onComplete: addHvrBuzz3
+					});
 					break;
 			}
+		}
+
+		// meh, not sure if like the buzz effect
+		var addHvrBuzz0 = function () {
+			$scope.hvrBuzz0 = 'hvr-push';
+			$scope.$apply();
+		}
+		var addHvrBuzz1 = function () {
+			$scope.hvrBuzz1 = 'hvr-push';
+			$scope.$apply();
+		}
+		var addHvrBuzz2 = function () {
+			$scope.hvrBuzz2 = 'hvr-push';
+			$scope.$apply();
+		}
+		var addHvrBuzz3 = function () {
+			$scope.hvrBuzz3 = 'hvr-push';
+			$scope.$apply();
 		}
 
 	}])
