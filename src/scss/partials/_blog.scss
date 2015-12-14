@@ -32,6 +32,8 @@
 		border: 1px solid rgba(124, 158, 163, 0.95);
 		background-color: rgba(123, 144, 213, 0.32);
 		margin: 5px;
+		cursor: pointer;
+
 
 		.blogItemTitle {
 			font-family: Consolas, Menlo, Monaco, monospace;
@@ -63,6 +65,10 @@
 			//border:black 1px solid;
 		}
 	}
+}
+
+.blogItem:hover {
+	background-color: rgba(219, 158, 46, 0.32);
 }
 
 .fullBlogArticle {
