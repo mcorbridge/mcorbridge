@@ -35,6 +35,7 @@ a:hover, a:visited, a:link, a:active {
 		overflow-x: hidden; // hide horizontal
 		background-color: white;
 		visibility: visible;
+		//border:  solid black 1px;
 	}
 
 	.aboutFAQ {
@@ -193,6 +194,16 @@ a:hover, a:visited, a:link, a:active {
 .androidGreen {
 	font-weight: bolder;
 	color: #A4C639;
+}
+
+.timeLine {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 412px;
+	width: 1265px;
+	background-image: url("../img/timeLine.png");
+	background-repeat: no-repeat;
 }
 
 

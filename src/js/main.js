@@ -167,7 +167,7 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 		$scope.open = function (size) {
 
 			var modalInstance = $uibModal.open({
-				animation: true,
+				animation: false,
 				templateUrl: 'addCommentContent.html',
 				controller: 'modalCommentInstanceCtrl',
 				size: size
@@ -224,7 +224,7 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 		$scope.toolsGetComments = function () {
 			var openShowComments = function (size) {
 				var modalInstance = $uibModal.open({
-					animation: true,
+					animation: false,
 					templateUrl: 'showCommentsContent.html',
 					controller: 'modalShowCommentInstanceCtrl',
 					size: size,
@@ -248,7 +248,7 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 		$scope.getMadeBy = function () {
 			var openShowMadeBy = function (size) {
 				var modalInstance = $uibModal.open({
-					animation: true,
+					animation: false,
 					templateUrl: 'showMadeByContent.html',
 					controller: 'modalMadeByInstanceCtrl',
 					size: size,
