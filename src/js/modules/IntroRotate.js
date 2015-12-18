@@ -4,7 +4,7 @@
 angular.module('IntroRotate', [])
 
 
-	.controller('rotateSegmentCtrl', ['$scope', '$rootScope', function ($scope,$rootScope) {
+	.controller('rotateSegmentCtrl', ['$scope', '$rootScope', 'applicationVariables', function ($scope, $rootScope, applicationVariables) {
 
 		console.log('IntroRotate :' + $rootScope.screenDimensions.height + 'x' + $rootScope.screenDimensions.width);
 
@@ -94,7 +94,7 @@ angular.module('IntroRotate', [])
 		var doRotationComplete = function(){
 			console.log('doRotationComplete');
 
-			// we need another routine for mobile devices
+			// todo we need another routine for mobile devices
 			if($rootScope.screenDimensions.width <= 1360) {
 				isRunning = false;
 				TweenMax.to('.progressInfo0',0.5,{css:{opacity:0}});
@@ -115,7 +115,6 @@ angular.module('IntroRotate', [])
 
 		var doDrawLinesComplete = function(){
 			console.log('doDrawLinesComplete');
-
 			var tl = new TimelineLite();
 			TweenLite.set(".rect0",{visibility:'visible'});
 			TweenLite.set(".rect1",{visibility:'visible'});
@@ -168,6 +167,9 @@ angular.module('IntroRotate', [])
 			var duration = 0.5;
 			TweenLite.to(".div6", duration, {css:{left:'150%'}});
 
+			// new UX routine as per Jan's suggestion
+			TweenLite.to(".goBack", duration, {css: {opacity: '1'}});
+
 			switch (box){
 				case 0:
 					TweenLite.set(".info0",{visibility:'visible'});
@@ -186,6 +188,8 @@ angular.module('IntroRotate', [])
 					TweenLite.to(".info3", duration, {css:{ left:leftVal}, onComplete:doSwipeComplete});
 					break;
 			}
+
+			applicationVariables.currentView = box;
 		};
 
 
@@ -280,20 +284,20 @@ angular.module('IntroRotate', [])
 
 		// meh, not sure if like the buzz effect
 		var addHvrBuzz0 = function () {
-			$scope.hvrBuzz0 = 'hvr-push';
-			$scope.$apply();
+			//$scope.hvrBuzz0 = 'hvr-push';
+			//$scope.$apply();
 		}
 		var addHvrBuzz1 = function () {
-			$scope.hvrBuzz1 = 'hvr-push';
-			$scope.$apply();
+			//$scope.hvrBuzz1 = 'hvr-push';
+			//$scope.$apply();
 		}
 		var addHvrBuzz2 = function () {
-			$scope.hvrBuzz2 = 'hvr-push';
-			$scope.$apply();
+			//$scope.hvrBuzz2 = 'hvr-push';
+			//$scope.$apply();
 		}
 		var addHvrBuzz3 = function () {
-			$scope.hvrBuzz3 = 'hvr-push';
-			$scope.$apply();
+			//$scope.hvrBuzz3 = 'hvr-push';
+			//$scope.$apply();
 		}
 
 	}])

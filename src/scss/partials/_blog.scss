@@ -111,6 +111,7 @@
 	position: absolute;
 	top: 60px;
 	left: 5px;
+	line-height: 140%;
 }
 
 pre {
@@ -189,6 +190,13 @@ pre {
 		position: relative;
 		left: -7px;
 	}
+}
+
+.firstLetter {
+	font-size: 250%;
+	font-weight: bolder;
+	color: #122b40;
+	font-family: "Helvetica Neue";
 }
 
 

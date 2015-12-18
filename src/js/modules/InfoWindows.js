@@ -4,7 +4,7 @@
 
 angular.module('InfoWindows', [])
 
-	.controller('infoCtrl', ['$scope', '$rootScope', function ($scope,$rootScope) {
+	.controller('infoCtrl', ['$scope', '$rootScope', 'applicationVariables', function ($scope, $rootScope, applicationVariables) {
 
 
 		// do not try to do anything to the included file UNTIL we know it is loaded
@@ -25,6 +25,8 @@ angular.module('InfoWindows', [])
 			console.log('close box: ' + box);
 			var leftVal = '150%';
 			var duration = 0.5;
+
+			TweenLite.to(".goBack", duration, {css: {opacity: 0}});
 
 			TweenLite.set(".div6", {visibility: 'visible'});
 			TweenLite.set(".cardWrapper0", {visibility: 'visible'});

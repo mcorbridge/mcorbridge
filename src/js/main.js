@@ -1,9 +1,9 @@
 /**
  * Created by Mike on 11/10/2015.
  */
-angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', 'PortfolioTopic', 'ProjectsTopic', 'BlogTopic', 'ngRoute', 'ui.bootstrap', 'AngularFire'])
+angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', 'PortfolioTopic', 'ProjectsTopic', 'BlogTopic', 'ngRoute', 'ui.bootstrap', 'AngularFire', 'ApplicationModel'])
 
-	.run(['$rootScope', '$timeout', function ($rootScope, $timeout) {
+	.run(['$rootScope', '$timeout', '$route', '$location', function ($rootScope, $timeout, $route, $location) {
 		$rootScope.isRouted = false;
 		console.log('*** starting 24 hr timeout ***');
 		var oneDayTimeout = 1000 * 60 * 60 * 24; // I just did this for fun
@@ -11,6 +11,19 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 			console.log('*** timeout fired ***');
 			$rootScope.$emit('timeout');
 		}, oneDayTimeout);
+
+		$rootScope.$on('$locationChangeSuccess', function () {
+			$rootScope.actualLocation = $location.path();
+		});
+
+		$rootScope.$watch(function () {
+			return $location.path()
+		}, function (newLocation, oldLocation) {
+			if ($rootScope.actualLocation === newLocation) {
+				alert('Why did you use back button?');
+			}
+		});
+
 	}])
 
 	.config(['$routeProvider', function ($routeProvider) {
@@ -37,7 +50,7 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 	}])
 
 
-	.controller('headerCtrl', ['$rootScope', '$scope', '$interval', function ($rootScope, $scope, $interval) {
+	.controller('headerCtrl', ['$rootScope', '$scope', '$interval', 'applicationVariables', function ($rootScope, $scope, $interval, applicationVariables) {
 		// do not try to do anything to the included file UNTIL we know it is loaded
 		$scope.ngIncludeLoaded = function(file){
 			console.log(file + ' is loaded');
@@ -118,6 +131,56 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 				TweenLite.to('.toolsChest', 1, {left: '0', zIndex: '9999'});
 			}
 		};
+
+		$scope.goBack = function () {
+
+			var box = applicationVariables.currentView;
+
+			var leftVal = '150%';
+			var duration = 0.5;
+
+			TweenLite.to(".goBack", duration, {css: {opacity: 0}});
+
+			TweenLite.set(".div6", {visibility: 'visible'});
+			TweenLite.set(".cardWrapper0", {visibility: 'visible'});
+			TweenLite.set(".cardWrapper1", {visibility: 'visible'});
+			TweenLite.set(".cardWrapper2", {visibility: 'visible'});
+			TweenLite.set(".cardWrapper3", {visibility: 'visible'});
+
+			switch (box) {
+				case 0:
+					TweenLite.to(".info0", duration, {css: {left: leftVal}, onComplete: closeWindowComplete});
+					TweenLite.to(".div6", duration, {css: {left: '50%'}});
+					break;
+				case 1:
+					TweenLite.to(".info1", duration, {css: {left: leftVal}, onComplete: closeWindowComplete});
+					TweenLite.to(".div6", duration, {css: {left: '50%'}});
+					break;
+				case 2:
+					TweenLite.to(".info2", duration, {css: {left: leftVal}, onComplete: closeWindowComplete});
+					TweenLite.to(".div6", duration, {css: {left: '50%'}});
+					break;
+				case 3:
+					TweenLite.to(".info3", duration, {css: {left: leftVal}, onComplete: closeWindowComplete});
+					TweenLite.to(".div6", duration, {css: {left: '50%'}});
+					break;
+
+			}
+		}
+
+		var closeWindowComplete = function () {
+			TweenLite.set(".menuIcon", {css: {color: 'black'}});
+			var leftVal = '-150%';
+			TweenLite.set(".info0", {visibility: 'hidden'});
+			TweenLite.set(".info1", {visibility: 'hidden'});
+			TweenLite.set(".info2", {visibility: 'hidden'});
+			TweenLite.set(".info3", {visibility: 'hidden'});
+			TweenLite.set(".info0", {css: {left: leftVal}});
+			TweenLite.set(".info1", {css: {left: leftVal}});
+			TweenLite.set(".info2", {css: {left: leftVal}});
+			TweenLite.set(".info3", {css: {left: leftVal}});
+
+		}
 	}])
 
 	.controller('initCtrl', ['$rootScope', '$scope', 'getMedia', function($rootScope, $scope, getMedia) {

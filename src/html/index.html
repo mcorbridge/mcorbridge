@@ -47,6 +47,9 @@
 		<div ng-include="'partials/_madeWithAngular.html'" onload="ngIncludeLoaded('madeWithAngular')"></div>
 		<div ng-include="'partials/_madeWith.html'" onload="ngIncludeLoaded('madeWith')"></div>
 	</div>
+	<div class="goBack">
+		<i class="fa fa-backward fa-4x hvr-wobble-horizontal" ng-click="goBack()"></i>
+	</div>
 </div>
 
 <div class="toolsChest" ng-controller="toolsCtrl">

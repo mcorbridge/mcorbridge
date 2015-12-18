@@ -12,7 +12,7 @@ angular.module('AboutMeTopic', [])
 			url: '../js/json/about.json'
 		}).then(function successCallback(response) {
 			var re = new RegExp('_', 'g');
-			$scope.aboutMeLongText = response.data.aboutMeLongV2.join('_').toString().replace(re, '');
+			$scope.aboutMeLongText = $sce.trustAsHtml(response.data.aboutMeLongV2.join('_').toString().replace(re, ''));
 		}, function errorCallback(response) {
 			console.log('something went very, very wrong with retrieval of "about me" text.')
 		});
