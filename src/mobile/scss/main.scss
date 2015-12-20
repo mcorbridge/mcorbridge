@@ -1,0 +1,85 @@
+body {
+	background-color: #000000;
+}
+
+html * {
+	font-size: 1em !important;
+	color: #b7b7b7 !important;
+	font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.header {
+	position: absolute;
+	height: 10%;
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	background-color: #b7b7b7;
+}
+
+.headerTitle {
+	position: absolute;
+	top: 5%;
+	left: 0px;
+}
+
+.about {
+	position: absolute;
+	height: 15%;
+	width: 75%;
+	top: 15%;
+	left: -100%;
+	background-color: #b7ad32;
+}
+
+.portfolio {
+	position: absolute;
+	height: 15%;
+	width: 75%;
+	top: 35%;
+	left: -100%;
+	background-color: #d16320;
+}
+
+.projects {
+	position: absolute;
+	height: 15%;
+	width: 75%;
+	top: 55%;
+	left: -100%;
+	background-color: #767676;
+}
+
+.blog {
+	position: absolute;
+	height: 15%;
+	width: 75%;
+	top: 75%;
+	left: -100%;
+	background-color: #dbdba1;
+}
+
+.aboutTitle {
+
+}
+
+.portfolioTitle {
+
+}
+
+.projectsTitle {
+
+}
+
+.blogTitle {
+
+}
+
+.footer {
+	position: absolute;
+	height: 5%;
+	width: 100%;
+	top: 95%;
+	left: 0px;
+	background-color: #b7b7b7;
+}
