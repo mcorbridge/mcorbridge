@@ -185,14 +185,21 @@ angular.module('main', ['IntroRotate', 'InfoWindows', 'Media', 'AboutMeTopic', '
 
 	.controller('initCtrl', ['$rootScope', '$scope', 'getMedia', function($rootScope, $scope, getMedia) {
 
-		$rootScope.startBounce = true;
-
 		var deviceWidth = getMedia.getWidth();
 		var deviceHeight = getMedia.getHeight();
 		$scope.screenDimension = 'device dimensions: height: ' + deviceHeight + ' width: ' + deviceWidth;
 		$rootScope.screenDimensions = {height:deviceHeight, width:deviceWidth};
 		console.log('main :' + $rootScope.screenDimensions.height + 'x' + $rootScope.screenDimensions.width);
 
+		//for mobile devices send to mobile specific site
+		if ($rootScope.screenDimensions.width <= 1465 || $rootScope.screenDimensions.height <= 650) {
+			var a = document.createElement('a');
+			a.href = 'http://mcorbridge.com/dist/mobile/html/mobile.html';
+			a.click();
+			return;
+		}
+
+		$rootScope.startBounce = true;
 
 		var startBounce = function(){
 			TweenMax.to('.startIcon', 0.1, {top:"180px", onComplete:reset,  delay:2.5});

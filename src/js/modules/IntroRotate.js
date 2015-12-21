@@ -94,13 +94,6 @@ angular.module('IntroRotate', [])
 		var doRotationComplete = function(){
 			console.log('doRotationComplete');
 
-			// todo we need another routine for mobile devices
-			if($rootScope.screenDimensions.width <= 1360) {
-				isRunning = false;
-				TweenMax.to('.progressInfo0',0.5,{css:{opacity:0}});
-				return;
-			}
-
 			TweenMax.to('.progressInfo0',0.5,{css:{opacity:0}});
 			TweenMax.to('.progressInfo1',3.5,{css:{opacity:1}});
 

@@ -3,9 +3,9 @@ body {
 }
 
 html * {
-	font-size: 1em !important;
-	color: #b7b7b7 !important;
-	font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	//font-size: 1em !important;
+	//color: #b7b7b7 !important;
+	//font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .header {
@@ -59,6 +59,58 @@ html * {
 	background-color: #dbdba1;
 }
 
+.topicContent {
+	position: absolute;
+	height: 71%;
+	width: 73%;
+	top: 17%;
+	left: 13%;
+	border: 2px solid #fffe11;
+	visibility: hidden;
+
+	.aboutContent {
+		position: absolute;
+		height: 88%;
+		width: 99%;
+		top: 10%;
+		left: 0.5%;
+		border: 1px solid greenyellow;
+		visibility: hidden;
+		font-size: 28pt;
+		font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+
+	.portfolioContent {
+		position: absolute;
+		height: 88%;
+		width: 99%;
+		top: 10%;
+		left: 0.5%;
+		border: 1px solid #ff8dcf;
+		visibility: hidden;
+	}
+
+	.projectsContent {
+		position: absolute;
+		height: 88%;
+		width: 99%;
+		top: 10%;
+		left: 0.5%;
+		border: 1px solid #76f7ff;
+		visibility: hidden;
+	}
+
+	.blogContent {
+		position: absolute;
+		height: 88%;
+		width: 99%;
+		top: 10%;
+		left: 0.5%;
+		border: 1px solid #0c113c;
+		visibility: hidden;
+	}
+}
+
 .aboutTitle {
 
 }
@@ -82,4 +134,8 @@ html * {
 	top: 95%;
 	left: 0px;
 	background-color: #b7b7b7;
+}
+
+.tester {
+	border: 3px solid greenyellow;
 }

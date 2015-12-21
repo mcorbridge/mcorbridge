@@ -18,24 +18,35 @@
 			 onload="ngIncludeLoaded('_mcorbridgeTitle')"></div>
 	</div>
 
-	<div class="about">
+	<div class="about" ng-click="clickTopic('about')">
 		<div class="aboutTitle" ng-include="'partials/_aboutTitle.html'" onload="ngIncludeLoaded('_aboutTitle')"></div>
 	</div>
 
-	<div class="portfolio">
+	<div class="portfolio" ng-click="clickTopic('portfolio')">
 		<div class="portfolioTitle" ng-include="'partials/_portfolioTitle.html'"
 			 onload="ngIncludeLoaded('_portfolioTitle')"></div>
 	</div>
 
-	<div class="projects">
+	<div class="projects" ng-click="clickTopic('projects')">
 		<div class="projectsTitle" ng-include="'partials/_projectsTitle.html'"
 			 onload="ngIncludeLoaded('_projectsTitle')"></div>
 	</div>
 
-	<div class="blog">
+	<div class="blog" ng-click="clickTopic('blog')">
 		<div class="blogTitle" ng-include="'partials/_blogTitle.html'" onload="ngIncludeLoaded('_blogTitle')"></div>
 	</div>
 
+	<div class="topicContent">
+		<button ng-click="doClose()" style="position: absolute;left:95%">close</button>
+		<div ng-show="isAbout" ng-include="'partials/_aboutTitle.html'"></div>
+		<div ng-show="isPortfolio" ng-include="'partials/_portfolioTitle.html'"></div>
+		<div ng-show="isProjects" ng-include="'partials/_projectsTitle.html'"></div>
+		<div ng-show="isBlog" ng-include="'partials/_blogTitle.html'"></div>
+		<div class="aboutContent" ng-bind="aboutContent"></div>
+		<div class="portfolioContent"></div>
+		<div class="projectsContent"></div>
+		<div class="blogContent"></div>
+	</div>
 
 	<div class="footer"></div>
 
