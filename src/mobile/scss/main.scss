@@ -1,5 +1,6 @@
 body {
 	background-color: #000000;
+	overflow: hidden;
 }
 
 html * {
@@ -65,8 +66,19 @@ html * {
 	width: 73%;
 	top: 17%;
 	left: 13%;
-	border: 2px solid #fffe11;
+	//border: 2px solid #fffe11;
 	visibility: hidden;
+
+	.closeTopic {
+		position: absolute;
+		top: 1%;
+		left: 95%;
+		color: black;
+		cursor: pointer;
+		&:hover {
+			color: red;
+		}
+	}
 
 	.aboutContent {
 		position: absolute;
@@ -74,10 +86,19 @@ html * {
 		width: 99%;
 		top: 10%;
 		left: 0.5%;
-		border: 1px solid greenyellow;
+		//border: 1px solid greenyellow;
 		visibility: hidden;
-		font-size: 28pt;
 		font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		overflow-y: auto;
+		overflow-x: hidden;
+
+		&.portrait {
+			font-size: 28pt;
+		}
+
+		&.landscape {
+			font-size: 18pt;
+		}
 	}
 
 	.portfolioContent {
@@ -86,7 +107,7 @@ html * {
 		width: 99%;
 		top: 10%;
 		left: 0.5%;
-		border: 1px solid #ff8dcf;
+		//border: 1px solid #ff8dcf;
 		visibility: hidden;
 	}
 
@@ -96,7 +117,7 @@ html * {
 		width: 99%;
 		top: 10%;
 		left: 0.5%;
-		border: 1px solid #76f7ff;
+		//border: 1px solid #76f7ff;
 		visibility: hidden;
 	}
 
@@ -106,9 +127,10 @@ html * {
 		width: 99%;
 		top: 10%;
 		left: 0.5%;
-		border: 1px solid #0c113c;
+		//border: 1px solid #0c113c;
 		visibility: hidden;
 	}
+
 }
 
 .aboutTitle {

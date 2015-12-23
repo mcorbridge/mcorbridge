@@ -4,30 +4,47 @@
 
 angular.module('mainMobile', ['Media'])
 
-	.run(['$window', function ($window) {
+	.run(['$window', '$rootScope', function ($window, $rootScope) {
 
-		//console.log($window);
-
-		//angular.element($window).bind('orientationchange', function () {
-		//	$scope.$apply();
-		//});
-	}])
-
-	.controller('initCtrl', ['$scope', '$element', '$window', 'getMedia', function ($scope, $element, $window, getMedia) {
-
-
-		$scope.getWindowOrientation = function () {
-			alert($window.orientation);
+		$rootScope.getWindowOrientation = function () {
+			$rootScope.$emit('orientationChange', $window.orientation);
 			return $window.orientation;
 		};
 
-		$scope.$watch($scope.getWindowOrientation, function (newValue, oldValue) {
-			$scope.degrees = newValue;
+		$rootScope.$watch($rootScope.getWindowOrientation, function (newValue, oldValue) {
+			$rootScope.degrees = newValue;
 		}, true);
 
 		angular.element($window).bind('orientationchange', function () {
-			$scope.$apply();
+			$rootScope.$apply();
 		});
+	}])
+
+	.controller('initCtrl', ['$scope', '$rootScope', '$element', '$window', 'getMedia', function ($scope, $rootScope, $element, $window, getMedia) {
+
+
+		$scope.aboutContentStyle = 'aboutContent landscape';
+
+		$rootScope.$on('orientationChange', function (event, data) {
+			var orientation = null;
+			if (data === 0 || data === 180) {
+				orientation = 'landscape';
+				setOrientationValues()
+			} else if (data === 90 || data === -90) {
+				orientation = 'portrait';
+			}
+			setOrientationStyles(orientation);
+		});
+
+		// based on device orientation styles (css class) will be dynamically changed to optimize the view via ng-class
+		var setOrientationStyles = function (orientation) {
+			if (orientation === 'landscape') {
+				$scope.aboutContentStyle = 'aboutContent landscape';
+			} else {  // portrait orientation
+				$scope.aboutContentStyle = 'aboutContent portrait';
+			}
+		}
+
 
 		var currentView = null;
 
